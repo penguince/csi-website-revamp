@@ -230,7 +230,7 @@ const Faculty = () => {
 							<h3 className="text-2xl font-bold mb-4">Adjuncts</h3>
 							<div className="bg-white p-6">
 								<ul className="grid grid-cols-1 md:grid-cols-3 gap-4">
-									{Emeritus.map((spec, index) => (
+									{Adjuncts.map((spec, index) => (
 										<li key={index} className="flex items-start">
 											<span className="text-gray-700">{spec}</span>
 										</li>
