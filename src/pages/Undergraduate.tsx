@@ -1,319 +1,353 @@
+"use client"
+
+import { useState } from "react"
+
 const Undergraduate = () => {
-	const degrees = [
-		{
-			title: "AAS in Computer Technology",
-			description:
-				"A two-year program focused on general applications programming of information science sequences.",
-			link: "https://www.csi.cuny.edu/academics-and-research/college-catalog",
-		},
-		{
-			title: "BS in Computer Science",
-			description:
-				"Students seeking a Bachelor's degree in Computer Science should consult the Computer Science/Mathematics Department.",
-			link: "https://www.csi.cuny.edu/academics-and-research/college-catalog",
-		},
-		{
-			title: "BS in Computer Science-Mathematics",
-			description:
-				"An interdisciplinary degree combining computer science and mathematics curricula.",
-			link: "https://www.csi.cuny.edu/academics-and-research/college-catalog",
-		},
-	];
+  const [expandedMenus, setExpandedMenus] = useState<string[]>(["bs-cs"])
 
-	const specializations = [
-		"Game Development",
-		"Bioinformatics and Security",
-		"High-Performance Computing Data Science",
-	];
+  const sidebarDegrees = [
+    { name: "AAS in Computer Technology", href: "#aas" },
+    { name: "BS in Computer Science", href: "#bs-cs", hasSubmenu: true },
+    { name: "BS in Computer Science-Mathematics", href: "#bs-csmath" },
+    { name: "BS in Information Systems and Informatics", href: "#bs-isi" },
+    { name: "Computer Science Minor", href: "#minor" },
+    { name: "Cyber Security Minor", href: "#cybersec" },
+    { name: "Data Science Minor", href: "#datascience" },
+    { name: "Computational Linguistics Minor", href: "#complang" },
+  ]
 
-	return (
-		<div className="w-full">
-			{/* Page Header */}
-			<div className="bg-csi-gray border-b border-gray-300 py-6 px-4">
-				<div className="max-w-7xl mx-auto">
-					<h1 className="text-3xl font-bold text-center bg-white py-4 px-6 rounded shadow-sm">
-						Undergraduate Programs
-					</h1>
-				</div>
-			</div>
+  const bsSubmenu = [
+    { name: "Specializations", href: "#specializations" },
+    { name: "Graduation with Honors", href: "#honors" },
+    { name: "Career Milestones", href: "#milestones" },
+  ]
 
-			{/* Main Content */}
-			<div className="max-w-7xl mx-auto px-4 py-12">
-				<div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-					{/* Sidebar */}
-					<aside className="lg:col-span-1">
-						<div className="bg-csi-gray p-6 rounded-lg sticky top-24">
-							<h2 className="text-xl font-bold mb-6 mt-4">DEGREES</h2>
-							<nav aria-label="Degrees navigation">
-								<ul className="space-y-2">
-									<li>
-										<a
-											href="#aas"
-											className="block p-3 hover:bg-gray-200 border-l-4 border-transparent hover:border-csi-blue transition-all"
-										>
-											AAS in Computer Technology
-										</a>
-									</li>
-									<li>
-										<a
-											href="#bs-cs"
-											className="block p-3 hover:bg-gray-200 border-l-4 border-transparent hover:border-csi-blue transition-all"
-										>
-											BS in Computer Science
-										</a>
-									</li>
-									<li>
-										<a
-											href="#bs-csmath"
-											className="block p-3 hover:bg-gray-200 border-l-4 border-transparent hover:border-csi-blue transition-all"
-										>
-											BS in Computer Science-Mathematics
-										</a>
-									</li>
-									<li>
-										<a
-											href="#minor"
-											className="block p-3 hover:bg-gray-200 border-l-4 border-transparent hover:border-csi-blue transition-all"
-										>
-											Computer Science Minor
-										</a>
-									</li>
-									<li>
-										<a
-											href="#cybersec"
-											className="block p-3 hover:bg-gray-200 border-l-4 border-transparent hover:border-csi-blue transition-all"
-										>
-											Cyber Security Minor
-										</a>
-									</li>
-									<li>
-										<a
-											href="#datascience"
-											className="block p-3 hover:bg-gray-200 border-l-4 border-transparent hover:border-csi-blue transition-all"
-										>
-											Data Science Minor
-										</a>
-									</li>
-								</ul>
-							</nav>
-						</div>
-					</aside>
+  const toggleMenu = (id: string) => {
+    setExpandedMenus((prev) => (prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]))
+  }
 
-					{/* Main Content Area */}
-					<div className="lg:col-span-3 space-y-12">
-						{/* Computer Science Degrees Section */}
-						<section>
-							<h2 className="text-3xl font-bold mb-8">
-								Computer Science Degrees
-							</h2>
-							<div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-								{degrees.map((degree, index) => (
-									<div
-										key={index}
-										className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
-									>
-										<div className="bg-gray-200 h-48 flex items-center justify-center">
-											<svg
-												className="w-24 h-24 text-gray-400"
-												fill="none"
-												stroke="currentColor"
-												viewBox="0 0 24 24"
-											>
-												<path
-													strokeLinecap="round"
-													strokeLinejoin="round"
-													strokeWidth={2}
-													d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-												/>
-											</svg>
-										</div>
-										<div className="p-6">
-											<h3 className="text-xl font-bold mb-3">{degree.title}</h3>
-											<a
-												href={degree.link}
-												className="text-csi-blue hover:underline text-sm"
-											>
-												View Program →
-											</a>
-										</div>
-									</div>
-								))}
-							</div>
-						</section>
+  return (
+    <div className="w-full bg-white flex flex-col gap-6 md:gap-8 lg:gap-10">
+      {/* Main Content Container */}
+      <div className="w-full flex flex-col lg:flex-row gap-6 md:gap-8 px-4 sm:px-6 md:px-8 lg:px-[100px] py-8 md:py-12">
+        {/* Left Sidebar - Responsive Navigation */}
+        <nav className="w-full lg:w-64 flex flex-col gap-4 order-2 lg:order-1" aria-label="Navigation menu">
+          {/* Degrees Panel */}
+          <div className="w-full bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden">
+            <div className="p-4 md:p-6 flex flex-col gap-4">
+              {/* Degrees Header */}
+              <div className="flex flex-col gap-2 pb-4 border-b-2 border-gray-300">
+                <h2 className="font-bold text-sm md:text-base uppercase text-blue-600">Degrees</h2>
+              </div>
 
-						{/* BS Specializations Section */}
-						<section id="bs-cs">
-							<h3 className="text-2xl font-bold mb-4">BS Specializations</h3>
-							<div className="bg-white p-6 rounded-lg border border-gray-200">
-								<ul className="grid grid-cols-1 md:grid-cols-3 gap-4">
-									{specializations.map((spec, index) => (
-										<li key={index} className="flex items-start">
-											<span className="text-csi-blue mr-2">•</span>
-											<span className="text-gray-700">{spec}</span>
-										</li>
-									))}
-								</ul>
-							</div>
-						</section>
+              {/* Degree List */}
+              <div className="flex flex-col gap-3">
+                {sidebarDegrees.map((degree) => (
+                  <div key={degree.href} className="flex flex-col gap-3">
+                    <a
+                      href={degree.href}
+                      className="font-bold text-sm leading-relaxed text-gray-950 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 rounded px-2 py-1 transition"
+                    >
+                      {degree.name}
+                    </a>
 
-						{/* Advisement Section */}
-						<section>
-							<h2 className="text-3xl font-bold mb-6">Advisement</h2>
-							<div className="bg-white p-6 rounded-lg border border-gray-200 space-y-4">
-								<div>
-									<p className="text-gray-700 mb-4">
-										If your declared major is AAS Computer Technology, BS in
-										Computer Science, or BS in Computer Science–Mathematics, and
-										you need advisement, please contact the{" "}
-										<a
-											href="https://www.csi.cuny.edu"
-											className="text-csi-blue hover:underline"
-										>
-											CS flow chart for self-advisement
-										</a>
-										.
-									</p>
-								</div>
+                    {/* Submenu for BS in Computer Science */}
+                    {degree.hasSubmenu && (
+                      <div className="flex flex-col gap-2">
+                        <button
+                          onClick={() => toggleMenu("bs-cs")}
+                          className="text-left font-bold text-sm text-blue-600 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded px-2 py-1 flex items-center justify-between"
+                          aria-expanded={expandedMenus.includes("bs-cs")}
+                          aria-label="Toggle BS Computer Science submenu"
+                        >
+                          <span></span>
+                          <svg
+                            className={`w-4 h-4 transition-transform ${expandedMenus.includes("bs-cs") ? "rotate-180" : ""}`}
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                            />
+                          </svg>
+                        </button>
 
-								<div>
-									<p className="text-gray-700 mb-4">
-										If your declared major or intended major is BS in
-										Information Systems and Informatics (ISI), please contact
-										the{" "}
-										<a
-											href="mailto:prof.louis.preilig@csi.cuny.edu"
-											className="text-csi-blue hover:underline"
-										>
-											ISI coordinator, Prof. Louis Preilig
-										</a>{" "}
-										or{" "}
-										<a
-											href="mailto:prof.soon.chun@csi.cuny.edu"
-											className="text-csi-blue hover:underline"
-										>
-											Prof. Soon Chun
-										</a>
-										.
-									</p>
-								</div>
+                        {expandedMenus.includes("bs-cs") && (
+                          <div className="pl-4 flex flex-col gap-2 border-l-2 border-gray-300">
+                            {bsSubmenu.map((item) => (
+                              <a
+                                key={item.href}
+                                href={item.href}
+                                className="font-bold text-sm text-gray-950 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded px-2 py-1 transition"
+                              >
+                                {item.name}
+                              </a>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
 
-								<div>
-									<p className="text-gray-700 mb-4">
-										Sign in to{" "}
-										<a
-											href="https://degreeWorks.cuny.edu"
-											className="text-csi-blue hover:underline"
-										>
-											DegreeWorks
-										</a>{" "}
-										here to see what courses you can take to fulfill the degree
-										requirements and track your academic progress.
-									</p>
-								</div>
+          {/* BS/MS Accelerated Panel */}
+          <div className="w-full bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden">
+            <div className="p-4 md:p-6 flex flex-col gap-4">
+              <div className="flex flex-col gap-2 pb-4 border-b-2 border-gray-300">
+                <h2 className="font-bold text-sm md:text-base uppercase text-blue-600">BS/MS Accelerated</h2>
+              </div>
+              <a
+                href="#double-counting"
+                className="font-bold text-sm text-gray-950 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded px-2 py-1 transition"
+              >
+                Double Counting Policy
+              </a>
+            </div>
+          </div>
 
-								<div>
-									<p className="text-gray-700">
-										View{" "}
-										<a
-											href="https://www.csi.cuny.edu/academics-and-research/college-catalog"
-											className="text-csi-blue hover:underline"
-										>
-											Undergraduate Catalog
-										</a>
-									</p>
-								</div>
-							</div>
-						</section>
+          {/* ABET Accreditation Panel */}
+          <div className="w-full bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden">
+            <div className="p-4 md:p-6 flex flex-col gap-4">
+              <div className="flex flex-col gap-2 pb-4 border-b-2 border-gray-300">
+                <h2 className="font-bold text-sm md:text-base uppercase text-blue-600">ABET Accreditation</h2>
+              </div>
+              <div className="flex flex-col gap-3">
+                <a
+                  href="#objectives"
+                  className="font-bold text-sm text-gray-950 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded px-2 py-1 transition"
+                >
+                  Program Educational Objectives
+                </a>
+                <a
+                  href="#outcomes"
+                  className="font-bold text-sm text-gray-950 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded px-2 py-1 transition"
+                >
+                  Student Outcomes
+                </a>
+                <a
+                  href="#enrollment"
+                  className="font-bold text-sm text-gray-950 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded px-2 py-1 transition"
+                >
+                  BS Program Enrollment
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
 
-						{/* Transfer Students Section */}
-						<section>
-							<h2 className="text-3xl font-bold mb-6">Transfer Students</h2>
-							<div className="bg-white p-6 rounded-lg border border-gray-200">
-								<p className="text-gray-700 mb-4">
-									If you completed computer science coursework at another
-									accredited college, and these credits did not convert to
-									anything in the computer science catalog here (i.e. they show
-									as CSC BKT credits in your CUNYFirst course history), you may
-									request these credits be evaluated. Please complete the{" "}
-									<a href="#" className="text-csi-blue hover:underline">
-										transfer credit evaluation form
-									</a>
-									. Include a copy of your transcript from the institution at
-									which you completed the course, and either the course
-									description from that institution's online catalog or syllabus
-									submit these to the{" "}
-									<a href="#" className="text-csi-blue hover:underline">
-										CSC
-									</a>
-									, or contact the department chair.
-								</p>
-								<p className="text-gray-700">
-									<strong>Transfer Credit Evaluation Form Download</strong>
-								</p>
-							</div>
-						</section>
+        {/* Right Content - Main Content Area */}
+        <main className="w-full lg:flex-1 flex flex-col gap-6 md:gap-8 order-1 lg:order-2">
+          {/* Advisement Section */}
+          <section aria-label="Advisement" className="flex flex-col gap-4 pb-6 border-b border-gray-300">
+            <h2 className="font-semibold text-2xl md:text-3xl lg:text-4xl leading-tight text-gray-950">Advisement</h2>
 
-						{/* Tutoring Section */}
-						<section>
-							<h2 className="text-3xl font-bold mb-6">Tutoring</h2>
-							<div className="bg-white p-6 rounded-lg border border-gray-200">
-								<ul className="list-disc list-inside space-y-2 text-gray-700">
-									<li>
-										<a href="#" className="text-csi-blue hover:underline">
-											Computer Science Tutoring Schedule
-										</a>
-									</li>
-									<li>
-										<a href="#" className="text-csi-blue hover:underline">
-											Office of Academic Support
-										</a>
-									</li>
-								</ul>
-							</div>
-						</section>
+            <div className="flex flex-col gap-3">
+              <div className="flex gap-3">
+                <span className="text-gray-700" aria-hidden="true">
+                  ・
+                </span>
+                <p className="text-base leading-relaxed text-gray-800">
+                  If your declared major is AAS Computer Technology, BS in Computer Science, or BS in Computer
+                  Science-Mathematics, you can find out who is your advisor on CUNYFirst. Please use the CS FlowChart
+                  for self-advisement.
+                </p>
+              </div>
 
-						{/* AAS Details Section */}
-						<section id="aas" className="scroll-mt-24">
-							<h2 className="text-3xl font-bold mb-6">
-								Associate in Applied Science (AAS) in Computer Technology
-							</h2>
-							<div className="bg-white p-6 rounded-lg border border-gray-200 space-y-4">
-								<div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-									<a href="#" className="text-csi-blue hover:underline">
-										Sample 2-year plan
-									</a>
-									<a href="#" className="text-csi-blue hover:underline">
-										Prerequisite Flowchart
-									</a>
-									<a href="#" className="text-csi-blue hover:underline">
-										Degree Requirements
-									</a>
-								</div>
-								<div className="space-y-4">
-									<p className="text-gray-700">
-										<a href="#" className="text-csi-blue hover:underline">
-											Degree checklist(Programming Sequence)
-										</a>{" "}
-										|{" "}
-										<a href="#" className="text-csi-blue hover:underline">
-											Degree checklist(Information Science Sequence)
-										</a>
-									</p>
-									<p className="text-gray-700">
-										The Computer Science offers a Computer Technology program
-										that focuses on general applications programming of
-										information science sequences. Students seeking a degree in
-										Computer Science should consult the Computer
-										Science/Mathematics.
-									</p>
-								</div>
-							</div>
-						</section>
-					</div>
-				</div>
-			</div>
-		</div>
-	);
-};
+              <div className="flex gap-3">
+                <span className="text-gray-700" aria-hidden="true">
+                  ・
+                </span>
+                <p className="text-base leading-relaxed text-gray-800">
+                  If your declared major or intended major is BS in Information Systems and Informatics (ISI), please
+                  contact the ISI coordinator, Prof. Louis Petingi or Prof. Soon Chun.
+                </p>
+              </div>
 
-export default Undergraduate;
+              <div className="flex gap-3">
+                <span className="text-gray-700" aria-hidden="true">
+                  ・
+                </span>
+                <p className="text-base leading-relaxed text-gray-800">
+                  <a
+                    href="#degreeworks"
+                    className="underline text-blue-600 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                  >
+                    Sign in to DegreeWorks
+                  </a>{" "}
+                  here to see what courses you can take to fulfill the degree requirements and track your academic
+                  progress.
+                </p>
+              </div>
+
+              <div className="flex gap-3">
+                <span className="text-gray-700" aria-hidden="true">
+                  ・
+                </span>
+                <p className="text-base leading-relaxed text-gray-800">
+                  <a
+                    href="#catalog"
+                    className="underline text-blue-600 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                  >
+                    View Undergraduate Catalog
+                  </a>
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* Transfer Students Section */}
+          <section aria-label="Transfer Students" className="flex flex-col gap-4 pb-6 border-b border-gray-300">
+            <h2 className="font-semibold text-2xl md:text-3xl lg:text-4xl leading-tight text-gray-950">
+              Transfer Students
+            </h2>
+
+            <div className="flex flex-col gap-3">
+              <div className="flex gap-3">
+                <span className="text-gray-700" aria-hidden="true">
+                  ・
+                </span>
+                <p className="text-base leading-relaxed text-gray-800">
+                  If you completed computer science coursework at another accredited college, and these credits did not
+                  convert to anything in the computer science catalog here (i.e. they show as CSC BKT credits in your
+                  CUNYfirst course history), you may request these credits be evaluated. Please complete the transfer
+                  credit evaluation. Include a copy of your transcript from the institution at which you completed the
+                  course, and either the course description (from that college's catalog) or syllabus. Submit these to
+                  1N-215, or contact the department Chair.
+                </p>
+              </div>
+
+              <div className="flex gap-3">
+                <span className="text-gray-700" aria-hidden="true">
+                  ・
+                </span>
+                <p className="text-base leading-relaxed text-gray-800">
+                  <a
+                    href="#transfer-form"
+                    className="underline text-blue-600 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                  >
+                    Transfer Credit Evaluation Form
+                  </a>{" "}
+                  Download
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* Tutoring Section */}
+          <section aria-label="Tutoring" className="flex flex-col gap-4 pb-6 border-b border-gray-300">
+            <h2 className="font-semibold text-2xl md:text-3xl lg:text-4xl leading-tight text-gray-950">Tutoring</h2>
+
+            <div className="flex flex-col gap-3">
+              <div className="flex gap-3">
+                <span className="text-gray-700" aria-hidden="true">
+                  ・
+                </span>
+                <p className="text-base leading-relaxed text-gray-800">
+                  <a
+                    href="#tutoring-schedule"
+                    className="underline text-blue-600 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                  >
+                    Computer Science Tutoring Schedule
+                  </a>
+                </p>
+              </div>
+
+              <div className="flex gap-3">
+                <span className="text-gray-700" aria-hidden="true">
+                  ・
+                </span>
+                <p className="text-base leading-relaxed text-gray-800">
+                  <a
+                    href="#academic-support"
+                    className="underline text-blue-600 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                  >
+                    Office of Academic Support
+                  </a>
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* AAS Section */}
+          <section id="aas" aria-label="AAS Degree Program" className="flex flex-col gap-4">
+            <h2 className="font-semibold text-2xl md:text-3xl lg:text-4xl leading-tight text-gray-950">
+              Associate in Applied Science (AAS) in Computer Technology
+            </h2>
+
+            <div className="flex flex-col gap-3">
+              <div className="flex gap-3">
+                <span className="text-gray-700" aria-hidden="true">
+                  ・
+                </span>
+                <p className="text-base leading-relaxed text-gray-800">
+                  <a
+                    href="#sample-plan"
+                    className="underline text-blue-600 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                  >
+                    Sample 2-year plan
+                  </a>
+                  {" | "}
+                  <a
+                    href="#flowchart"
+                    className="underline text-blue-600 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                  >
+                    Prerequisite Flowchart
+                  </a>
+                  {" | "}
+                  <a
+                    href="#requirements"
+                    className="underline text-blue-600 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                  >
+                    Degree Requirements
+                  </a>
+                </p>
+              </div>
+
+              <div className="flex gap-3">
+                <span className="text-gray-700" aria-hidden="true">
+                  ・
+                </span>
+                <p className="text-base leading-relaxed text-gray-800">
+                  <a
+                    href="#checklist-prog"
+                    className="underline text-blue-600 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                  >
+                    Degree checklist (Programming Sequence)
+                  </a>
+                  {" | "}
+                  <a
+                    href="#checklist-info"
+                    className="underline text-blue-600 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                  >
+                    Degree checklist (Information Science Sequence)
+                  </a>
+                </p>
+              </div>
+
+              <div className="flex gap-3">
+                <span className="text-gray-700" aria-hidden="true">
+                  ・
+                </span>
+                <p className="text-base leading-relaxed text-gray-800">
+                  The Computer Science Department offers a Computer Technology program that focuses on general
+                  applications programming. Students can choose either the programming sequence or information science
+                  sequence. Students seeking a Bachelor's degree in Computer Science should consult the requirements for
+                  the BS in Computer Science or the BS in Computer Science/Mathematics.
+                </p>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  )
+}
+
+export default Undergraduate

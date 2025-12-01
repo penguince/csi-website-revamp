@@ -44,8 +44,11 @@ const Header = () => {
 			{/* Top Navigation Bar */}
 			<div className="bg-[#53626e] border-b border-gray-300">
 				<div className="max-w-7xl mx-auto px-4">
-					<nav className="flex justify-end" aria-label="Quick Links">
-						<ul className="flex space-x-6 text-sm py-3">
+					<nav
+						className="flex justify-start text-white"
+						aria-label="Quick Links"
+					>
+						<ul className="flex space-x-6 text-sm py-2">
 							{topLinks.map((link) => (
 								<li key={link.name}>
 									<a
