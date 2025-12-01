@@ -1,363 +1,336 @@
+"use client"
+
+import { useState } from "react"
+
 interface FacultyCard {
 	name: string;
 	title: string;
 	email: string;
 	office: string;
 	phone: string;
+	image?: string;
 }
 
 const Professors: FacultyCard[] = [
 	{
-		name: "Professor Shuqun Zhang",
-		title: "Distinguished Professor",
-		email: "sos.agaian@csi.cuny.edu",
-		office: "1N-203",
+		name: "Sos Agaian", 
+		title: "Distinguished Professor", 
+		email: "sos.agaian@csi.cuny.edu", 
+		office: "1N-203", 
 		phone: "718-982-2843",
+		image: "/sos.jpg"
 	},
 	{
-		name: "Professor Shuqun Zhang",
-		title: "Distinguished Professor",
-		email: "sos.agaian@csi.cuny.edu",
-		office: "1N-203",
-		phone: "718-982-2843",
+		name: "Tatiana Anderson", 
+		title: "Lecturer", 
+		email: "tatiana.anderson@csi.cuny.edu", 
+		office: "1N-210", 
+		phone: "718-982-2850"
 	},
 	{
-		name: "Professor Shuqun Zhang",
-		title: "Distinguished Professor",
-		email: "sos.agaian@csi.cuny.edu",
-		office: "1N-203",
-		phone: "718-982-2843",
+		name: "Cong Chen", 
+		title: "Doctoral Lecturer", 
+		email: "cong.chen@csi.cuny.edu", 
+		office: "4N-206", 
+		phone: "718-982-2975"
 	},
 	{
-		name: "Professor Shuqun Zhang",
-		title: "Distinguished Professor",
-		email: "sos.agaian@csi.cuny.edu",
-		office: "1N-203",
-		phone: "718-982-2843",
+		name: "Kennedy Edemacu", 
+		title: "Assistant Professor	", 
+		email: "Kennedy.Edemacu@csi.cuny.edu", 
+		office: "1N-208", 
+		phone: "718-982-3273"
 	},
 	{
-		name: "Professor Shuqun Zhang",
-		title: "Distinguished Professor",
-		email: "sos.agaian@csi.cuny.edu",
-		office: "1N-203",
-		phone: "718-982-2843",
+		name: "Feng Gu", 
+		title: "Professor", 
+		email: "feng.gu@csi.cuny.edu", 
+		office: "1N-201", 
+		phone: "718-982-2847",
+		image: "/feng.jpg"
 	},
 	{
-		name: "Professor Shuqun Zhang",
-		title: "Distinguished Professor",
-		email: "sos.agaian@csi.cuny.edu",
-		office: "1N-203",
-		phone: "718-982-2843",
+		name: "Yumei Huo", 
+		title: "Professor", 
+		email: "yumei.huo@csi.cuny.edu", 
+		office: "1N-202", 
+		phone: "718-982-2841"
 	},
 	{
-		name: "Professor Shuqun Zhang",
-		title: "Distinguished Professor",
-		email: "sos.agaian@csi.cuny.edu",
-		office: "1N-203",
-		phone: "718-982-2843",
+		name: "Ali Mohamed", 
+		title: "Lecturer", 
+		email: "Ali.Mohamed@csi.cuny.edu", 
+		office: "1N-210", 
+		phone: "718-982-2850"
 	},
 	{
-		name: "Professor Shuqun Zhang",
-		title: "Distinguished Professor",
-		email: "sos.agaian@csi.cuny.edu",
-		office: "1N-203",
-		phone: "718-982-2843",
+		name: "Louis Petingi", 
+		title: "Professor", 
+		email: "louis.petingi@csi.cuny.edu", 
+		office: "1N-211", 
+		phone: "718-982-2844",
+		image: "/louis.jpg"
 	},
 	{
-		name: "Professor Shuqun Zhang",
-		title: "Distinguished Professor",
-		email: "sos.agaian@csi.cuny.edu",
-		office: "1N-203",
-		phone: "718-982-2843",
+		name: "Jun Rao", 
+		title: "Doctoral Lecturer", 
+		email: "Jun.Rao@csi.cuny.edu", 
+		office: "5N-220", 
+		phone: "718-982-2854"
 	},
 	{
-		name: "Professor Shuqun Zhang",
-		title: "Distinguished Professor",
-		email: "sos.agaian@csi.cuny.edu",
-		office: "1N-203",
-		phone: "718-982-2843",
+		name: "Ping Shi", 
+		title: "Lecturer", 
+		email: "Ping.Shi@csi.cuny.edu", 
+		office: "1N-210", 
+		phone: "718-982-2850"
 	},
-];
+	{
+		name: "Sarah Zelikovitz", 
+		title: "Professor", 
+		email: "sarah.zelikovitz@csi.cuny.edu", 
+		office: "1N-212", 
+		phone: "718-982-2849"
+	},
+	{
+		name: "Shuqun Zhang", 
+		title: "Professor, Chairperson", 
+		email: "shuqun.zhang@csi.cuny.edu", 
+		office: "1N-204", 
+		phone: "718-982-2852",
+		image: "/shuqun.jpg"
+	},
+	{
+		name: "Tianxiao Zhang", 
+		title: "Assistant Professor", 
+		email: "tianxiao.zhang@csi.cuny.edu", 
+		office: "1N-205", 
+		phone: "718-982-3288",
+		image: "/tianxiao.jpg"
+	},
+	{
+		name: "Xiaowen Zhang", 
+		title: "Professor", 
+		email: "xiaowen.zhang@csi.cuny.edu", 
+		office: "1N-213", 
+		phone: "718-982-3262",
+		image: "/xiaowen.jpg"
+	},
+	{
+		name: "Zhangyan Zhang", 
+		title: "Professor", 
+		email: "zhanyang.zhang@csi.cuny.edu", 
+		office: "1N-206", 
+		phone: "718-982-3175",
+		image: "/zhanyang.jpg"
+	}
+]
 
 const OfficeStaff: FacultyCard[] = [
 	{
-		name: "Professor Shuqun Zhang",
-		title: "Distinguished Professor",
-		email: "sos.agaian@csi.cuny.edu",
-		office: "1N-203",
-		phone: "718-982-2843",
+		name: "Joanne Morris",
+		title: "CUNY Administrative Assistant",
+		email: "joanne.morris@csi.cuny.edu",
+		office: "1N-215",
+		phone: "718-982-2850"
 	},
 	{
-		name: "Professor Shuqun Zhang",
-		title: "Distinguished Professor",
-		email: "sos.agaian@csi.cuny.edu",
-		office: "1N-203",
-		phone: "718-982-2843",
+		name: "Laurie Guido",
+		title: "College Assistant",
+		email: "laurie.guido@csi.cuny.edu",
+		office: "1N-215",
+		phone: "718-982-2850"
 	},
 	{
-		name: "Professor Shuqun Zhang",
-		title: "Distinguished Professor",
-		email: "sos.agaian@csi.cuny.edu",
-		office: "1N-203",
-		phone: "718-982-2843",
+		name: "Kristi Brescia",
+		title: "Academic Advisor",
+		email: "Kristi.Brescia@csi.cuny.edu",
+		office: "1N-209",
+		phone: "718-982-2842"
 	},
 	{
-		name: "Professor Shuqun Zhang",
-		title: "Distinguished Professor",
-		email: "sos.agaian@csi.cuny.edu",
-		office: "1N-203",
-		phone: "718-982-2843",
-	},
-];
+		name: "Fred Loweff",
+		title: "CUNY 2X Manager",
+		email: "Fred.Loweff@csi.cuny.edu",
+		office: "1N-214",
+		phone: "718-982-3178"
+	}
+]
 
 const TechnicalStaff: FacultyCard[] = [
 	{
-		name: "Professor Shuqun Zhang",
-		title: "Distinguished Professor",
-		email: "sos.agaian@csi.cuny.edu",
-		office: "1N-203",
-		phone: "718-982-2843",
+		name: "Chang Guo",
+		title: "Senior College Lab Technician",
+		email: "chang.guo@csi.cuny.edu",
+		office: "1N-219",
+		phone: "718-982-2857"
 	},
 	{
-		name: "Professor Shuqun Zhang",
-		title: "Distinguished Professor",
-		email: "sos.agaian@csi.cuny.edu",
-		office: "1N-203",
-		phone: "718-982-2843",
-	},
-	{
-		name: "Professor Shuqun Zhang",
-		title: "Distinguished Professor",
-		email: "sos.agaian@csi.cuny.edu",
-		office: "1N-203",
-		phone: "718-982-2843",
-	},
-	{
-		name: "Professor Shuqun Zhang",
-		title: "Distinguished Professor",
-		email: "sos.agaian@csi.cuny.edu",
-		office: "1N-203",
-		phone: "718-982-2843",
-	},
-];
+		name: "Orit D. Gruber",
+		title: "Chief College Lab Technician",
+		email: "orit.gruber@csi.cuny.edu",
+		office: "1N-218",
+		phone: "718-982-3015"
+	}
+]
 
 const Emeritus = [
-	"Bernard Domanski",
-	"Bernard Domanski",
-	"Bernard Domanski",
-	"Bernard Domanski",
-	"Bernard Domanski",
-	"Bernard Domanski",
-	"Bernard Domanski",
-	"Bernard Domanski",
-	"Bernard Domanski",
-	"Bernard Domanski",
-	"Bernard Domanski",
-	"Bernard Domanski",
-];
+		"Emile Chi", "Bernard Domanski", "Natacha Gueorguieva", "Anatoliy Gordonov",
+		"Susan Imberman", "Roberta Klibaner", "Michael Kress", "Herbert Schanker",
+		"Miriam Tausner", "Deborah Sturm"
+	];
 
 const Adjuncts = [
-	"Bernard Domanski",
-	"Bernard Domanski",
-	"Bernard Domanski",
-	"Bernard Domanski",
-	"Bernard Domanski",
-	"Bernard Domanski",
-	"Bernard Domanski",
-	"Bernard Domanski",
-	"Bernard Domanski",
-	"Bernard Domanski",
-	"Bernard Domanski",
-	"Bernard Domanski",
-];
+		"Agman, Daniel", "Catalano, Anthony", "Al-Mashhadani, Zaid", "Hayes, Dolores",
+		"Jahaj, Safet", "Hills, Amy", "Iacona, Louis", "Wong, Jonathan",
+		"Kholodovsky, Michael", "Kausar, Fatma", "Weir, Rich", "Michael Deredita",
+		"Lavrov, Roman", "Ciaccio, Philip", "Parziale, Jonathan", "Kapaj, Luigi",
+		"Wang, Zhiqi", "Yuan, Kailie", "Lu, Jia", "Tooker, Joseph"
+]
+
 
 const Faculty = () => {
+	const [expandedMenus, setExpandedMenus] = useState<string[]>(["bs-cs"])
+
+	const toggleMenu = (id: string) => {
+		setExpandedMenus((prev) => (prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]))
+	}
+
+	const sidebarDegrees = [
+		{ name: "AAS in Computer Technology", href: "#aas" },
+		{ name: "BS in Computer Science", href: "#bs-cs", hasSubmenu: true },
+		{ name: "BS in Computer Science-Mathematics", href: "#bs-csmath" },
+		{ name: "BS in Information Systems and Informatics", href: "#bs-is" },
+		{ name: "Computer Science Minor", href: "#minor" },
+		{ name: "Cyber Security Minor", href: "#cybersec" },
+		{ name: "Data Science Minor", href: "#datascience" },
+		{ name: "Computational Linguistics Minor", href: "#compling" },
+	]
+
+	const bsSubmenu = [
+		{ name: "Specializations", href: "#specializations" },
+		{ name: "Graduation with Honors", href: "#honors" },
+		{ name: "Career Milestones", href: "#milestones" },
+	]
+
 	return (
-		<main className="w-full" id="main-content">
-			{/* Skip to main content link for keyboard users */}
-			<a
-				href="#faculty-content"
-				className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-csi-blue focus:text-white focus:px-4 focus:py-2 focus:rounded focus:shadow-lg"
-			>
-				Skip to faculty content
-			</a>
+		<div className="w-full bg-white flex flex-col gap-6 md:gap-8 lg:gap-10">
+			{/* Main Content Container */}
+			<div className="w-full flex flex-col lg:flex-row gap-6 md:gap-8 px-4 sm:px-6 md:px-8 lg:px-[100px] py-8 md:py-12">
+				{/* Left Sidebar - Responsive Navigation */}
+				<nav className="w-full lg:w-64 flex flex-col gap-4 order-2 lg:order-1" aria-label="Navigation menu">
+					{/* Degrees Panel */}
+					<div className="w-full bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden">
+						<div className="p-4 md:p-6 flex flex-col gap-4">
+							{/* Degrees Header */}
+							<div className="flex flex-col gap-2 pb-4 border-b-2 border-gray-300">
+								<h2 className="font-bold text-sm md:text-base uppercase text-blue-600">Degrees</h2>
+							</div>
 
-			{/* Main Content */}
-			<div className="max-w-7xl mx-auto px-4 py-12" id="faculty-content">
-				<div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-					{/* Sidebar */}
-					<aside
-						className="lg:col-span-1 space-y-6"
-						role="navigation"
-						aria-label="Faculty navigation"
-					>
-						{/* DEGREES Section */}
-						<section className="bg-white border border-gray-300 rounded-lg shadow-[0_2px_8px_rgba(0,0,0,0.08)] overflow-hidden">
-							<h2 className="text-lg font-bold p-4 pb-2 text-csi-blue">
-								DEGREES
-							</h2>
-							<hr className="border-gray-300 mx-4" />
-							<nav aria-label="Degrees navigation" className="p-4 pt-3">
-								<ul className="space-y-3">
-									<li>
+							{/* Degree List */}
+							<div className="flex flex-col gap-3">
+								{sidebarDegrees.map((degree) => (
+									<div key={degree.href} className="flex flex-col gap-3">
 										<a
-											href="#aas"
-											className="block text-gray-900 hover:bg-[#f1f1f1] font-medium focus:outline-none focus:ring-2 focus:ring-csi-blue focus:bg-[#f1f1f1] rounded px-2 py-1"
+											href={degree.href}
+											className="font-bold text-sm leading-relaxed text-gray-950 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 rounded px-2 py-1 transition"
 										>
-											AAS in Computer Technology
+											{degree.name}
 										</a>
-									</li>
-									<li>
-										<a
-											href="#bs-cs"
-											className="block text-gray-900 hover:bg-[#f1f1f1] font-medium focus:outline-none focus:ring-2 focus:ring-csi-blue focus:bg-[#f1f1f1] rounded px-2 py-1"
-										>
-											BS in Computer Science
-										</a>
-										<ul className="ml-4 mt-2 space-y-2">
-											<li>
-												<a
-													href="#specializations"
-													className="block text-gray-900 hover:bg-[#f1f1f1] focus:outline-none focus:ring-2 focus:ring-csi-blue focus:bg-[#f1f1f1] rounded px-2 py-1"
-												>
-													Specializations
-												</a>
-											</li>
-											<li>
-												<a
-													href="#honors"
-													className="block text-gray-900 hover:bg-[#f1f1f1] focus:outline-none focus:ring-2 focus:ring-csi-blue focus:bg-[#f1f1f1] rounded px-2 py-1"
-												>
-													Graduation with Honors
-												</a>
-											</li>
-											<li>
-												<a
-													href="#milestones"
-													className="block text-gray-900 hover:bg-[#f1f1f1] focus:outline-none focus:ring-2 focus:ring-csi-blue focus:bg-[#f1f1f1] rounded px-2 py-1"
-												>
-													Career Milestones
-												</a>
-											</li>
-										</ul>
-									</li>
-									<li>
-										<a
-											href="#bs-csmath"
-											className="block text-gray-900 hover:bg-[#f1f1f1] font-medium focus:outline-none focus:ring-2 focus:ring-csi-blue focus:bg-[#f1f1f1] rounded px-2 py-1"
-										>
-											BS in Computer Science-Mathematics
-										</a>
-									</li>
-									<li>
-										<a
-											href="#bs-is"
-											className="block text-gray-900 hover:bg-[#f1f1f1] font-medium focus:outline-none focus:ring-2 focus:ring-csi-blue focus:bg-[#f1f1f1] rounded px-2 py-1"
-										>
-											BS in Information Systems and Informatics
-										</a>
-									</li>
-									<li>
-										<a
-											href="#minor"
-											className="block text-gray-900 hover:bg-[#f1f1f1] font-medium focus:outline-none focus:ring-2 focus:ring-csi-blue focus:bg-[#f1f1f1] rounded px-2 py-1"
-										>
-											Computer Science Minor
-										</a>
-									</li>
-									<li>
-										<a
-											href="#cybersec"
-											className="block text-gray-900 hover:bg-[#f1f1f1] font-medium focus:outline-none focus:ring-2 focus:ring-csi-blue focus:bg-[#f1f1f1] rounded px-2 py-1"
-										>
-											Cyber Security Minor
-										</a>
-									</li>
-									<li>
-										<a
-											href="#datascience"
-											className="block text-gray-900 hover:bg-[#f1f1f1] font-medium focus:outline-none focus:ring-2 focus:ring-csi-blue focus:bg-[#f1f1f1] rounded px-2 py-1"
-										>
-											Data Science Minor
-										</a>
-									</li>
-									<li>
-										<a
-											href="#compling"
-											className="block text-gray-900 hover:bg-[#f1f1f1] font-medium focus:outline-none focus:ring-2 focus:ring-csi-blue focus:bg-[#f1f1f1] rounded px-2 py-1"
-										>
-											Computational Linguistics Minor
-										</a>
-									</li>
-								</ul>
-							</nav>
-						</section>
 
-						{/* BS/MS ACCELERATED Section */}
-						<section className="bg-white border border-gray-300 rounded-lg shadow-[0_2px_8px_rgba(0,0,0,0.08)] overflow-hidden">
-							<h2 className="text-lg font-bold p-4 pb-2 text-csi-blue">
-								BS/MS ACCELERATED
-							</h2>
-							<hr className="border-gray-300 mx-4" />
-							<nav
-								aria-label="BS/MS Accelerated navigation"
-								className="p-4 pt-3"
+										{/* Submenu for BS in Computer Science */}
+										{degree.hasSubmenu && (
+											<div className="flex flex-col gap-2">
+												<button
+													onClick={() => toggleMenu("bs-cs")}
+													className="text-left font-bold text-sm text-blue-600 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded px-2 py-1 flex items-center justify-between"
+													aria-expanded={expandedMenus.includes("bs-cs")}
+													aria-label="Toggle BS Computer Science submenu"
+												>
+													<span></span>
+													<svg
+														className={`w-4 h-4 transition-transform ${expandedMenus.includes("bs-cs") ? "rotate-180" : ""}`}
+														fill="none"
+														stroke="currentColor"
+														viewBox="0 0 24 24"
+													>
+														<path
+															strokeLinecap="round"
+															strokeLinejoin="round"
+															strokeWidth="2"
+															d="M19 14l-7 7m0 0l-7-7m7 7V3"
+														/>
+													</svg>
+												</button>
+
+												{expandedMenus.includes("bs-cs") && (
+													<div className="pl-4 flex flex-col gap-2 border-l-2 border-gray-300">
+														{bsSubmenu.map((item) => (
+															<a
+																key={item.href}
+																href={item.href}
+																className="font-bold text-sm text-gray-950 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded px-2 py-1 transition"
+															>
+																{item.name}
+															</a>
+														))}
+													</div>
+												)}
+											</div>
+										)}
+									</div>
+								))}
+							</div>
+						</div>
+					</div>
+
+					{/* BS/MS Accelerated Panel */}
+					<div className="w-full bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden">
+						<div className="p-4 md:p-6 flex flex-col gap-4">
+							<div className="flex flex-col gap-2 pb-4 border-b-2 border-gray-300">
+								<h2 className="font-bold text-sm md:text-base uppercase text-blue-600">BS/MS Accelerated</h2>
+							</div>
+							<a
+								href="#double-counting"
+								className="font-bold text-sm text-gray-950 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded px-2 py-1 transition"
 							>
-								<ul className="space-y-3">
-									<li>
-										<a
-											href="#double-counting"
-											className="block text-gray-900 hover:bg-[#f1f1f1] font-medium focus:outline-none focus:ring-2 focus:ring-csi-blue focus:bg-[#f1f1f1] rounded px-2 py-1"
-										>
-											Double Counting Policy
-										</a>
-									</li>
-								</ul>
-							</nav>
-						</section>
+								Double Counting Policy
+							</a>
+						</div>
+					</div>
 
-						{/* ABET ACCREDITATION Section */}
-						<section className="bg-white border border-gray-300 rounded-lg shadow-[0_2px_8px_rgba(0,0,0,0.08)] overflow-hidden">
-							<h2 className="text-lg font-bold p-4 pb-2 text-csi-blue">
-								ABET ACCREDITATION
-							</h2>
-							<hr className="border-gray-300 mx-4" />
-							<nav
-								aria-label="ABET Accreditation navigation"
-								className="p-4 pt-3"
-							>
-								<ul className="space-y-3">
-									<li>
-										<a
-											href="#objectives"
-											className="block text-gray-900 hover:bg-[#f1f1f1] font-medium focus:outline-none focus:ring-2 focus:ring-csi-blue focus:bg-[#f1f1f1] rounded px-2 py-1"
-										>
-											Program Educational Objectives
-										</a>
-									</li>
-									<li>
-										<a
-											href="#outcomes"
-											className="block text-gray-900 hover:bg-[#f1f1f1] font-medium focus:outline-none focus:ring-2 focus:ring-csi-blue focus:bg-[#f1f1f1] rounded px-2 py-1"
-										>
-											Student Outcomes
-										</a>
-									</li>
-									<li>
-										<a
-											href="#enrollment"
-											className="block text-gray-900 hover:bg-[#f1f1f1] font-medium focus:outline-none focus:ring-2 focus:ring-csi-blue focus:bg-[#f1f1f1] rounded px-2 py-1"
-										>
-											BS Program Enrollment
-										</a>
-									</li>
-								</ul>
-							</nav>
-						</section>
-					</aside>
+					{/* ABET Accreditation Panel */}
+					<div className="w-full bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden">
+						<div className="p-4 md:p-6 flex flex-col gap-4">
+							<div className="flex flex-col gap-2 pb-4 border-b-2 border-gray-300">
+								<h2 className="font-bold text-sm md:text-base uppercase text-blue-600">ABET Accreditation</h2>
+							</div>
+							<div className="flex flex-col gap-3">
+								<a
+									href="#objectives"
+									className="font-bold text-sm text-gray-950 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded px-2 py-1 transition"
+								>
+									Program Educational Objectives
+								</a>
+								<a
+									href="#outcomes"
+									className="font-bold text-sm text-gray-950 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded px-2 py-1 transition"
+								>
+									Student Outcomes
+								</a>
+								<a
+									href="#enrollment"
+									className="font-bold text-sm text-gray-950 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded px-2 py-1 transition"
+								>
+									BS Program Enrollment
+								</a>
+							</div>
+						</div>
+					</div>
+				</nav>
 
-					{/* Main Content Area */}
-					<div className="lg:col-span-3 space-y-12">
+				{/* Right Content - Main Content Area */}
+				<main className="w-full lg:flex-1 flex flex-col gap-6 md:gap-8 order-1 lg:order-2">
 						{/* Computer Science professors section */}
 						<section aria-labelledby="professors-heading">
 							<h2
@@ -374,23 +347,29 @@ const Faculty = () => {
 										role="article"
 										aria-label={`${professor.name} faculty card`}
 									>
-										<div
-											className="bg-csi-gray w-full sm:w-32 h-32 sm:h-auto shrink-0 flex items-center justify-center"
-											aria-hidden="true"
-										>
-											<svg
-												className="w-16 h-16 text-gray-400"
-												fill="none"
-												stroke="currentColor"
-												viewBox="0 0 24 24"
-											>
-												<path
-													strokeLinecap="round"
-													strokeLinejoin="round"
-													strokeWidth={2}
-													d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+										<div className="bg-csi-gray w-full sm:w-32 h-32 sm:h-auto shrink-0 flex items-center justify-center overflow-hidden">
+											{professor.image ? (
+												<img
+													src={professor.image}
+													alt={professor.name}
+													className="w-full h-full object-cover"
 												/>
-											</svg>
+											) : (
+												<svg
+													className="w-16 h-16 text-gray-400"
+													fill="none"
+													stroke="currentColor"
+													viewBox="0 0 24 24"
+													aria-hidden="true"
+												>
+													<path
+														strokeLinecap="round"
+														strokeLinejoin="round"
+														strokeWidth={2}
+														d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+													/>
+												</svg>
+											)}
 										</div>
 										<div className="p-4 flex flex-col justify-center space-y-0.5">
 											<h3 className="text-lg font-bold text-[#2f4f4f] mb-2">
@@ -505,23 +484,29 @@ const Faculty = () => {
 										role="article"
 										aria-label={`${professor.name} faculty card`}
 									>
-										<div
-											className="bg-csi-gray w-full sm:w-32 h-32 sm:h-auto shrink-0 flex items-center justify-center"
-											aria-hidden="true"
-										>
-											<svg
-												className="w-16 h-16 text-gray-400"
-												fill="none"
-												stroke="currentColor"
-												viewBox="0 0 24 24"
-											>
-												<path
-													strokeLinecap="round"
-													strokeLinejoin="round"
-													strokeWidth={2}
-													d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+										<div className="bg-csi-gray w-full sm:w-32 h-32 sm:h-auto shrink-0 flex items-center justify-center overflow-hidden">
+											{professor.image ? (
+												<img
+													src={professor.image}
+													alt={professor.name}
+													className="w-full h-full object-cover"
 												/>
-											</svg>
+											) : (
+												<svg
+													className="w-16 h-16 text-gray-400"
+													fill="none"
+													stroke="currentColor"
+													viewBox="0 0 24 24"
+													aria-hidden="true"
+												>
+													<path
+														strokeLinecap="round"
+														strokeLinejoin="round"
+														strokeWidth={2}
+														d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+													/>
+												</svg>
+											)}
 										</div>
 										<div className="p-4 flex flex-col justify-center space-y-0.5">
 											<h3 className="text-lg font-bold text-[#2f4f4f] mb-2">
@@ -581,23 +566,29 @@ const Faculty = () => {
 										role="article"
 										aria-label={`${professor.name} faculty card`}
 									>
-										<div
-											className="bg-csi-gray w-full sm:w-32 h-32 sm:h-auto shrink-0 flex items-center justify-center"
-											aria-hidden="true"
-										>
-											<svg
-												className="w-16 h-16 text-gray-400"
-												fill="none"
-												stroke="currentColor"
-												viewBox="0 0 24 24"
-											>
-												<path
-													strokeLinecap="round"
-													strokeLinejoin="round"
-													strokeWidth={2}
-													d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+										<div className="bg-csi-gray w-full sm:w-32 h-32 sm:h-auto shrink-0 flex items-center justify-center overflow-hidden">
+											{professor.image ? (
+												<img
+													src={professor.image}
+													alt={professor.name}
+													className="w-full h-full object-cover"
 												/>
-											</svg>
+											) : (
+												<svg
+													className="w-16 h-16 text-gray-400"
+													fill="none"
+													stroke="currentColor"
+													viewBox="0 0 24 24"
+													aria-hidden="true"
+												>
+													<path
+														strokeLinecap="round"
+														strokeLinejoin="round"
+														strokeWidth={2}
+														d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+													/>
+												</svg>
+											)}
 										</div>
 										<div className="p-4 flex flex-col justify-center space-y-0.5">
 											<h3 className="text-lg font-bold text-[#2f4f4f] mb-2">
@@ -636,11 +627,9 @@ const Faculty = () => {
 							</div>
 						</section>
 
-						<hr className="border-t border-[#53626e] my-8" />
-					</div>
-				</div>
+				</main>
 			</div>
-		</main>
+		</div>
 	);
 };
 
