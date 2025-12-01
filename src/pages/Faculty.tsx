@@ -220,7 +220,7 @@ const Faculty = () => {
 				{/* Left Sidebar - Responsive Navigation */}
 				<nav className="w-full lg:w-64 flex flex-col gap-4 order-2 lg:order-1" aria-label="Navigation menu">
 					{/* Degrees Panel */}
-					<div className="w-full bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden">
+					<div className="w-full bg-white border shadow-md overflow-hidden">
 						<div className="p-4 md:p-6 flex flex-col gap-4">
 							{/* Degrees Header */}
 							<div className="flex flex-col gap-2 pb-4 border-b-2 border-gray-300">
@@ -343,7 +343,7 @@ const Faculty = () => {
 								{Professors.map((professor, index) => (
 									<div
 										key={index}
-										className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow flex flex-col sm:flex-row focus-within:ring-2 focus-within:ring-csi-blue"
+										className="bg-white overflow-hidden hover:shadow-lg transition-shadow flex flex-col sm:flex-row focus-within:ring-2 focus-within:ring-csi-blue"
 										role="article"
 										aria-label={`${professor.name} faculty card`}
 									>
