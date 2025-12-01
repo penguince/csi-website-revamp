@@ -3,37 +3,37 @@ import myguy from "../../public/shuqun.jpg";
 
 import { useState } from "react";
 
-/* 
-FIXES: 
--- get rid of that silly sticky dpt contact, have left side bar map to that dpt contact instead of a separate section. add an image of the dude. 
-	TO DO AMS: 
-	1. identify sections of the page -- look at prev pages, current dpt website, and understand the typical sections
-	2. What data is needed?
-	3. Components needed? -- keep everything in here (as per others), 
-	---
-	4. sketch page layout in nb
-	---
-	5. build the skeleton 
-	6. add real data n content
-	7. styling
-	8. cleanup and final check
+/* FIXES: 
+-- get rid of that silly sticky dpt contact, have left side bar map to that dpt contact instead of a separate section. add an image of the dude. DONE
+-- fix the jumping across the screen to actually look
+    TO DO AMS: 
+    1. identify sections of the page -- look at prev pages, current dpt website, and understand the typical sections
+    2. What data is needed?
+    3. Components needed? -- keep everything in here (as per others), 
+    ---
+    4. sketch page layout in nb
+    ---
+    5. build the skeleton 
+    6. add real data n content
+    7. styling
+    8. cleanup and final check
 */
 
 /*
-	Sections (ids used below):
-	- ms-program
-	- ms-admission
-	- ms-degree-reqs
-	- ms-specializations
-	- phd-program
-	- double-counting
-	- apply-ms
-	- apply-phd
-	- intl-applicants
-	- tuition
-	- grad-catalog
-	- advisement
-	- dept-contact
+    Sections (ids used below):
+    - ms-program
+    - ms-admission
+    - ms-degree-reqs
+    - ms-specializations
+    - phd-program
+    - double-counting
+    - apply-ms
+    - apply-phd
+    - intl-applicants
+    - tuition
+    - grad-catalog
+    - advisement
+    - dept-contact
 */
 
 const Graduate = () => {
@@ -82,11 +82,12 @@ const Graduate = () => {
         </div>
       </div>
 
-      {/* Main layout: left sidebar + center content + right profile card */}
-      <div className="w-full flex flex-col lg:flex-row gap-6 md:gap-8 px-4 sm:px-6 md:px-8 lg:px-[100px] py-8 md:py-12">
-        {/* LEFT SIDEBAR (sticky) */}
+      {/* NEW: Main content wrapper using Grid for large screens */}
+      {/* The full-width container for the sidebar and main content */}
+      <div className="max-w-7xl mx-auto w-full p-4 lg:p-6 grid lg:grid-cols-[256px_minmax(0,1fr)] gap-6">
+        {/* LEFT SIDEBAR (sticky wrapper applied here) */}
         <nav
-          className="w-full lg:w-64 lg:sticky lg:top-32 self-start flex flex-col gap-4 order-2 lg:order-1"
+          className="w-full lg:w-64 flex flex-col gap-4 order-2 lg:order-1 lg:sticky lg:top-8 self-start"
           aria-label="Graduate navigation menu"
         >
           {/* Degrees Panel */}
@@ -102,6 +103,7 @@ const Graduate = () => {
                 {sidebarDegrees.map((degree) => {
                   if (degree.hasSubmenu) {
                     const isOpen = expandedMenus.includes("ms-program");
+
                     return (
                       <div key={degree.id} className="flex flex-col gap-2">
                         <button
@@ -208,47 +210,151 @@ const Graduate = () => {
         </nav>
 
         {/* RIGHT SIDE: center content + right profile card */}
-        <div className="w-full flex flex-col lg:flex-row gap-6 order-1 lg:order-2">
-          {/* MAIN CONTENT COLUMN */}
-          <main className="w-full lg:flex-1 flex flex-col gap-8 md:gap-10">
+        <div className="w-full flex flex-col xl:flex-row gap-6 order-1 lg:order-2">
+          {/* Main content wrapper */}
+          <main className="flex-1 flex flex-col gap-8">
+            {/* MAIN CONTENT COLUMN */}
+
+            {/*MS Program Overview -- top of page*/}
             <section
               id="ms-program"
-              className="bg-white border border-gray-200 rounded-lg shadow-sm p-6 flex flex-col gap-3"
+              className="bg-white border border-gray-200 rounded-lg shadow-sm p-8 flex flex-col gap-5"
             >
-              <h2 className="text-2xl md:text-3xl font-semibold text-gray-950">
-                M.S. in Computer Science – Overview
+              <h2 className="text-3xl font-semibold text-gray-950">
+                M.S. Program
               </h2>
-              <p className="text-base text-gray-700 leading-relaxed">
-                This is placeholder text for the graduate overview section. Use
-                this space to describe the goals of the M.S. program, who it is
-                for, and what students can expect to learn.
-              </p>
-              <p className="text-base text-gray-700 leading-relaxed">
-                You can talk about career outcomes, research opportunities, and
-                how the program connects to industry or Ph.D. study. This is
-                just dummy copy so we can see spacing and layout.
-              </p>
+
+              {/* External Links */}
+              <div className="text-blue-700 text-sm font-medium flex flex-wrap gap-3 border-b border-gray-300 pb-2">
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline"
+                >
+                  Degree Requirements
+                </a>
+                <span>|</span>
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline"
+                >
+                  Tuition
+                </a>
+              </div>
+
+              {/* Overview Text */}
+              <div className="text-gray-800 text-base leading-relaxed flex flex-col gap-4">
+                <p>
+                  The program is designed to provide advanced education in this
+                  rapidly evolving and challenging discipline. It serves those
+                  students who wish to increase their professional competence
+                  for business, industry, and research and development
+                  laboratories, as well as those who wish to enter careers in
+                  research and teaching. Students may continue in doctoral
+                  programs in computer science, including the City University
+                  program in which CSI participates (Ph.D.).
+                </p>
+
+                <p>
+                  All students are required to take 10 graduate courses (30
+                  credits). These include three foundation courses and seven
+                  additional Computer Science graduate courses. The three
+                  foundation courses cover theoretical computer science,
+                  advanced operating systems, and computer architecture/parallel
+                  programming. Courses to meet the remaining requirements are
+                  chosen in consultation with a graduate adviser to create a
+                  program that meets the needs of the individual student.
+                </p>
+
+                <p>
+                  Any other registered CSI graduate course in computer science
+                  shall be counted as an elective for the purposes of fulfilling
+                  the MS in Computer Science degree requirements, with the
+                  following exceptions: those courses specifically identified as
+                  computing for teachers or other computer science teacher
+                  education courses, or those identified as graduate proficiency
+                  courses.
+                </p>
+              </div>
             </section>
+
+            {/* admissions section */}
 
             <section
               id="ms-admission"
-              className="bg-white border border-gray-200 rounded-lg shadow-sm p-6 flex flex-col gap-3"
+              className="bg-white border border-gray-200 rounded-lg shadow-sm p-8 flex flex-col gap-6"
             >
-              <h2 className="text-2xl md:text-3xl font-semibold text-gray-950">
+              <h2 className="text-2xl md:text-3xl font-semibold text-gray-950 text-center">
                 Admission Requirements
               </h2>
-              <ul className="flex flex-col gap-2 text-base text-gray-700 leading-relaxed">
-                <li>
-                  • Bachelor&apos;s degree in Computer Science or related field
-                </li>
-                <li>
-                  • Core coursework in programming, data structures, and
-                  algorithms
-                </li>
-                <li>• Official transcripts and letters of recommendation</li>
-                <li>• Personal statement outlining goals and background</li>
-                <li>• Optional standardized test scores (if required)</li>
-              </ul>
+
+              {/* Requirements Table */}
+              <div className="border border-gray-300 rounded-md overflow-hidden">
+                <table className="w-full border-collapse">
+                  <tbody>
+                    <tr className="border-b border-gray-300 bg-gray-50">
+                      <td className="p-4 text-gray-800 text-base">
+                        1. A Bachelor of Science degree in Computer Science or
+                        related area with a{" "}
+                        <strong>B average (3.0 out of 4.0)</strong> overall and
+                        in the major.
+                      </td>
+                    </tr>
+                    <tr className="border-b border-gray-300">
+                      <td className="p-4 text-gray-800 text-base">
+                        2. Resume or CV
+                      </td>
+                    </tr>
+                    <tr className="border-b border-gray-300">
+                      <td className="p-4 text-gray-800 text-base">
+                        3. Demonstrable knowledge of:
+                      </td>
+                    </tr>
+                    <tr className="border-b border-gray-300">
+                      <td className="p-4 pl-8 text-gray-800 text-base">
+                        High-Level Programming Language(s), Data Structures,
+                        Software Design, Operating Systems
+                      </td>
+                    </tr>
+                    <tr className="border-b border-gray-300">
+                      <td className="p-4 pl-8 text-gray-800 text-base">
+                        Digital Design, Computer Architecture
+                      </td>
+                    </tr>
+                    <tr className="border-b border-gray-300">
+                      <td className="p-4 pl-8 text-gray-800 text-base">
+                        Discrete Mathematics, Calculus
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 pl-8 text-gray-800 text-base">
+                        Probability or Linear Algebra
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              {/* Paragraphs below table */}
+              <div className="flex flex-col gap-3 text-gray-700 text-base leading-relaxed">
+                <p>
+                  Students who satisfy the requirements listed above will be
+                  admitted as matriculated graduate students.
+                </p>
+                <p>
+                  Students transferring from other related majors will be
+                  permitted to remedy undergraduate course deficiencies as
+                  follows: students missing any of the listed subject(s) must
+                  take the corresponding undergraduate courses or take a
+                  challenge exam. No more than nine graduate credits may be
+                  completed before deficiencies have been remedied.
+                  Undergraduate courses taken to remove deficiencies must be in
+                  addition to the regular coursework for the MS degree.
+                </p>
+              </div>
             </section>
 
             <section
@@ -423,25 +529,12 @@ const Graduate = () => {
                 how to schedule appointments, and what to bring.
               </p>
             </section>
-
-            {/* <section
-              id="dept-contact"
-              className="bg-white border border-gray-200 rounded-lg shadow-sm p-6 flex flex-col gap-3 mb-20"
-            >
-              <h2 className="text-2xl md:text-3xl font-semibold text-gray-950">
-                Department Contact
-              </h2>
-              <p className="text-base text-gray-700 leading-relaxed">
-                You can keep this section or delete it now that you have the
-                profile card. It&apos;s just filler.
-              </p>
-            </section> */}
           </main>
 
-          {/* RIGHT PROFILE CARD COLUMN (its own card, same width & style as sidebar) */}
+          {/* RIGHT PROFILE CARD COLUMN (sticky wrapper applied here) */}
           <aside
             id="dept-contact"
-            className="hidden xl:block lg:w-64  lg:top-32 self-start"
+            className="hidden xl:block xl:w-64 self-start"
             aria-label="Department contact card"
           >
             <div className="w-full bg-white border border-gray-300 rounded-lg shadow-md p-4 md:p-6 flex flex-col gap-2">
@@ -495,6 +588,7 @@ const Graduate = () => {
           </aside>
         </div>
       </div>
+      {/* End of new main content wrapper */}
     </div>
   );
 };
