@@ -9,6 +9,7 @@ interface FacultyCard {
 	office: string;
 	phone: string;
 	image?: string;
+	link?: string;
 }
 
 const Professors: FacultyCard[] = [
@@ -220,7 +221,7 @@ const Faculty = () => {
 				{/* Left Sidebar - Responsive Navigation */}
 				<nav className="w-full lg:w-64 flex flex-col gap-4 order-2 lg:order-1" aria-label="Navigation menu">
 					{/* Degrees Panel */}
-					<div className="w-full bg-white border shadow-md overflow-hidden">
+					<div className="w-full bg-white shadow-lg overflow-hidden">
 						<div className="p-4 md:p-6 flex flex-col gap-4">
 							{/* Degrees Header */}
 							<div className="flex flex-col gap-2 pb-4 border-b-2 border-gray-300">
@@ -231,51 +232,65 @@ const Faculty = () => {
 							<div className="flex flex-col gap-3">
 								{sidebarDegrees.map((degree) => (
 									<div key={degree.href} className="flex flex-col gap-3">
-										<a
-											href={degree.href}
-											className="font-bold text-sm leading-relaxed text-gray-950 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 rounded px-2 py-1 transition"
-										>
-											{degree.name}
-										</a>
-
-										{/* Submenu for BS in Computer Science */}
-										{degree.hasSubmenu && (
-											<div className="flex flex-col gap-2">
+										{degree.hasSubmenu ? (
+											<div className="flex items-center gap-2 border-b-2 border-gray-300 pb-2">
+												<a
+													href={degree.href}
+													className="font-bold text-sm leading-relaxed text-gray-950 hover:bg-[#f1f1f1] focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 px-2 py-1 transition flex-1"
+												>
+													{degree.name}
+												</a>
 												<button
 													onClick={() => toggleMenu("bs-cs")}
-													className="text-left font-bold text-sm text-blue-600 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded px-2 py-1 flex items-center justify-between"
+													className="text-gray-950 hover:bg-[#f1f1f1] focus:outline-none focus:ring-2 focus:ring-blue-600 p-2 cursor-pointer"
 													aria-expanded={expandedMenus.includes("bs-cs")}
 													aria-label="Toggle BS Computer Science submenu"
 												>
-													<span></span>
 													<svg
-														className={`w-4 h-4 transition-transform ${expandedMenus.includes("bs-cs") ? "rotate-180" : ""}`}
+														className="w-4 h-4"
 														fill="none"
 														stroke="currentColor"
 														viewBox="0 0 24 24"
 													>
-														<path
-															strokeLinecap="round"
-															strokeLinejoin="round"
-															strokeWidth="2"
-															d="M19 14l-7 7m0 0l-7-7m7 7V3"
-														/>
+														{expandedMenus.includes("bs-cs") ? (
+															<path
+																strokeLinecap="round"
+																strokeLinejoin="round"
+																strokeWidth="2"
+																d="M5 15l7-7 7 7"
+															/>
+														) : (
+															<path
+																strokeLinecap="round"
+																strokeLinejoin="round"
+																strokeWidth="2"
+																d="M19 9l-7 7-7-7"
+															/>
+														)}
 													</svg>
 												</button>
+											</div>
+										) : (
+											<a
+												href={degree.href}
+												className="font-bold text-sm leading-relaxed text-gray-950 hover:bg-[#f1f1f1] focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 px-2 py-1 transition"
+											>
+												{degree.name}
+											</a>
+										)}
 
-												{expandedMenus.includes("bs-cs") && (
-													<div className="pl-4 flex flex-col gap-2 border-l-2 border-gray-300">
-														{bsSubmenu.map((item) => (
-															<a
-																key={item.href}
-																href={item.href}
-																className="font-bold text-sm text-gray-950 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded px-2 py-1 transition"
-															>
-																{item.name}
-															</a>
-														))}
-													</div>
-												)}
+										{/* Submenu for BS in Computer Science */}
+										{degree.hasSubmenu && expandedMenus.includes("bs-cs") && (
+											<div className="pl-4 flex flex-col gap-2 border-l-2 border-gray-300">
+												{bsSubmenu.map((item) => (
+													<a
+														key={item.href}
+														href={item.href}
+														className="font-bold text-sm text-gray-950 hover:bg-[#f1f1f1] focus:outline-none focus:ring-2 focus:ring-blue-600 px-2 py-1 transition"
+													>
+														{item.name}
+													</a>
+												))}
 											</div>
 										)}
 									</div>
@@ -285,14 +300,14 @@ const Faculty = () => {
 					</div>
 
 					{/* BS/MS Accelerated Panel */}
-					<div className="w-full bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden">
+					<div className="w-full bg-white shadow-lg overflow-hidden">
 						<div className="p-4 md:p-6 flex flex-col gap-4">
 							<div className="flex flex-col gap-2 pb-4 border-b-2 border-gray-300">
 								<h2 className="font-bold text-sm md:text-base uppercase text-blue-600">BS/MS Accelerated</h2>
 							</div>
 							<a
 								href="#double-counting"
-								className="font-bold text-sm text-gray-950 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded px-2 py-1 transition"
+								className="font-bold text-sm text-gray-950 hover:bg-[#f1f1f1] focus:outline-none focus:ring-2 focus:ring-blue-600 px-2 py-1 transition"
 							>
 								Double Counting Policy
 							</a>
@@ -300,7 +315,7 @@ const Faculty = () => {
 					</div>
 
 					{/* ABET Accreditation Panel */}
-					<div className="w-full bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden">
+					<div className="w-full bg-white shadow-lg overflow-hidden">
 						<div className="p-4 md:p-6 flex flex-col gap-4">
 							<div className="flex flex-col gap-2 pb-4 border-b-2 border-gray-300">
 								<h2 className="font-bold text-sm md:text-base uppercase text-blue-600">ABET Accreditation</h2>
@@ -308,19 +323,19 @@ const Faculty = () => {
 							<div className="flex flex-col gap-3">
 								<a
 									href="#objectives"
-									className="font-bold text-sm text-gray-950 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded px-2 py-1 transition"
+									className="font-bold text-sm text-gray-950 hover:bg-[#f1f1f1] focus:outline-none focus:ring-2 focus:ring-blue-600 px-2 py-1 transition"
 								>
 									Program Educational Objectives
 								</a>
 								<a
 									href="#outcomes"
-									className="font-bold text-sm text-gray-950 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded px-2 py-1 transition"
+									className="font-bold text-sm text-gray-950 hover:bg-[#f1f1f1] focus:outline-none focus:ring-2 focus:ring-blue-600 px-2 py-1 transition"
 								>
 									Student Outcomes
 								</a>
 								<a
 									href="#enrollment"
-									className="font-bold text-sm text-gray-950 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded px-2 py-1 transition"
+									className="font-bold text-sm text-gray-950 hover:bg-[#f1f1f1] focus:outline-none focus:ring-2 focus:ring-blue-600 px-2 py-1 transition"
 								>
 									BS Program Enrollment
 								</a>
@@ -343,37 +358,29 @@ const Faculty = () => {
 								{Professors.map((professor, index) => (
 									<div
 										key={index}
-										className="bg-white overflow-hidden hover:shadow-lg transition-shadow flex flex-col sm:flex-row focus-within:ring-2 focus-within:ring-csi-blue"
+										className="bg-white overflow-hidden flex flex-col sm:flex-row focus-within:ring-2 focus-within:ring-csi-blue"
 										role="article"
 										aria-label={`${professor.name} faculty card`}
 									>
 										<div className="bg-csi-gray w-full sm:w-32 h-32 sm:h-auto shrink-0 flex items-center justify-center overflow-hidden">
-											{professor.image ? (
-												<img
-													src={professor.image}
-													alt={professor.name}
-													className="w-full h-full object-cover"
-												/>
-											) : (
-												<svg
-													className="w-16 h-16 text-gray-400"
-													fill="none"
-													stroke="currentColor"
-													viewBox="0 0 24 24"
-													aria-hidden="true"
-												>
-													<path
-														strokeLinecap="round"
-														strokeLinejoin="round"
-														strokeWidth={2}
-														d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-													/>
-												</svg>
-											)}
+											<img
+												src={professor.image || "/avatar.png"}
+												alt={professor.name}
+												className="w-full h-full object-cover"
+											/>
 										</div>
 										<div className="p-4 flex flex-col justify-center space-y-0.5">
-											<h3 className="text-lg font-bold text-[#2f4f4f] mb-2">
-												{professor.name}
+											<h3 className="text-lg font-bold mb-2">
+												{professor.link ? (
+													<a
+														href={professor.link}
+														className="text-[#2d88de] hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#2d88de] rounded"
+													>
+														{professor.name}
+													</a>
+												) : (
+													<span className="text-[#2d88de] hover:underline cursor-pointer">{professor.name}</span>
+												)}
 											</h3>
 											<p className="text-xs text-[#53626e]">
 												{professor.title}
@@ -382,7 +389,7 @@ const Faculty = () => {
 												<span className="font-medium">Email:</span>{" "}
 												<a
 													href={`mailto:${professor.email}`}
-													className="text-csi-blue hover:underline focus:outline-none focus:ring-2 focus:ring-csi-blue rounded"
+													className="text-csi-blue hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-csi-blue rounded"
 													aria-label={`Email ${professor.name}`}
 												>
 													{professor.email}
@@ -396,7 +403,7 @@ const Faculty = () => {
 												<span className="font-medium">Phone:</span>{" "}
 												<a
 													href={`tel:${professor.phone}`}
-													className="text-csi-blue hover:underline focus:outline-none focus:ring-2 focus:ring-csi-blue rounded"
+													className="text-csi-blue hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-csi-blue rounded"
 													aria-label={`Call ${professor.name} at ${professor.phone}`}
 												>
 													{professor.phone}
@@ -480,37 +487,29 @@ const Faculty = () => {
 								{OfficeStaff.map((professor, index) => (
 									<div
 										key={index}
-										className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow flex flex-col sm:flex-row focus-within:ring-2 focus-within:ring-csi-blue"
+										className="bg-white overflow-hidden flex flex-col sm:flex-row focus-within:ring-2 focus-within:ring-csi-blue"
 										role="article"
 										aria-label={`${professor.name} faculty card`}
 									>
 										<div className="bg-csi-gray w-full sm:w-32 h-32 sm:h-auto shrink-0 flex items-center justify-center overflow-hidden">
-											{professor.image ? (
-												<img
-													src={professor.image}
-													alt={professor.name}
-													className="w-full h-full object-cover"
-												/>
-											) : (
-												<svg
-													className="w-16 h-16 text-gray-400"
-													fill="none"
-													stroke="currentColor"
-													viewBox="0 0 24 24"
-													aria-hidden="true"
-												>
-													<path
-														strokeLinecap="round"
-														strokeLinejoin="round"
-														strokeWidth={2}
-														d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-													/>
-												</svg>
-											)}
+											<img
+												src={professor.image || "/avatar.png"}
+												alt={professor.name}
+												className="w-full h-full object-cover"
+											/>
 										</div>
 										<div className="p-4 flex flex-col justify-center space-y-0.5">
-											<h3 className="text-lg font-bold text-[#2f4f4f] mb-2">
-												{professor.name}
+											<h3 className="text-lg font-bold mb-2">
+												{professor.link ? (
+													<a
+														href={professor.link}
+														className="text-[#2d88de] hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#2d88de] rounded"
+													>
+														{professor.name}
+													</a>
+												) : (
+													<span className="text-[#2d88de] hover:underline cursor-pointer">{professor.name}</span>
+												)}
 											</h3>
 											<p className="text-xs text-[#53626e]">
 												{professor.title}
@@ -519,7 +518,7 @@ const Faculty = () => {
 												<span className="font-medium">Email:</span>{" "}
 												<a
 													href={`mailto:${professor.email}`}
-													className="text-csi-blue hover:underline focus:outline-none focus:ring-2 focus:ring-csi-blue rounded"
+													className="text-csi-blue hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-csi-blue rounded"
 													aria-label={`Email ${professor.name}`}
 												>
 													{professor.email}
@@ -533,7 +532,7 @@ const Faculty = () => {
 												<span className="font-medium">Phone:</span>{" "}
 												<a
 													href={`tel:${professor.phone}`}
-													className="text-csi-blue hover:underline focus:outline-none focus:ring-2 focus:ring-csi-blue rounded"
+													className="text-csi-blue hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-csi-blue rounded"
 													aria-label={`Call ${professor.name} at ${professor.phone}`}
 												>
 													{professor.phone}
@@ -562,37 +561,29 @@ const Faculty = () => {
 								{TechnicalStaff.map((professor, index) => (
 									<div
 										key={index}
-										className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow flex flex-col sm:flex-row focus-within:ring-2 focus-within:ring-csi-blue"
+										className="bg-white overflow-hidden flex flex-col sm:flex-row focus-within:ring-2 focus-within:ring-csi-blue"
 										role="article"
 										aria-label={`${professor.name} faculty card`}
 									>
 										<div className="bg-csi-gray w-full sm:w-32 h-32 sm:h-auto shrink-0 flex items-center justify-center overflow-hidden">
-											{professor.image ? (
-												<img
-													src={professor.image}
-													alt={professor.name}
-													className="w-full h-full object-cover"
-												/>
-											) : (
-												<svg
-													className="w-16 h-16 text-gray-400"
-													fill="none"
-													stroke="currentColor"
-													viewBox="0 0 24 24"
-													aria-hidden="true"
-												>
-													<path
-														strokeLinecap="round"
-														strokeLinejoin="round"
-														strokeWidth={2}
-														d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-													/>
-												</svg>
-											)}
+											<img
+												src={professor.image || "/avatar.png"}
+												alt={professor.name}
+												className="w-full h-full object-cover"
+											/>
 										</div>
 										<div className="p-4 flex flex-col justify-center space-y-0.5">
-											<h3 className="text-lg font-bold text-[#2f4f4f] mb-2">
-												{professor.name}
+											<h3 className="text-lg font-bold mb-2">
+												{professor.link ? (
+													<a
+														href={professor.link}
+														className="text-[#2d88de] hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#2d88de] rounded"
+													>
+														{professor.name}
+													</a>
+												) : (
+													<span className="text-[#2d88de] hover:underline cursor-pointer">{professor.name}</span>
+												)}
 											</h3>
 											<p className="text-xs text-[#53626e]">
 												{professor.title}
@@ -601,7 +592,7 @@ const Faculty = () => {
 												<span className="font-medium">Email:</span>{" "}
 												<a
 													href={`mailto:${professor.email}`}
-													className="text-csi-blue hover:underline focus:outline-none focus:ring-2 focus:ring-csi-blue rounded"
+													className="text-csi-blue hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-csi-blue rounded"
 													aria-label={`Email ${professor.name}`}
 												>
 													{professor.email}
@@ -615,7 +606,7 @@ const Faculty = () => {
 												<span className="font-medium">Phone:</span>{" "}
 												<a
 													href={`tel:${professor.phone}`}
-													className="text-csi-blue hover:underline focus:outline-none focus:ring-2 focus:ring-csi-blue rounded"
+													className="text-csi-blue hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-csi-blue rounded"
 													aria-label={`Call ${professor.name} at ${professor.phone}`}
 												>
 													{professor.phone}
