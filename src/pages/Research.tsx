@@ -103,7 +103,7 @@ const studentProjects = [
 	{
 		name: "Maxim Voynovich",
 		project:
-			"Best Presentation Award at LaGuardia CRISP Symposium - Implementation of ML models for medical imaging",
+			"Best Presentation Award at LaGuardia CRSP Symposium - Implementation of ML models for medical imaging",
 	},
 	{
 		name: "Student Name",
