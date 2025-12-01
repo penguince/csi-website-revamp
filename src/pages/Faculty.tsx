@@ -333,7 +333,10 @@ const Faculty = () => {
 				<main className="w-full lg:flex-1 flex flex-col gap-6 md:gap-8 order-1 lg:order-2">
 						{/* Computer Science professors section */}
 						<section aria-labelledby="professors-heading">
-							<h2 id="professors-heading" className="text-2xl font-bold text-[#2f4f4f] mb-4 text-center md:text-left">
+							<h2
+								id="professors-heading"
+								className="text-2xl font-bold text-[#2f4f4f] mb-4 text-center md:text-left"
+							>
 								Professors
 							</h2>
 							<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
@@ -369,16 +372,36 @@ const Faculty = () => {
 											)}
 										</div>
 										<div className="p-4 flex flex-col justify-center space-y-0.5">
-											<h3 className="text-lg font-bold text-[#2f4f4f] mb-2">{professor.name}</h3>
-											<p className="text-xs text-[#53626e]">{professor.title}</p>
+											<h3 className="text-lg font-bold text-[#2f4f4f] mb-2">
+												{professor.name}
+											</h3>
 											<p className="text-xs text-[#53626e]">
-												<span className="font-medium">Email:</span> <a href={`mailto:${professor.email}`} className="text-csi-blue hover:underline focus:outline-none focus:ring-2 focus:ring-csi-blue rounded" aria-label={`Email ${professor.name}`}>{professor.email}</a>
+												{professor.title}
 											</p>
-											<p className="text-xs text-[#53626e]"><span className="font-medium">Office:</span> {professor.office}</p>
 											<p className="text-xs text-[#53626e]">
-												<span className="font-medium">Phone:</span> <a href={`tel:${professor.phone}`} className="text-csi-blue hover:underline focus:outline-none focus:ring-2 focus:ring-csi-blue rounded" aria-label={`Call ${professor.name} at ${professor.phone}`}>{professor.phone}</a>
+												<span className="font-medium">Email:</span>{" "}
+												<a
+													href={`mailto:${professor.email}`}
+													className="text-csi-blue hover:underline focus:outline-none focus:ring-2 focus:ring-csi-blue rounded"
+													aria-label={`Email ${professor.name}`}
+												>
+													{professor.email}
+												</a>
 											</p>
-
+											<p className="text-xs text-[#53626e]">
+												<span className="font-medium">Office:</span>{" "}
+												{professor.office}
+											</p>
+											<p className="text-xs text-[#53626e]">
+												<span className="font-medium">Phone:</span>{" "}
+												<a
+													href={`tel:${professor.phone}`}
+													className="text-csi-blue hover:underline focus:outline-none focus:ring-2 focus:ring-csi-blue rounded"
+													aria-label={`Call ${professor.name} at ${professor.phone}`}
+												>
+													{professor.phone}
+												</a>
+											</p>
 										</div>
 									</div>
 								))}
@@ -389,12 +412,25 @@ const Faculty = () => {
 
 						{/* Emeritus Section */}
 						<section id="emeritus" aria-labelledby="emeritus-heading">
-							<h2 id="emeritus-heading" className="text-2xl font-bold text-[#2f4f4f] mb-4 text-center md:text-left">Emeritus</h2>
+							<h2
+								id="emeritus-heading"
+								className="text-2xl font-bold text-[#2f4f4f] mb-4 text-center md:text-left"
+							>
+								Emeritus
+							</h2>
 							<div className="bg-white p-6 md:p-8">
-								<ul className="grid grid-cols-1 md:grid-cols-4 gap-y-4 md:gap-x-8 md:gap-y-6 w-full" role="list">
+								<ul
+									className="grid grid-cols-1 md:grid-cols-4 gap-y-4 md:gap-x-8 md:gap-y-6 w-full"
+									role="list"
+								>
 									{Emeritus.map((spec, index) => (
-										<li key={index} className="flex items-center justify-center md:justify-start py-1">
-											<span className="text-[#53626e] text-lg md:text-base font-medium">{spec}</span>
+										<li
+											key={index}
+											className="flex items-center justify-center md:justify-start py-1"
+										>
+											<span className="text-[#53626e] text-lg md:text-base font-medium">
+												{spec}
+											</span>
 										</li>
 									))}
 								</ul>
@@ -405,12 +441,25 @@ const Faculty = () => {
 
 						{/* Adjuncts Section */}
 						<section id="adjuncts" aria-labelledby="adjuncts-heading">
-							<h2 id="adjuncts-heading" className="text-2xl font-bold text-[#2f4f4f] mb-4 text-center md:text-left">Adjuncts</h2>
+							<h2
+								id="adjuncts-heading"
+								className="text-2xl font-bold text-[#2f4f4f] mb-4 text-center md:text-left"
+							>
+								Adjuncts
+							</h2>
 							<div className="bg-white p-6 md:p-8">
-								<ul className="grid grid-cols-1 md:grid-cols-4 gap-y-4 md:gap-x-8 md:gap-y-6 w-full" role="list">
+								<ul
+									className="grid grid-cols-1 md:grid-cols-4 gap-y-4 md:gap-x-8 md:gap-y-6 w-full"
+									role="list"
+								>
 									{Adjuncts.map((spec, index) => (
-										<li key={index} className="flex items-center justify-center md:justify-start py-1">
-											<span className="text-[#53626e] text-lg md:text-base font-medium">{spec}</span>
+										<li
+											key={index}
+											className="flex items-center justify-center md:justify-start py-1"
+										>
+											<span className="text-[#53626e] text-lg md:text-base font-medium">
+												{spec}
+											</span>
 										</li>
 									))}
 								</ul>
@@ -421,7 +470,10 @@ const Faculty = () => {
 
 						{/* Office Staff Section */}
 						<section id="office-staff" aria-labelledby="office-staff-heading">
-							<h2 id="office-staff-heading" className="text-2xl font-bold text-[#2f4f4f] mb-4 text-center md:text-left">
+							<h2
+								id="office-staff-heading"
+								className="text-2xl font-bold text-[#2f4f4f] mb-4 text-center md:text-left"
+							>
 								Office Staff
 							</h2>
 							<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
@@ -457,16 +509,36 @@ const Faculty = () => {
 											)}
 										</div>
 										<div className="p-4 flex flex-col justify-center space-y-0.5">
-											<h3 className="text-lg font-bold text-[#2f4f4f] mb-2">{professor.name}</h3>
-											<p className="text-xs text-[#53626e]">{professor.title}</p>
+											<h3 className="text-lg font-bold text-[#2f4f4f] mb-2">
+												{professor.name}
+											</h3>
 											<p className="text-xs text-[#53626e]">
-												<span className="font-medium">Email:</span> <a href={`mailto:${professor.email}`} className="text-csi-blue hover:underline focus:outline-none focus:ring-2 focus:ring-csi-blue rounded" aria-label={`Email ${professor.name}`}>{professor.email}</a>
+												{professor.title}
 											</p>
-											<p className="text-xs text-[#53626e]"><span className="font-medium">Office:</span> {professor.office}</p>
 											<p className="text-xs text-[#53626e]">
-												<span className="font-medium">Phone:</span> <a href={`tel:${professor.phone}`} className="text-csi-blue hover:underline focus:outline-none focus:ring-2 focus:ring-csi-blue rounded" aria-label={`Call ${professor.name} at ${professor.phone}`}>{professor.phone}</a>
+												<span className="font-medium">Email:</span>{" "}
+												<a
+													href={`mailto:${professor.email}`}
+													className="text-csi-blue hover:underline focus:outline-none focus:ring-2 focus:ring-csi-blue rounded"
+													aria-label={`Email ${professor.name}`}
+												>
+													{professor.email}
+												</a>
 											</p>
-
+											<p className="text-xs text-[#53626e]">
+												<span className="font-medium">Office:</span>{" "}
+												{professor.office}
+											</p>
+											<p className="text-xs text-[#53626e]">
+												<span className="font-medium">Phone:</span>{" "}
+												<a
+													href={`tel:${professor.phone}`}
+													className="text-csi-blue hover:underline focus:outline-none focus:ring-2 focus:ring-csi-blue rounded"
+													aria-label={`Call ${professor.name} at ${professor.phone}`}
+												>
+													{professor.phone}
+												</a>
+											</p>
 										</div>
 									</div>
 								))}
@@ -476,8 +548,14 @@ const Faculty = () => {
 						<hr className="border-t border-[#53626e] my-8" />
 
 						{/* Technical Staff Section */}
-						<section id="technical-staff" aria-labelledby="technical-staff-heading">
-							<h2 id="technical-staff-heading" className="text-2xl font-bold text-[#2f4f4f] mb-4 text-center md:text-left">
+						<section
+							id="technical-staff"
+							aria-labelledby="technical-staff-heading"
+						>
+							<h2
+								id="technical-staff-heading"
+								className="text-2xl font-bold text-[#2f4f4f] mb-4 text-center md:text-left"
+							>
 								Technical Staff
 							</h2>
 							<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
@@ -513,24 +591,41 @@ const Faculty = () => {
 											)}
 										</div>
 										<div className="p-4 flex flex-col justify-center space-y-0.5">
-											<h3 className="text-lg font-bold text-[#2f4f4f] mb-2">{professor.name}</h3>
-											<p className="text-xs text-[#53626e]">{professor.title}</p>
+											<h3 className="text-lg font-bold text-[#2f4f4f] mb-2">
+												{professor.name}
+											</h3>
 											<p className="text-xs text-[#53626e]">
-												<span className="font-medium">Email:</span> <a href={`mailto:${professor.email}`} className="text-csi-blue hover:underline focus:outline-none focus:ring-2 focus:ring-csi-blue rounded" aria-label={`Email ${professor.name}`}>{professor.email}</a>
+												{professor.title}
 											</p>
-											<p className="text-xs text-[#53626e]"><span className="font-medium">Office:</span> {professor.office}</p>
 											<p className="text-xs text-[#53626e]">
-												<span className="font-medium">Phone:</span> <a href={`tel:${professor.phone}`} className="text-csi-blue hover:underline focus:outline-none focus:ring-2 focus:ring-csi-blue rounded" aria-label={`Call ${professor.name} at ${professor.phone}`}>{professor.phone}</a>
+												<span className="font-medium">Email:</span>{" "}
+												<a
+													href={`mailto:${professor.email}`}
+													className="text-csi-blue hover:underline focus:outline-none focus:ring-2 focus:ring-csi-blue rounded"
+													aria-label={`Email ${professor.name}`}
+												>
+													{professor.email}
+												</a>
 											</p>
-
+											<p className="text-xs text-[#53626e]">
+												<span className="font-medium">Office:</span>{" "}
+												{professor.office}
+											</p>
+											<p className="text-xs text-[#53626e]">
+												<span className="font-medium">Phone:</span>{" "}
+												<a
+													href={`tel:${professor.phone}`}
+													className="text-csi-blue hover:underline focus:outline-none focus:ring-2 focus:ring-csi-blue rounded"
+													aria-label={`Call ${professor.name} at ${professor.phone}`}
+												>
+													{professor.phone}
+												</a>
+											</p>
 										</div>
 									</div>
 								))}
 							</div>
 						</section>
-						
-						<hr className="border-t border-[#53626e] my-8" />
-
 
 				</main>
 			</div>
