@@ -188,8 +188,8 @@ const generateId = (text: string): string => {
 		.replace(/(^-|-$)/g, "");
 };
 
-// --- Accessible link color with WCAG AA compliant contrast (>4.5:1 against white) ---
-const LINK_COLOR_CLASS = "text-[#386c91]";
+// --- Accessible link color with WCAG AA compliant contrast (4.87:1 against white) ---
+const LINK_COLOR_CLASS = "text-csi-link";
 
 // --- Course Category Component ---
 const CourseCategory = ({ title, links, description }: CourseCategoryProps) => {
@@ -213,7 +213,7 @@ const CourseCategory = ({ title, links, description }: CourseCategoryProps) => {
 						<li key={`left-${idx}`}>
 							<a
 								href={link.href}
-								className="text-sm hover:underline leading-relaxed focus:outline-none focus-visible:ring-2 focus-visible:ring-[#386c91] focus-visible:ring-offset-1 rounded px-0.5"
+								className="text-sm hover:underline leading-relaxed focus:outline-none focus-visible:ring-2 focus-visible:ring-csi-focus focus-visible:ring-offset-1 rounded px-0.5"
 							>
 								{link.label}
 							</a>
@@ -228,7 +228,7 @@ const CourseCategory = ({ title, links, description }: CourseCategoryProps) => {
 						<li key={`right-${idx}`}>
 							<a
 								href={link.href}
-								className="text-sm hover:underline leading-relaxed focus:outline-none focus-visible:ring-2 focus-visible:ring-[#386c91] focus-visible:ring-offset-1 rounded px-0.5"
+								className="text-sm hover:underline leading-relaxed focus:outline-none focus-visible:ring-2 focus-visible:ring-csi-focus focus-visible:ring-offset-1 rounded px-0.5"
 							>
 								{link.label}
 							</a>
@@ -275,7 +275,7 @@ const PhDCourseSection = () => {
 									<li key={`left-${categoryIdx}-${linkIdx}`}>
 										<a
 											href={link.href}
-											className="text-xs hover:underline leading-relaxed focus:outline-none focus-visible:ring-2 focus-visible:ring-[#386c91] focus-visible:ring-offset-1 rounded px-0.5"
+											className="text-xs hover:underline leading-relaxed focus:outline-none focus-visible:ring-2 focus-visible:ring-csi-focus focus-visible:ring-offset-1 rounded px-0.5"
 										>
 											{link.label}
 										</a>
@@ -301,7 +301,7 @@ const PhDCourseSection = () => {
 									<li key={`right-${categoryIdx}-${linkIdx}`}>
 										<a
 											href={link.href}
-											className="text-xs hover:underline leading-relaxed focus:outline-none focus-visible:ring-2 focus-visible:ring-[#386c91] focus-visible:ring-offset-1 rounded px-0.5"
+											className="text-xs hover:underline leading-relaxed focus:outline-none focus-visible:ring-2 focus-visible:ring-csi-focus focus-visible:ring-offset-1 rounded px-0.5"
 										>
 											{link.label}
 										</a>
@@ -327,15 +327,16 @@ const Courses = () => {
 			<div className="mb-8 flex flex-col sm:flex-row gap-4 sm:gap-8">
 				<a
 					href="https://globalsearch.cuny.edu/CFGlobalSearchTool/search.jsp"
-					className="text-[#386c91] font-semibold hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-[#386c91] rounded"
+					className="text-csi-link font-semibold hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-csi-focus rounded"
 					target="_blank"
 					rel="noopener noreferrer"
 				>
 					Computer Science Course Schedule
+					<span className="sr-only"> (opens in new tab)</span>
 				</a>
 				<a
 					href="content/overtally.pdf"
-					className="text-[#386c91] font-semibold hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-[#386c91] rounded"
+					className="text-csi-link font-semibold hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-csi-focus rounded"
 				>
 					Waitlist and Overtally Policy
 				</a>

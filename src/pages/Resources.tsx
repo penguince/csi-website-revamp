@@ -98,12 +98,12 @@ const generateId = (text: string): string => {
 
 // Reusable List Component for Accessibility & Consistency
 const ResourceList = ({ items }: { items: ResourceLink[] }) => (
-	<ul className="space-y-2 list-disc pl-5 text-[#2563eb]" role="list">
+	<ul className="space-y-2 list-disc pl-5 text-csi-link" role="list">
 		{items.map((item, idx) => (
 			<li key={idx}>
 				<a
 					href={item.href}
-					className="text-[#2563eb] text-sm hover:underline leading-relaxed focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2563eb] focus-visible:ring-offset-1 rounded px-0.5 transition-colors"
+					className="text-csi-link text-sm hover:underline leading-relaxed focus:outline-none focus-visible:ring-2 focus-visible:ring-csi-focus focus-visible:ring-offset-1 rounded px-0.5 transition-colors"
 					{...(item.href.startsWith("http") && {
 						target: "_blank",
 						rel: "noopener noreferrer",
@@ -155,7 +155,7 @@ const Resources = () => {
 							<li key={idx}>
 								<a
 									href={spotlight.href}
-									className="block text-[#2563eb] text-sm leading-relaxed hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2563eb] focus-visible:ring-offset-1 rounded px-0.5 py-0.5"
+									className="block text-csi-link text-sm leading-relaxed hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-csi-focus focus-visible:ring-offset-1 rounded px-0.5 py-0.5"
 									target="_blank"
 									rel="noopener noreferrer"
 								>
@@ -192,7 +192,7 @@ const Resources = () => {
 					We are excited to host this unique{" "}
 					<a
 						href="https://www.csi.cuny.edu/academics-and-research/departments-programs/computer-science/research-experiences-undergraduates-reu"
-						className="text-[#2563eb] hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2563eb] focus-visible:ring-offset-1 rounded px-0.5"
+						className="text-csi-link hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-csi-focus focus-visible:ring-offset-1 rounded px-0.5"
 						target="_blank"
 						rel="noopener noreferrer"
 					>

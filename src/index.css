@@ -22,6 +22,11 @@ body {
 
 a {
 	text-decoration: none;
+	/* WCAG AA: Links must be distinguishable - using underline on hover/focus */
+}
+
+a:hover {
+	text-decoration: underline;
 }
 
 h1,
@@ -33,7 +38,7 @@ h6 {
 	color: #2f4f4f;
 }
 
-/* Accessibility */
+/* Accessibility - Screen Reader Only */
 .sr-only {
 	position: absolute;
 	width: 1px;
@@ -46,9 +51,35 @@ h6 {
 	border-width: 0;
 }
 
-/* Focus styles for accessibility */
+/* WCAG 2.2 AA Focus styles - 3:1 contrast for non-text UI */
 a:focus-visible,
-button:focus-visible {
-	outline: 2px solid #2d88de;
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+	outline: 3px solid #0a58ca;
 	outline-offset: 2px;
+	border-radius: 2px;
+}
+
+/* Ensure focus is never hidden */
+:focus:not(:focus-visible) {
+	outline: none;
+}
+
+/* Skip to main content link */
+.skip-link {
+	position: absolute;
+	top: -40px;
+	left: 0;
+	background: #0a58ca;
+	color: white;
+	padding: 8px 16px;
+	z-index: 100;
+	font-weight: 600;
+	border-radius: 0 0 4px 0;
+}
+
+.skip-link:focus {
+	top: 0;
 }

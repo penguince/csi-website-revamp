@@ -61,12 +61,13 @@ const Home = () => {
 				<div className="max-w-7xl mx-auto">
 					<div className="flex flex-col items-center justify-center min-h-[300px] bg-white rounded-lg border-2 border-gray-300">
 						{/* Image Placeholder Icon */}
-						<div className="w-24 h-24 mb-6">
+						<div className="w-24 h-24 mb-6" aria-hidden="true">
 							<svg
 								className="w-full h-full text-gray-400"
 								fill="none"
 								stroke="currentColor"
 								viewBox="0 0 24 24"
+								aria-hidden="true"
 							>
 								<rect
 									x="3"
@@ -92,12 +93,12 @@ const Home = () => {
 							Learn More
 						</button>
 						{/* Carousel Dots */}
-						<div className="flex gap-2 mt-6">
-							<div className="w-2 h-2 rounded-full bg-gray-400"></div>
-							<div className="w-2 h-2 rounded-full bg-csi-blue"></div>
-							<div className="w-2 h-2 rounded-full bg-gray-400"></div>
-							<div className="w-2 h-2 rounded-full bg-gray-400"></div>
-							<div className="w-2 h-2 rounded-full bg-gray-400"></div>
+						<div className="flex gap-2 mt-6" role="tablist" aria-label="Carousel navigation">
+							<div className="w-2 h-2 rounded-full bg-gray-400" role="tab" aria-selected="false" aria-label="Slide 1"></div>
+							<div className="w-2 h-2 rounded-full bg-csi-blue" role="tab" aria-selected="true" aria-label="Slide 2 (current)"></div>
+							<div className="w-2 h-2 rounded-full bg-gray-400" role="tab" aria-selected="false" aria-label="Slide 3"></div>
+							<div className="w-2 h-2 rounded-full bg-gray-400" role="tab" aria-selected="false" aria-label="Slide 4"></div>
+							<div className="w-2 h-2 rounded-full bg-gray-400" role="tab" aria-selected="false" aria-label="Slide 5"></div>
 						</div>
 					</div>
 				</div>
@@ -123,12 +124,13 @@ const Home = () => {
 							</p>
 						</div>
 						{/* Right Column - Image Placeholder */}
-						<div className="bg-gray-100 rounded-lg p-12 flex items-center justify-center min-h-[250px]">
+						<div className="bg-gray-100 rounded-lg p-12 flex items-center justify-center min-h-[250px]" aria-hidden="true">
 							<svg
 								className="w-32 h-32 text-gray-400"
 								fill="none"
 								stroke="currentColor"
 								viewBox="0 0 24 24"
+								aria-hidden="true"
 							>
 								<rect
 									x="3"
@@ -152,12 +154,13 @@ const Home = () => {
 				<div className="max-w-7xl mx-auto">
 					<div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
 						{/* Left Column - Image Placeholder */}
-						<div className="bg-gray-200 rounded-lg p-12 flex items-center justify-center min-h-[300px]">
+						<div className="bg-gray-200 rounded-lg p-12 flex items-center justify-center min-h-[300px]" aria-hidden="true">
 							<svg
 								className="w-32 h-32 text-gray-400"
 								fill="none"
 								stroke="currentColor"
 								viewBox="0 0 24 24"
+								aria-hidden="true"
 							>
 								<rect
 									x="3"
@@ -185,7 +188,7 @@ const Home = () => {
 									Phone:{" "}
 									<a
 										href="tel:718-982-2830"
-										className="text-csi-blue hover:underline"
+										className="text-csi-link hover:underline"
 									>
 										718.982.2830
 									</a>
@@ -205,17 +208,17 @@ const Home = () => {
 					</h2>
 
 					{/* Degree Links */}
-					<div className="flex flex-wrap justify-center gap-3 mb-12">
+					<nav className="flex flex-wrap justify-center gap-3 mb-12" aria-label="Degree programs">
 						{degreeLinks.map((link, index) => (
 							<Link
 								key={index}
 								to={link.href}
-								className="text-csi-blue hover:underline text-sm"
+								className="text-csi-link hover:underline text-sm"
 							>
 								{link.name}
 							</Link>
 						))}
-					</div>
+					</nav>
 
 					{/* Degree Cards */}
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -329,20 +332,22 @@ const Home = () => {
 
 					{/* Search Bar */}
 					<div className="max-w-2xl mx-auto mb-8">
+						<label htmlFor="news-search" className="sr-only">Search news</label>
 						<div className="relative">
-							<Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+							<Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" aria-hidden="true" />
 							<input
-								type="text"
+								id="news-search"
+								type="search"
 								placeholder="Search our library"
-								className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-csi-blue"
+								className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-csi-focus"
 							/>
 						</div>
 					</div>
 
 					{/* News Items */}
-					<div className="max-w-3xl mx-auto space-y-4">
+					<div className="max-w-3xl mx-auto space-y-4" role="list">
 						{newsItems.map((item, index) => (
-							<div
+							<article
 								key={index}
 								className="bg-white border border-gray-200 rounded-md p-6 hover:shadow-md transition-shadow"
 							>
@@ -353,12 +358,17 @@ const Home = () => {
 										</h3>
 										<p className="text-sm text-gray-500">{item.date}</p>
 									</div>
-									<button className="text-gray-400 hover:text-gray-600 ml-4">
+									<button 
+										className="text-gray-500 hover:text-gray-700 ml-4 p-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-csi-focus"
+										aria-expanded="false"
+										aria-label={`Expand news item: ${item.title.substring(0, 50)}...`}
+									>
 										<svg
 											className="w-5 h-5"
 											fill="none"
 											stroke="currentColor"
 											viewBox="0 0 24 24"
+											aria-hidden="true"
 										>
 											<path
 												strokeLinecap="round"
@@ -369,7 +379,7 @@ const Home = () => {
 										</svg>
 									</button>
 								</div>
-							</div>
+							</article>
 						))}
 					</div>
 				</div>

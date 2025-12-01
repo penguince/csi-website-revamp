@@ -173,8 +173,7 @@ const Faculty = () => {
 					<aside className="lg:col-span-1 space-y-6" role="navigation" aria-label="Faculty navigation">
 						{/* DEGREES Section */}
 						<section className="bg-white border border-gray-300 rounded-lg shadow-[0_2px_8px_rgba(0,0,0,0.08)] overflow-hidden">
-							{/* These need to be overridden with inline styles to get the blue color bc of how code is currently structured */}
-							<div className="text-lg font-bold p-4 pb-2" style={{ color: '#2d88de' }} role="heading" aria-level={2}>DEGREES</div>
+							<h2 className="text-lg font-bold p-4 pb-2 text-csi-blue">DEGREES</h2>
 							<hr className="border-gray-300 mx-4" />
 							<nav aria-label="Degrees navigation" className="p-4 pt-3">
 								<ul className="space-y-3">
@@ -274,7 +273,7 @@ const Faculty = () => {
 
 						{/* BS/MS ACCELERATED Section */}
 						<section className="bg-white border border-gray-300 rounded-lg shadow-[0_2px_8px_rgba(0,0,0,0.08)] overflow-hidden">
-							<div className="text-lg font-bold p-4 pb-2" style={{ color: '#2d88de' }} role="heading" aria-level={2}>BS/MS ACCELERATED</div>
+							<h2 className="text-lg font-bold p-4 pb-2 text-csi-blue">BS/MS ACCELERATED</h2>
 							<hr className="border-gray-300 mx-4" />
 							<nav aria-label="BS/MS Accelerated navigation" className="p-4 pt-3">
 								<ul className="space-y-3">
@@ -292,7 +291,7 @@ const Faculty = () => {
 
 						{/* ABET ACCREDITATION Section */}
 						<section className="bg-white border border-gray-300 rounded-lg shadow-[0_2px_8px_rgba(0,0,0,0.08)] overflow-hidden">
-							<div className="text-lg font-bold p-4 pb-2" style={{ color: '#2d88de' }} role="heading" aria-level={2}>ABET ACCREDITATION</div>
+							<h2 className="text-lg font-bold p-4 pb-2 text-csi-blue">ABET ACCREDITATION</h2>
 							<hr className="border-gray-300 mx-4" />
 							<nav aria-label="ABET Accreditation navigation" className="p-4 pt-3">
 								<ul className="space-y-3">

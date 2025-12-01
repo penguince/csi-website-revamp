@@ -76,7 +76,7 @@ const Footer = () => {
 			role="contentinfo"
 		>
 			<div className="max-w-7xl mx-auto px-4 py-12">
-				<div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-gray-300">
+				<div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-gray-200">
 					{/* College Info */}
 					<div>
 						<img
@@ -155,7 +155,7 @@ const Footer = () => {
 				<div className="max-w-7xl mx-auto px-4 py-5">
 					<div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
 						{/* Copyright */}
-						<p className="text-gray-400 text-xs">
+						<p className="text-gray-300 text-xs">
 							Copyright © {currentYear} - Department of Computer Science,
 							College of Staten Island
 						</p>
@@ -170,10 +170,10 @@ const Footer = () => {
 										href={social.url}
 										target="_blank"
 										rel="noopener noreferrer"
-										aria-label={social.name}
-										className="text-gray-400 hover:text-white transition-colors"
+										aria-label={`${social.name} (opens in new tab)`}
+										className="text-gray-300 hover:text-white transition-colors"
 									>
-										<Icon className="h-5 w-5" />
+										<Icon className="h-5 w-5" aria-hidden="true" />
 									</a>
 								);
 							})}
@@ -184,18 +184,18 @@ const Footer = () => {
 					<div className="mt-4 flex justify-center space-x-8 text-xs">
 						<a
 							href="/sitemap"
-							className="text-gray-400 hover:text-white transition-colors"
+							className="text-gray-300 hover:text-white transition-colors"
 						>
 							Sitemap
 						</a>
 						<a
 							href="/text-to-speech"
-							className="text-gray-400 hover:text-white transition-colors"
+							className="text-gray-300 hover:text-white transition-colors"
 						>
 							Text To Speech
 						</a>
-						<span className="text-gray-400">|</span>
-						<p className="text-gray-400">Copyright</p>
+						<span className="text-gray-300" aria-hidden="true">|</span>
+						<p className="text-gray-300">Copyright</p>
 					</div>
 				</div>
 			</div>

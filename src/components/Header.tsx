@@ -45,16 +45,17 @@ const Header = () => {
 			<div className="bg-[#53626e] border-b border-gray-300">
 				<div className="max-w-7xl mx-auto px-4">
 					<nav className="flex justify-end" aria-label="Quick Links">
-						<ul className="flex space-x-6 text-sm py-2">
+						<ul className="flex space-x-6 text-sm py-3">
 							{topLinks.map((link) => (
 								<li key={link.name}>
 									<a
 										href={link.url}
 										target={link.external ? "_blank" : undefined}
 										rel={link.external ? "noopener noreferrer" : undefined}
-										className="text-gray-300 hover:text-white transition-colors duration-200"
+										className="text-white hover:text-gray-200 transition-colors duration-200 py-1 px-1"
 									>
 										{link.name}
+										{link.external && <span className="sr-only"> (opens in new tab)</span>}
 									</a>
 								</li>
 							))}
