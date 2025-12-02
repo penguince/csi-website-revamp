@@ -2,21 +2,21 @@
 
 A modern, accessible redesign of the College of Staten Island Computer Science Department website built with React, TypeScript, and Tailwind CSS.
 
-## 🎯 Project Overview
+## Project Overview
 
 This project is a complete recreation of [https://www.cs.csi.cuny.edu/](https://www.cs.csi.cuny.edu/) with modern web technologies, focusing on clean design, accessibility, and responsive user experience.
 
 ### Key Features
 
-- ✨ Modern, clean interface design
-- ♿ WCAG AA accessibility compliance
-- 📱 Fully responsive (mobile, tablet, desktop)
-- ⚡ Built with React 19 and TypeScript
-- 🎨 Styled with Tailwind CSS
-- 🧭 Client-side routing with React Router
-- 🚀 Optimized performance with Vite
+- Modern, clean interface design
+-  WCAG AA accessibility compliance
+-  Fully responsive (mobile, tablet, desktop)
+-  Built with React 19 and TypeScript
+-  Styled with Tailwind CSS
+-  Client-side routing with React Router
+-  Optimized performance with Vite
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 - **Framework**: React 19.1.1
 - **Language**: TypeScript 5.9.3
@@ -26,12 +26,12 @@ This project is a complete recreation of [https://www.cs.csi.cuny.edu/](https://
 - **Icons**: Lucide React
 - **Package Manager**: npm
 
-## 📋 Prerequisites
+##  Prerequisites
 
 - Node.js (v18 or higher recommended)
 - npm or yarn
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Installation
 
@@ -67,7 +67,7 @@ The optimized production build will be created in the `dist` folder.
 npm run preview
 ```
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 csi-website-revamp/
@@ -95,7 +95,7 @@ csi-website-revamp/
 └── vite.config.ts      # Vite configuration
 ```
 
-## 🎨 Design System
+##  Design System
 
 ### Colors
 
@@ -108,7 +108,7 @@ csi-website-revamp/
 - Font Family: System fonts (-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, etc.)
 - Headings: DarkSlateGray (`#2f4f4f`)
 
-## ♿ Accessibility Features
+##  Accessibility Features
 
 - Semantic HTML5 elements (`<header>`, `<nav>`, `<main>`, `<footer>`, `<section>`)
 - ARIA labels and landmarks
@@ -118,21 +118,21 @@ csi-website-revamp/
 - Alt text for all images
 - Color contrast compliance (WCAG AA)
 
-## 📱 Responsive Design
+##  Responsive Design
 
 The website is fully responsive with breakpoints for:
 - Mobile: < 640px
 - Tablet: 640px - 1024px
 - Desktop: > 1024px
 
-## 🔍 SEO
+##  SEO
 
 - Proper meta tags
 - Semantic HTML structure
 - Descriptive page titles
 - Clean URL structure
 
-## 📄 Pages
+##  Pages
 
 1. **Home** - Welcome page with department overview and news
 2. **Undergraduate** - Undergraduate program information (AAS, BS degrees)
@@ -142,27 +142,27 @@ The website is fully responsive with breakpoints for:
 6. **Faculty** - Faculty directory and profiles
 7. **Resources** - Student resources and support
 
-## 🧪 Testing
+##  Testing
 
 ```bash
 npm run lint
 ```
 
-## 📝 License
+##  License
 
 This project is created as part of an academic assignment for the CSI Computer Science Department.
 
-## 👥 Contributors
+##  Contributors
 
 [Your Name] - Developer & Designer
 
-## 📞 Contact
+##  Contact
 
 For questions or feedback:
 - Email: [your-email]
 - GitHub: [your-github]
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - College of Staten Island Computer Science Department
 - Original website: [https://www.cs.csi.cuny.edu/](https://www.cs.csi.cuny.edu/)
