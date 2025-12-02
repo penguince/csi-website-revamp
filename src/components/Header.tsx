@@ -58,7 +58,9 @@ const Header = () => {
 										className="text-white hover:text-gray-200 transition-colors duration-200 py-1 px-1"
 									>
 										{link.name}
-										{link.external && <span className="sr-only"> (opens in new tab)</span>}
+										{link.external && (
+											<span className="sr-only"> (opens in new tab)</span>
+										)}
 									</a>
 								</li>
 							))}
@@ -141,7 +143,7 @@ const Header = () => {
 											className={`block px-4 py-3  text-sm font-medium transition-colors
                         ${
 													isActivePath(link.path)
-														? "bg-csi-blue text-white"
+														? "bg-blue-600 text-white"
 														: "text-gray-700 hover:bg-gray-100"
 												}`}
 											aria-current={

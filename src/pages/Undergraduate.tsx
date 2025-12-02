@@ -3,56 +3,61 @@
 import Sidebar from "../components/Sidebar";
 
 const Undergraduate = () => {
-
 	return (
 		<div className="w-full bg-white flex flex-col gap-6 md:gap-8 lg:gap-10">
 			{/* Main Content Container */}
-			<div className="w-full flex flex-col lg:flex-row gap-6 md:gap-8 px-4 sm:px-6 md:px-8 lg:px-[100px] py-8 md:py-12">
+			<div className="w-full flex flex-col lg:flex-row gap-6 md:gap-8 px-4 sm:px-6 md:px-8 lg:px-[100px] py-8 md:py-12 max-w-7xl mx-auto">
 				{/* Left Sidebar - Responsive Navigation */}
-			<Sidebar
-				className="order-2 lg:order-1"
-				defaultExpandedSubmenu="BS in Computer Science"
-				sections={[
-					{
-						title: "Degrees",
-						links: [
-							{ name: "AAS in Computer Technology", href: "#aas" },
-							{ name: "BS in Computer Science", href: "#bs-cs" },
-							{ name: "BS in Computer Science-Mathematics", href: "#bs-csmath" },
-							{ name: "BS in Information Systems and Informatics", href: "#bs-isi" },
-							{ name: "Computer Science Minor", href: "#minor" },
-							{ name: "Cyber Security Minor", href: "#cybersec" },
-							{ name: "Data Science Minor", href: "#datascience" },
-							{ name: "Computational Linguistics Minor", href: "#complang" },
-						],
-						submenu: {
-							name: "BS in Computer Science",
+				<Sidebar
+					className="lg:order-1"
+					defaultExpandedSubmenu="BS in Computer Science"
+					sections={[
+						{
+							title: "Degrees",
 							links: [
-								{ name: "Specializations", href: "#specializations" },
-								{ name: "Graduation with Honors", href: "#honors" },
-								{ name: "Career Milestones", href: "#milestones" },
+								{ name: "AAS in Computer Technology", href: "#aas" },
+								{ name: "BS in Computer Science", href: "#bs-cs" },
+								{
+									name: "BS in Computer Science-Mathematics",
+									href: "#bs-csmath",
+								},
+								{
+									name: "BS in Information Systems and Informatics",
+									href: "#bs-isi",
+								},
+								{ name: "Computer Science Minor", href: "#minor" },
+								{ name: "Cyber Security Minor", href: "#cybersec" },
+								{ name: "Data Science Minor", href: "#datascience" },
+								{ name: "Computational Linguistics Minor", href: "#complang" },
+							],
+							submenu: {
+								name: "BS in Computer Science",
+								links: [
+									{ name: "Specializations", href: "#specializations" },
+									{ name: "Graduation with Honors", href: "#honors" },
+									{ name: "Career Milestones", href: "#milestones" },
+								],
+							},
+						},
+						{
+							title: "BS/MS Accelerated",
+							links: [
+								{ name: "Double Counting Policy", href: "#double-counting" },
 							],
 						},
-					},
-					{
-						title: "BS/MS Accelerated",
-						links: [
-							{ name: "Double Counting Policy", href: "#double-counting" },
-						],
-					},
-					{
-						title: "ABET Accreditation",
-						links: [
-							{ name: "Program Educational Objectives", href: "#objectives" },
-							{ name: "Student Outcomes", href: "#outcomes" },
-							{ name: "BS Program Enrollment", href: "#enrollment" },
-						],
-					},
-				]}
-			/>
+						{
+							title: "ABET Accreditation",
+							links: [
+								{ name: "Program Educational Objectives", href: "#objectives" },
+								{ name: "Student Outcomes", href: "#outcomes" },
+								{ name: "BS Program Enrollment", href: "#enrollment" },
+							],
+						},
+					]}
+				/>
 
 				{/* Right Content - Main Content Area */}
-				<main className="w-full lg:flex-1 flex flex-col gap-6 md:gap-8 order-1 lg:order-2">
+				<main className="w-full lg:flex-1 flex flex-col gap-6 md:gap-8 lg:order-2">
 					{/* Advisement Section */}
 					<section
 						aria-label="Advisement"

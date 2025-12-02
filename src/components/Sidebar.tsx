@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import type React from "react";
+import { useState } from "react";
 
 interface SidebarLink {
 	name: string;
@@ -22,20 +23,20 @@ interface SidebarProps {
 	defaultExpandedSubmenu?: string;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ 
-	sections, 
+const Sidebar: React.FC<SidebarProps> = ({
+	sections,
 	className = "",
-	defaultExpandedSubmenu 
+	defaultExpandedSubmenu,
 }) => {
 	const [expandedSubmenus, setExpandedSubmenus] = useState<string[]>(
-		defaultExpandedSubmenu ? [defaultExpandedSubmenu] : []
+		defaultExpandedSubmenu ? [defaultExpandedSubmenu] : [],
 	);
 
 	const toggleSubmenu = (submenuName: string) => {
 		setExpandedSubmenus((prev) =>
 			prev.includes(submenuName)
 				? prev.filter((item) => item !== submenuName)
-				: [...prev, submenuName]
+				: [...prev, submenuName],
 		);
 	};
 
@@ -75,13 +76,17 @@ const Sidebar: React.FC<SidebarProps> = ({
 									<button
 										onClick={() => toggleSubmenu(section.submenu!.name)}
 										className="flex items-center justify-between font-bold text-sm text-gray-950 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 px-2 py-1 transition"
-										aria-expanded={expandedSubmenus.includes(section.submenu.name)}
+										aria-expanded={expandedSubmenus.includes(
+											section.submenu.name,
+										)}
 										aria-controls={`submenu-${section.submenu.name}`}
 									>
 										<span>{section.submenu.name}</span>
 										<svg
 											className={`w-4 h-4 transition-transform ${
-												expandedSubmenus.includes(section.submenu.name) ? "rotate-180" : ""
+												expandedSubmenus.includes(section.submenu.name)
+													? "rotate-180"
+													: ""
 											}`}
 											fill="none"
 											stroke="currentColor"

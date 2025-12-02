@@ -100,39 +100,102 @@ const covidProjects = [
 	},
 ];
 
-const studentProjects = [
+const studentResearchData = [
 	{
-		name: "Maxim Voynovich",
-		project:
-			"Best Presentation Award at LaGuardia CRSP Symposium - Implementation of ML models for medical imaging",
+		id: 1,
+		title: "CSC 01 Presentation",
+		student: "Konstantin Novichenko",
+		description: "Research presentation on Computer Science topics.",
+		link: "https://www.cs.csi.cuny.edu/poster/Konstantin-Novichenko-CSC-01-Presentation-RESUBMISSION.pdf",
+		image: "https://placehold.co/600x400/e2e8f0/1e293b?text=Student+Research",
 	},
 	{
-		name: "Student Name",
-		project: "Real-Time Object Detection using YOLO and Transfer Learning",
+		id: 2,
+		title: "CSC 05 Poster",
+		student: "Jacob Chen",
+		description: "Research poster presentation.",
+		link: "https://www.cs.csi.cuny.edu/poster/Jacob-Chen-CSC-05-Poster.pdf",
+		image: "https://placehold.co/600x400/e2e8f0/1e293b?text=Student+Research",
 	},
 	{
-		name: "Student Name",
-		project: "Secure Blockchain-Based Data Storage System",
+		id: 3,
+		title: "CSC 04 Poster",
+		student: "Alan Eappen",
+		description: "Research poster presentation.",
+		link: "https://www.cs.csi.cuny.edu/poster/Alan-Eappen-CSC-04-Poster.pdf",
+		image: "https://placehold.co/600x400/e2e8f0/1e293b?text=Student+Research",
 	},
 	{
-		name: "Student Name",
-		project: "Advanced NLP Chatbot for Customer Service",
+		id: 4,
+		title: "CSC 03 Presentation",
+		student: "Jasper Caballero",
+		description: "Research presentation.",
+		link: "https://www.cs.csi.cuny.edu/poster/Jasper-Caballero-CSC-03-Presentation.pdf",
+		image: "https://placehold.co/600x400/e2e8f0/1e293b?text=Student+Research",
 	},
 	{
-		name: "Student Name",
-		project: "Mobile App Development with Flutter and Firebase",
+		id: 5,
+		title: "CSC 02 Poster",
+		student: "Victoria Fischer",
+		description: "Research poster presentation.",
+		link: "https://www.cs.csi.cuny.edu/poster/Victoria-Fischer-CSC-02-Poster.pdf",
+		image: "https://placehold.co/600x400/e2e8f0/1e293b?text=Student+Research",
 	},
 	{
-		name: "Student Name",
-		project: "Distributed System Architecture for Cloud Computing",
+		id: 6,
+		title: "CSC 06 Poster",
+		student: "Chukwurado Umeaka",
+		description: "Research poster presentation.",
+		link: "https://www.cs.csi.cuny.edu/poster/Chukwurado-Umeaka-CSC-06-Poster.pdf",
+		image: "https://placehold.co/600x400/e2e8f0/1e293b?text=Student+Research",
 	},
 	{
-		name: "Student Name",
-		project: "Quantum Computing Algorithm Implementation",
+		id: 7,
+		title: "IEEE Sarnoff 2016 Poster",
+		student: "Student Researcher",
+		description: "Poster presented at IEEE Sarnoff 2016.",
+		link: "https://www.cs.csi.cuny.edu/poster/poster_IEEE_Sarnoff2016.pdf",
+		image: "https://placehold.co/600x400/e2e8f0/1e293b?text=Student+Research",
 	},
 	{
-		name: "Student Name",
-		project: "IoT Sensor Network for Environmental Monitoring",
+		id: 8,
+		title: "Rainbow Tables Poster",
+		student: "McMahon",
+		description: "Research on Rainbow Tables.",
+		link: "https://www.cs.csi.cuny.edu/poster/McMahon_Rainbow_Tables_Poster.pdf",
+		image: "https://placehold.co/600x400/e2e8f0/1e293b?text=Student+Research",
+	},
+	{
+		id: 9,
+		title: "QR Code Poster",
+		student: "Student Researcher",
+		description: "Research on QR Codes.",
+		link: "https://www.cs.csi.cuny.edu/poster/poster_QRCode.pdf",
+		image: "https://placehold.co/600x400/e2e8f0/1e293b?text=Student+Research",
+	},
+	{
+		id: 10,
+		title: "CSI URC17 Poster",
+		student: "Sidhartha Mishra",
+		description: "Poster presented at CSI URC17.",
+		link: "https://www.cs.csi.cuny.edu/poster/Sidhartha_Mishra_Poster_CSI_URC17.pdf",
+		image: "https://placehold.co/600x400/e2e8f0/1e293b?text=Student+Research",
+	},
+	{
+		id: 11,
+		title: "Filesystem Research",
+		student: "Ahmed",
+		description: "Research on filesystems.",
+		link: "https://www.cs.csi.cuny.edu/poster/poster_ahmed_filesystem.pdf",
+		image: "https://placehold.co/600x400/e2e8f0/1e293b?text=Student+Research",
+	},
+	{
+		id: 12,
+		title: "Wireless Bypassing Research",
+		student: "Ahmed",
+		description: "Research on wireless bypassing.",
+		link: "https://www.cs.csi.cuny.edu/poster/poster_ahmed_wireless_bypassing.pdf",
+		image: "https://placehold.co/600x400/e2e8f0/1e293b?text=Student+Research",
 	},
 ];
 
@@ -159,28 +222,28 @@ const Research = () => {
 		<div className="w-full bg-white overflow-x-hidden">
 			<div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row gap-6 lg:gap-8 p-4 sm:p-6 md:p-8 lg:p-12">
 				{/* --- LEFT SIDEBAR --- */}
-			<Sidebar
-				className="order-2 lg:order-1"
-				sections={[
-					{
-						title: "BS/MS Accelerated",
-						links: [
-							{ name: "Double Counting Policy", href: "#double-counting" },
-						],
-					},
-					{
-						title: "ABET Accreditation",
-						links: [
-							{ name: "Program Educational Objectives", href: "#objectives" },
-							{ name: "Student Outcomes", href: "#outcomes" },
-							{ name: "BS Program Enrollment", href: "#enrollment" },
-						],
-					},
-				]}
-			/>
+				<Sidebar
+					className="lg:order-1"
+					sections={[
+						{
+							title: "BS/MS Accelerated",
+							links: [
+								{ name: "Double Counting Policy", href: "#double-counting" },
+							],
+						},
+						{
+							title: "ABET Accreditation",
+							links: [
+								{ name: "Program Educational Objectives", href: "#objectives" },
+								{ name: "Student Outcomes", href: "#outcomes" },
+								{ name: "BS Program Enrollment", href: "#enrollment" },
+							],
+						},
+					]}
+				/>
 
 				{/* --- MAIN CONTENT AREA --- */}
-				<main className="w-full lg:flex-1 flex flex-col gap-8 md:gap-12 order-1 lg:order-2 overflow-x-hidden">
+				<main className="w-full lg:flex-1 flex flex-col gap-8 md:gap-12 lg:order-2 overflow-x-hidden">
 					{/* 1. COVID-19 Highlight Section */}
 					<section aria-label="Recent COVID-19 Research">
 						<h2 className="text-gray-950 font-semibold text-2xl md:text-3xl lg:text-4xl mb-6 md:mb-8 leading-tight tracking-tight text-balance">
@@ -191,13 +254,14 @@ const Research = () => {
 								<article
 									key={project.id}
 									className="relative border border-gray-200 overflow-hidden shadow-md hover:shadow-lg transition focus-within:ring-2 focus-within:ring-blue-600"
-							>
+								>
 									<div className="bg-white p-4 md:p-6 h-full flex flex-col">
 										<h3 className="font-bold text-lg md:text-xl text-gray-950 mb-3 line-clamp-2">
 											{project.title}
 										</h3>
 										<div className="bg-gray-50 p-4 mt-auto border-t border-gray-200 overflow-hidden">
-											<p className="text-sm md:text-base text-gray-800 leading-relaxed">{project.description}
+											<p className="text-sm md:text-base text-gray-800 leading-relaxed">
+												{project.description}
 											</p>
 											<a
 												href={project.linkHref}
@@ -241,12 +305,15 @@ const Research = () => {
 							</p>
 						</div>
 
-						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-x-hidden" style={{ gridTemplateRows: 'auto' }}>
+						<div
+							className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-x-hidden"
+							style={{ gridTemplateRows: "auto" }}
+						>
 							{filteredFaculty.map((item) => (
 								<article
 									key={item.id}
 									className="bg-white border border-gray-200 shadow-lg overflow-hidden hover:shadow-xl transition focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-600 grid"
-									style={{ gridTemplateRows: 'subgrid', gridRow: 'span 2' }}
+									style={{ gridTemplateRows: "subgrid", gridRow: "span 2" }}
 								>
 									<div className="w-full h-48 sm:h-56 md:h-64 overflow-hidden bg-gray-200">
 										<img
@@ -300,51 +367,54 @@ const Research = () => {
 					{/* 3. Student Research Section */}
 					<section
 						aria-label="Student Research"
-						className="bg-white py-6 md:py-8 overflow-x-hidden"
+						className="py-6 md:py-8 overflow-x-hidden"
 					>
-						<div className="flex flex-col lg:flex-row items-start gap-8 lg:gap-12 min-w-0">
-							{/* Left Column: Text & List */}
-							<div className="w-full lg:flex-1 flex flex-col gap-6 min-w-0">
-								<h2 className="text-gray-950 font-semibold text-2xl md:text-3xl lg:text-4xl leading-tight tracking-tight text-balance">
-									Student Research
-								</h2>
-								<div className="flex flex-col gap-4 overflow-x-hidden">
-									{studentProjects.map((student, index) => (
-										<div
-											key={index}
-											className="flex flex-row items-start gap-2 text-sm md:text-base leading-relaxed min-w-0"
-										>
-											<span className="text-blue-600 font-semibold flex-shrink-0">
-												{student.name}
-											</span>
-											<span
-												className="text-gray-800 flex-shrink-0"
-												aria-hidden="true"
-											>
-												-
-											</span>
-											<span className="text-gray-800 break-words min-w-0">
-												{student.project}
-											</span>
-										</div>
-									))}
-									<a
-										href="#"
-										className="text-blue-600 font-semibold text-sm md:text-base hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 mt-2 transition inline-block"
-									>
-										See all student publications &gt;
-									</a>
-								</div>
-							</div>
+						<div className="flex flex-col gap-4 md:gap-6 mb-6 overflow-x-hidden">
+							<h2 className="text-gray-950 font-semibold text-2xl md:text-3xl lg:text-4xl leading-tight tracking-tight text-balance">
+								Student Research
+							</h2>
+						</div>
 
-							{/* Right Column: Image */}
-							<div className="w-full lg:w-96 lg:flex-shrink-0 h-64 md:h-80 lg:h-96 bg-gray-200  overflow-hidden">
-								<img
-									src="https://placehold.co/500x400/e2e8f0/1e293b?text=Student+Research"
-									alt="Student Research"
-									className="w-full h-full object-cover"
-								/>
-							</div>
+						<div
+							className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-x-hidden"
+							style={{ gridTemplateRows: "auto" }}
+						>
+							{studentResearchData.map((item) => (
+								<article
+									key={item.id}
+									className="bg-white border border-gray-200 shadow-lg overflow-hidden hover:shadow-xl transition focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-600 grid"
+									style={{ gridTemplateRows: "subgrid", gridRow: "span 2" }}
+								>
+									<div className="w-full h-48 sm:h-56 md:h-64 overflow-hidden bg-gray-200">
+										<img
+											src={item.image || "/placeholder.svg"}
+											alt={`${item.title} research`}
+											className="w-full h-full object-cover"
+										/>
+									</div>
+									<div className="p-4 md:p-6 flex flex-col gap-4 h-full min-w-0">
+										<div>
+											<h3 className="text-gray-950 font-semibold text-lg md:text-xl lg:text-2xl leading-tight tracking-tight break-words">
+												{item.title}
+											</h3>
+											<p className="text-gray-800 font-bold italic text-base md:text-lg mt-1 truncate">
+												{item.student}
+											</p>
+										</div>
+										<p className="text-gray-800 text-sm md:text-base leading-relaxed flex-grow">
+											{item.description}
+										</p>
+										<a
+											href={item.link}
+											target="_blank"
+											rel="noopener noreferrer"
+											className="text-blue-600 underline text-sm md:text-base hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 transition whitespace-nowrap text-left w-fit"
+										>
+											View Poster &gt;
+										</a>
+									</div>
+								</article>
+							))}
 						</div>
 					</section>
 				</main>
