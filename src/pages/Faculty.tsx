@@ -358,11 +358,11 @@ const Faculty = () => {
 								{Professors.map((professor, index) => (
 									<div
 										key={index}
-										className="bg-white overflow-hidden flex flex-col sm:flex-row focus-within:ring-2 focus-within:ring-csi-blue"
+										className="bg-white overflow-hidden flex flex-row focus-within:ring-2 focus-within:ring-csi-blue"
 										role="article"
 										aria-label={`${professor.name} faculty card`}
 									>
-										<div className="bg-csi-gray w-full sm:w-32 h-32 sm:h-auto shrink-0 flex items-center justify-center overflow-hidden">
+										<div className="bg-csi-gray w-32 h-auto shrink-0 flex items-center justify-center overflow-hidden">
 											<img
 												src={professor.image || "/avatar.png"}
 												alt={professor.name}
@@ -487,11 +487,11 @@ const Faculty = () => {
 								{OfficeStaff.map((professor, index) => (
 									<div
 										key={index}
-										className="bg-white overflow-hidden flex flex-col sm:flex-row focus-within:ring-2 focus-within:ring-csi-blue"
+										className="bg-white overflow-hidden flex flex-row focus-within:ring-2 focus-within:ring-csi-blue"
 										role="article"
 										aria-label={`${professor.name} faculty card`}
 									>
-										<div className="bg-csi-gray w-full sm:w-32 h-32 sm:h-auto shrink-0 flex items-center justify-center overflow-hidden">
+										<div className="bg-csi-gray w-32 h-auto shrink-0 flex items-center justify-center overflow-hidden">
 											<img
 												src={professor.image || "/avatar.png"}
 												alt={professor.name}
@@ -561,11 +561,11 @@ const Faculty = () => {
 								{TechnicalStaff.map((professor, index) => (
 									<div
 										key={index}
-										className="bg-white overflow-hidden flex flex-col sm:flex-row focus-within:ring-2 focus-within:ring-csi-blue"
+										className="bg-white overflow-hidden flex flex-row focus-within:ring-2 focus-within:ring-csi-blue"
 										role="article"
 										aria-label={`${professor.name} faculty card`}
 									>
-										<div className="bg-csi-gray w-full sm:w-32 h-32 sm:h-auto shrink-0 flex items-center justify-center overflow-hidden">
+										<div className="bg-csi-gray w-32 h-auto shrink-0 flex items-center justify-center overflow-hidden">
 											<img
 												src={professor.image || "/avatar.png"}
 												alt={professor.name}
