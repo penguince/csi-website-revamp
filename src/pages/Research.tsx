@@ -2,6 +2,7 @@
 
 import { Search } from "lucide-react";
 import { useMemo, useState } from "react";
+import Sidebar from "../components/Sidebar";
 
 const facultyData = [
 	{
@@ -158,54 +159,25 @@ const Research = () => {
 		<div className="w-full bg-white overflow-x-hidden">
 			<div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row gap-6 lg:gap-8 p-4 sm:p-6 md:p-8 lg:p-12">
 				{/* --- LEFT SIDEBAR --- */}
-				<aside
-					className="w-full lg:w-56 flex-shrink-0 flex flex-col gap-4 md:gap-6 order-2 lg:order-1"
-					aria-label="Research navigation"
-				>
-					{/* Card 1: BS/MS Accelerated */}
-					<div className="bg-white border border-gray-300 rounded-lg shadow-sm p-4 md:p-6 flex flex-col gap-4">
-						<div className="flex flex-col gap-2 pb-3 border-b border-gray-400">
-							<h3 className="text-blue-600 font-bold text-sm md:text-base uppercase leading-tight tracking-wide">
-								BS/MS Accelerated
-							</h3>
-						</div>
-						<a
-							href="#"
-							className="font-bold text-sm text-gray-950 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 rounded px-2 py-1 transition"
-						>
-							Double Counting Policy
-						</a>
-					</div>
-
-					{/* Card 2: ABET Accreditation */}
-					<div className="bg-white border border-gray-300 rounded-lg shadow-sm p-4 md:p-6 flex flex-col gap-4">
-						<div className="flex flex-col gap-2 pb-3 border-b border-gray-400">
-							<h3 className="text-blue-600 font-bold text-sm md:text-base uppercase leading-tight tracking-wide">
-								ABET Accreditation
-							</h3>
-						</div>
-						<div className="flex flex-col gap-3">
-							<a
-								href="#"
-								className="font-bold text-sm text-gray-950 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 rounded px-2 py-1 transition"
-							>
-								Program Educational Objectives
-							</a>
-							<a
-								href="#"
-								className="font-bold text-sm text-gray-950 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 rounded px-2 py-1 transition"
-							>
-								Student Outcomes
-							</a>
-							<a
-								href="#"
-								className="font-bold text-sm text-gray-950 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 rounded px-2 py-1 transition"
-							>
-								BS Program Enrollment
-							</a>
-						</div>
-					</div>
-				</aside>
+			<Sidebar
+				className="order-2 lg:order-1"
+				sections={[
+					{
+						title: "BS/MS Accelerated",
+						links: [
+							{ name: "Double Counting Policy", href: "#double-counting" },
+						],
+					},
+					{
+						title: "ABET Accreditation",
+						links: [
+							{ name: "Program Educational Objectives", href: "#objectives" },
+							{ name: "Student Outcomes", href: "#outcomes" },
+							{ name: "BS Program Enrollment", href: "#enrollment" },
+						],
+					},
+				]}
+			/>
 
 				{/* --- MAIN CONTENT AREA --- */}
 				<main className="w-full lg:flex-1 flex flex-col gap-8 md:gap-12 order-1 lg:order-2 overflow-x-hidden">

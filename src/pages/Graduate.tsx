@@ -1,6 +1,6 @@
 "use client";
 import myguy from "../../public/shuqun.jpg";
-import { useState } from "react";
+import Sidebar from "../components/Sidebar";
 
 /* UPDATES:
    - Layout Structure: Switched to a 3-column CSS Grid (Left Nav | Content | Contact).
@@ -10,32 +10,6 @@ import { useState } from "react";
 */
 
 const Graduate = () => {
-  const [expandedMenus, setExpandedMenus] = useState<string[]>(["ms-program"]);
-
-  // --- DATA: Sidebar Navigation ---
-  const sidebarDegrees = [
-    { name: "M.S. in Computer Science", id: "ms-program", hasSubmenu: true },
-    { name: "Ph.D. in Computer Science", href: "#phd-program" },
-    { name: "BS/MS Double Counting Policy", href: "#double-counting" },
-  ];
-
-  const msSubmenu = [
-    { name: "Overview", href: "#ms-program" },
-    { name: "Admission Requirements", href: "#ms-admission" },
-    { name: "Degree Requirements", href: "#ms-degree-reqs" },
-    { name: "Specializations", href: "#ms-specializations" },
-  ];
-
-  const applicationLinks = [
-    { name: "Applications", href: "#applications" },
-    { name: "Resources", href: "#resources" },
-  ];
-
-  const resourcesLinks = [
-    { name: "Graduate Catalog", href: "#resources" },
-    { name: "Graduate Advisement", href: "#advisement" },
-    { name: "Department Contact", href: "#dept-contact" },
-  ];
 
   // --- DATA: Specialization Cards ---
   const specializationsData = [
@@ -75,12 +49,6 @@ const Graduate = () => {
     },
   ];
 
-  const toggleMenu = (id: string) => {
-    setExpandedMenus((prev) =>
-      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
-    );
-  };
-
   return (
     <div className="w-full bg-white flex flex-col">
       {/* Top banner / page title */}
@@ -95,106 +63,34 @@ const Graduate = () => {
       {/* Main content wrapper grid - 3 Columns on Large Screens */}
       <div className="max-w-[1600px] mx-auto w-full p-4 lg:p-6 grid lg:grid-cols-[256px_1fr] xl:grid-cols-[256px_1fr_260px] gap-6">
         {/* --- LEFT SIDEBAR (Navigation) --- */}
-        <nav
-          className="w-full flex flex-col gap-4 sticky top-8 self-start max-h-screen overflow-y-auto"
-          aria-label="Graduate navigation menu"
-        >
-          {/* Degrees Panel */}
-          <div className="w-full bg-white border border-gray-300  -lg shadow-md overflow-hidden">
-            <div className="p-4 md:p-6 flex flex-col gap-4">
-              <div className="flex flex-col gap-2 pb-4 border-b-2 border-gray-300">
-                <h2 className="font-bold text-sm md:text-base uppercase text-blue-600">
-                  Degrees
-                </h2>
-              </div>
-
-              <div className="flex flex-col gap-3">
-                {sidebarDegrees.map((degree) => {
-                  if (degree.hasSubmenu) {
-                    const isOpen = expandedMenus.includes("ms-program");
-
-                    return (
-                      <div key={degree.id} className="flex flex-col gap-2">
-                        <button
-                          onClick={() => toggleMenu("ms-program")}
-                          className="flex items-center justify-between font-bold text-sm leading-relaxed text-gray-950 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2   px-2 py-1 transition"
-                          aria-expanded={isOpen}
-                          aria-controls="ms-submenu"
-                        >
-                          <span>M.S. in Computer Science</span>
-                          <svg
-                            className={`w-4 h-4 transition-transform ${
-                              isOpen ? "rotate-180" : ""
-                            }`}
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              d="M5 9l7 7 7-7"
-                            />
-                          </svg>
-                        </button>
-
-                        {isOpen && (
-                          <div
-                            id="ms-submenu"
-                            className="pl-4 flex flex-col gap-2 border-l-2 border-gray-300"
-                          >
-                            {msSubmenu.map((item) => (
-                              <a
-                                key={item.href}
-                                href={item.href}
-                                className="font-bold text-sm text-gray-950 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600   px-2 py-1 transition"
-                              >
-                                {item.name}
-                              </a>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    );
-                  }
-
-                  return (
-                    <a
-                      key={degree.href}
-                      href={degree.href}
-                      className="font-bold text-sm leading-relaxed text-gray-950 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2   px-2 py-1 transition"
-                    >
-                      {degree.name}
-                    </a>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-
-          {/* Application Panel */}
-          <div className="w-full bg-white border border-gray-300  -lg shadow-md overflow-hidden">
-            <div className="p-4 md:p-6 flex flex-col gap-4">
-              <div className="flex flex-col gap-2 pb-4 border-b-2 border-gray-300">
-                <h2 className="font-bold text-sm md:text-base uppercase text-blue-600">
-                  Quick Links
-                </h2>
-              </div>
-              <div className="flex flex-col gap-3">
-                {applicationLinks.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    className="font-bold text-sm text-gray-950 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600   px-2 py-1 transition"
-                  >
-                    {link.name}
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-        </nav>
+      <Sidebar
+        defaultExpandedSubmenu="M.S. in Computer Science"
+        sections={[
+          {
+            title: "Degrees",
+            links: [
+              { name: "Ph.D. in Computer Science", href: "#phd-program" },
+              { name: "BS/MS Double Counting Policy", href: "#double-counting" },
+            ],
+            submenu: {
+              name: "M.S. in Computer Science",
+              links: [
+                { name: "Overview", href: "#ms-program" },
+                { name: "Admission Requirements", href: "#ms-admission" },
+                { name: "Degree Requirements", href: "#ms-degree-reqs" },
+                { name: "Specializations", href: "#ms-specializations" },
+              ],
+            },
+          },
+          {
+            title: "Quick Links",
+            links: [
+              { name: "Applications", href: "#applications" },
+              { name: "Resources", href: "#resources" },
+            ],
+          },
+        ]}
+      />
 
         {/* --- CENTER COLUMN (Main Content) --- */}
         <main className="flex flex-col gap-8 min-w-0">

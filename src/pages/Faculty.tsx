@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import Sidebar from "../components/Sidebar";
 
 interface FacultyCard {
 	name: string;
@@ -191,158 +191,53 @@ const Adjuncts = [
 
 
 const Faculty = () => {
-	const [expandedMenus, setExpandedMenus] = useState<string[]>(["bs-cs"])
-
-	const toggleMenu = (id: string) => {
-		setExpandedMenus((prev) => (prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]))
-	}
-
-	const sidebarDegrees = [
-		{ name: "AAS in Computer Technology", href: "#aas" },
-		{ name: "BS in Computer Science", href: "#bs-cs", hasSubmenu: true },
-		{ name: "BS in Computer Science-Mathematics", href: "#bs-csmath" },
-		{ name: "BS in Information Systems and Informatics", href: "#bs-is" },
-		{ name: "Computer Science Minor", href: "#minor" },
-		{ name: "Cyber Security Minor", href: "#cybersec" },
-		{ name: "Data Science Minor", href: "#datascience" },
-		{ name: "Computational Linguistics Minor", href: "#compling" },
-	]
-
-	const bsSubmenu = [
-		{ name: "Specializations", href: "#specializations" },
-		{ name: "Graduation with Honors", href: "#honors" },
-		{ name: "Career Milestones", href: "#milestones" },
-	]
 
 	return (
 		<div className="w-full bg-white flex flex-col gap-6 md:gap-8 lg:gap-10">
 			{/* Main Content Container */}
 			<div className="w-full flex flex-col lg:flex-row gap-6 md:gap-8 px-4 sm:px-6 md:px-8 lg:px-[100px] py-8 md:py-12">
 				{/* Left Sidebar - Responsive Navigation */}
-				<nav className="w-full lg:w-64 flex flex-col gap-4 order-2 lg:order-1" aria-label="Navigation menu">
-					{/* Degrees Panel */}
-					<div className="w-full bg-white shadow-lg overflow-hidden">
-						<div className="p-4 md:p-6 flex flex-col gap-4">
-							{/* Degrees Header */}
-							<div className="flex flex-col gap-2 pb-4 border-b-2 border-gray-300">
-								<h2 className="font-bold text-sm md:text-base uppercase text-blue-600">Degrees</h2>
-							</div>
-
-							{/* Degree List */}
-							<div className="flex flex-col gap-3">
-								{sidebarDegrees.map((degree) => (
-									<div key={degree.href} className="flex flex-col gap-3">
-										{degree.hasSubmenu ? (
-											<div className="flex items-center gap-2 border-b-2 border-gray-300 pb-2">
-												<a
-													href={degree.href}
-													className="font-bold text-sm leading-relaxed text-gray-950 hover:bg-[#f1f1f1] focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 px-2 py-1 transition flex-1"
-												>
-													{degree.name}
-												</a>
-												<button
-													onClick={() => toggleMenu("bs-cs")}
-													className="text-gray-950 hover:bg-[#f1f1f1] focus:outline-none focus:ring-2 focus:ring-blue-600 p-2 cursor-pointer"
-													aria-expanded={expandedMenus.includes("bs-cs")}
-													aria-label="Toggle BS Computer Science submenu"
-												>
-													<svg
-														className="w-4 h-4"
-														fill="none"
-														stroke="currentColor"
-														viewBox="0 0 24 24"
-													>
-														{expandedMenus.includes("bs-cs") ? (
-															<path
-																strokeLinecap="round"
-																strokeLinejoin="round"
-																strokeWidth="2"
-																d="M5 15l7-7 7 7"
-															/>
-														) : (
-															<path
-																strokeLinecap="round"
-																strokeLinejoin="round"
-																strokeWidth="2"
-																d="M19 9l-7 7-7-7"
-															/>
-														)}
-													</svg>
-												</button>
-											</div>
-										) : (
-											<a
-												href={degree.href}
-												className="font-bold text-sm leading-relaxed text-gray-950 hover:bg-[#f1f1f1] focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 px-2 py-1 transition"
-											>
-												{degree.name}
-											</a>
-										)}
-
-										{/* Submenu for BS in Computer Science */}
-										{degree.hasSubmenu && expandedMenus.includes("bs-cs") && (
-											<div className="pl-4 flex flex-col gap-2 border-l-2 border-gray-300">
-												{bsSubmenu.map((item) => (
-													<a
-														key={item.href}
-														href={item.href}
-														className="font-bold text-sm text-gray-950 hover:bg-[#f1f1f1] focus:outline-none focus:ring-2 focus:ring-blue-600 px-2 py-1 transition"
-													>
-														{item.name}
-													</a>
-												))}
-											</div>
-										)}
-									</div>
-								))}
-							</div>
-						</div>
-					</div>
-
-					{/* BS/MS Accelerated Panel */}
-					<div className="w-full bg-white shadow-lg overflow-hidden">
-						<div className="p-4 md:p-6 flex flex-col gap-4">
-							<div className="flex flex-col gap-2 pb-4 border-b-2 border-gray-300">
-								<h2 className="font-bold text-sm md:text-base uppercase text-blue-600">BS/MS Accelerated</h2>
-							</div>
-							<a
-								href="#double-counting"
-								className="font-bold text-sm text-gray-950 hover:bg-[#f1f1f1] focus:outline-none focus:ring-2 focus:ring-blue-600 px-2 py-1 transition"
-							>
-								Double Counting Policy
-							</a>
-						</div>
-					</div>
-
-					{/* ABET Accreditation Panel */}
-					<div className="w-full bg-white shadow-lg overflow-hidden">
-						<div className="p-4 md:p-6 flex flex-col gap-4">
-							<div className="flex flex-col gap-2 pb-4 border-b-2 border-gray-300">
-								<h2 className="font-bold text-sm md:text-base uppercase text-blue-600">ABET Accreditation</h2>
-							</div>
-							<div className="flex flex-col gap-3">
-								<a
-									href="#objectives"
-									className="font-bold text-sm text-gray-950 hover:bg-[#f1f1f1] focus:outline-none focus:ring-2 focus:ring-blue-600 px-2 py-1 transition"
-								>
-									Program Educational Objectives
-								</a>
-								<a
-									href="#outcomes"
-									className="font-bold text-sm text-gray-950 hover:bg-[#f1f1f1] focus:outline-none focus:ring-2 focus:ring-blue-600 px-2 py-1 transition"
-								>
-									Student Outcomes
-								</a>
-								<a
-									href="#enrollment"
-									className="font-bold text-sm text-gray-950 hover:bg-[#f1f1f1] focus:outline-none focus:ring-2 focus:ring-blue-600 px-2 py-1 transition"
-								>
-									BS Program Enrollment
-								</a>
-							</div>
-						</div>
-					</div>
-				</nav>
+			<Sidebar
+				className="order-2 lg:order-1"
+				defaultExpandedSubmenu="BS in Computer Science"
+				sections={[
+					{
+						title: "Degrees",
+						links: [
+							{ name: "AAS in Computer Technology", href: "#aas" },
+							{ name: "BS in Computer Science", href: "#bs-cs" },
+							{ name: "BS in Computer Science-Mathematics", href: "#bs-csmath" },
+							{ name: "BS in Information Systems and Informatics", href: "#bs-is" },
+							{ name: "Computer Science Minor", href: "#minor" },
+							{ name: "Cyber Security Minor", href: "#cybersec" },
+							{ name: "Data Science Minor", href: "#datascience" },
+							{ name: "Computational Linguistics Minor", href: "#compling" },
+						],
+						submenu: {
+							name: "BS in Computer Science",
+							links: [
+								{ name: "Specializations", href: "#specializations" },
+								{ name: "Graduation with Honors", href: "#honors" },
+								{ name: "Career Milestones", href: "#milestones" },
+							],
+						},
+					},
+					{
+						title: "BS/MS Accelerated",
+						links: [
+							{ name: "Double Counting Policy", href: "#double-counting" },
+						],
+					},
+					{
+						title: "ABET Accreditation",
+						links: [
+							{ name: "Program Educational Objectives", href: "#objectives" },
+							{ name: "Student Outcomes", href: "#outcomes" },
+							{ name: "BS Program Enrollment", href: "#enrollment" },
+						],
+					},
+				]}
+			/>
 
 				{/* Right Content - Main Content Area */}
 				<main className="w-full lg:flex-1 flex flex-col gap-6 md:gap-8 order-1 lg:order-2">
