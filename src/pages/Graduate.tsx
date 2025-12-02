@@ -3,9 +3,10 @@ import myguy from "../../public/shuqun.jpg";
 import { useState } from "react";
 
 /* UPDATES:
-   - Width Adjustment: Increased container max-width from max-w-7xl to max-w-[1600px] 
-     to allow the middle content sections to expand and fill more screen space.
-   - Header Alignment: Matched header max-width to the new content width for vertical alignment.
+   - Layout Structure: Switched to a 3-column CSS Grid (Left Nav | Content | Contact).
+   - Uniformity: All main content sections now share the center column, making them identical in width.
+   - Contact Card: Moved to the third grid column to "push it right" and separate it from the content flow.
+   - Simplification: Removed complex flex-row nesting and spacers.
 */
 
 const Graduate = () => {
@@ -26,14 +27,12 @@ const Graduate = () => {
   ];
 
   const applicationLinks = [
-    { name: "Apply to M.S.", href: "#apply-ms" },
-    { name: "Apply to Ph.D.", href: "#apply-phd" },
-    { name: "International Applicants", href: "#intl-applicants" },
-    { name: "Tuition & Fees", href: "#tuition" },
+    { name: "Applications", href: "#applications" },
+    { name: "Resources", href: "#resources" },
   ];
 
   const resourcesLinks = [
-    { name: "Graduate Catalog", href: "#grad-catalog" },
+    { name: "Graduate Catalog", href: "#resources" },
     { name: "Graduate Advisement", href: "#advisement" },
     { name: "Department Contact", href: "#dept-contact" },
   ];
@@ -86,24 +85,22 @@ const Graduate = () => {
     <div className="w-full bg-white flex flex-col">
       {/* Top banner / page title */}
       <div className="bg-csi-gray border-b border-gray-300 py-6 px-4">
-        {/* UPDATED: max-w increased to 1600px */}
         <div className="max-w-[1600px] mx-auto">
-          <h1 className="text-3xl font-bold text-center bg-white py-4 px-6 rounded shadow-sm">
+          <h1 className="text-3xl font-bold text-center bg-white py-4 px-6   shadow-sm">
             Graduate Programs
           </h1>
         </div>
       </div>
 
-      {/* Main content wrapper grid */}
-      {/* UPDATED: max-w increased to 1600px */}
-      <div className="max-w-[1600px] mx-auto w-full p-4 lg:p-6 grid lg:grid-cols-[256px_minmax(0,1fr)] gap-6">
-        {/* --- LEFT SIDEBAR (Sticky Navigation) --- */}
+      {/* Main content wrapper grid - 3 Columns on Large Screens */}
+      <div className="max-w-[1600px] mx-auto w-full p-4 lg:p-6 grid lg:grid-cols-[256px_1fr] xl:grid-cols-[256px_1fr_260px] gap-6">
+        {/* --- LEFT SIDEBAR (Navigation) --- */}
         <nav
-          className="w-full lg:w-64 flex flex-col gap-4 order-2 lg:order-1 lg:sticky lg:top-8 self-start max-h-screen overflow-y-auto"
+          className="w-full flex flex-col gap-4 sticky top-8 self-start max-h-screen overflow-y-auto"
           aria-label="Graduate navigation menu"
         >
           {/* Degrees Panel */}
-          <div className="w-full bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden">
+          <div className="w-full bg-white border border-gray-300  -lg shadow-md overflow-hidden">
             <div className="p-4 md:p-6 flex flex-col gap-4">
               <div className="flex flex-col gap-2 pb-4 border-b-2 border-gray-300">
                 <h2 className="font-bold text-sm md:text-base uppercase text-blue-600">
@@ -120,7 +117,7 @@ const Graduate = () => {
                       <div key={degree.id} className="flex flex-col gap-2">
                         <button
                           onClick={() => toggleMenu("ms-program")}
-                          className="flex items-center justify-between font-bold text-sm leading-relaxed text-gray-950 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 rounded px-2 py-1 transition"
+                          className="flex items-center justify-between font-bold text-sm leading-relaxed text-gray-950 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2   px-2 py-1 transition"
                           aria-expanded={isOpen}
                           aria-controls="ms-submenu"
                         >
@@ -151,7 +148,7 @@ const Graduate = () => {
                               <a
                                 key={item.href}
                                 href={item.href}
-                                className="font-bold text-sm text-gray-950 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded px-2 py-1 transition"
+                                className="font-bold text-sm text-gray-950 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600   px-2 py-1 transition"
                               >
                                 {item.name}
                               </a>
@@ -166,7 +163,7 @@ const Graduate = () => {
                     <a
                       key={degree.href}
                       href={degree.href}
-                      className="font-bold text-sm leading-relaxed text-gray-950 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 rounded px-2 py-1 transition"
+                      className="font-bold text-sm leading-relaxed text-gray-950 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2   px-2 py-1 transition"
                     >
                       {degree.name}
                     </a>
@@ -177,11 +174,11 @@ const Graduate = () => {
           </div>
 
           {/* Application Panel */}
-          <div className="w-full bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden">
+          <div className="w-full bg-white border border-gray-300  -lg shadow-md overflow-hidden">
             <div className="p-4 md:p-6 flex flex-col gap-4">
               <div className="flex flex-col gap-2 pb-4 border-b-2 border-gray-300">
                 <h2 className="font-bold text-sm md:text-base uppercase text-blue-600">
-                  Application
+                  Quick Links
                 </h2>
               </div>
               <div className="flex flex-col gap-3">
@@ -189,29 +186,7 @@ const Graduate = () => {
                   <a
                     key={link.href}
                     href={link.href}
-                    className="font-bold text-sm text-gray-950 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded px-2 py-1 transition"
-                  >
-                    {link.name}
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Resources Panel */}
-          <div className="w-full bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden">
-            <div className="p-4 md:p-6 flex flex-col gap-4">
-              <div className="flex flex-col gap-2 pb-4 border-b-2 border-gray-300">
-                <h2 className="font-bold text-sm md:text-base uppercase text-blue-600">
-                  Resources
-                </h2>
-              </div>
-              <div className="flex flex-col gap-3">
-                {resourcesLinks.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    className="font-bold text-sm text-gray-950 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded px-2 py-1 transition"
+                    className="font-bold text-sm text-gray-950 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600   px-2 py-1 transition"
                   >
                     {link.name}
                   </a>
@@ -221,426 +196,352 @@ const Graduate = () => {
           </div>
         </nav>
 
-        {/* --- RIGHT COLUMN CONTENT --- */}
-        <div className="order-1 lg:order-2 flex flex-col gap-8">
-          {/* TOP BLOCK: Split Layout (Main + Contact) */}
-          <div className="w-full flex flex-col xl:flex-row gap-6">
-            <main className="flex-1 flex flex-col gap-8">
-              {/* MS Program Overview */}
-              <section
-                id="ms-program"
-                className="bg-white border border-gray-200 rounded-lg shadow-sm p-8 flex flex-col gap-5"
-              >
-                <h2 className="text-3xl font-semibold text-gray-950">
-                  M.S. Program
-                </h2>
+        {/* --- CENTER COLUMN (Main Content) --- */}
+        <main className="flex flex-col gap-8 min-w-0">
+          {/* MS Program Overview */}
+          <section
+            id="ms-program"
+            className="bg-white border border-gray-200  -lg shadow-sm p-8 flex flex-col gap-5"
+          >
+            <h2 className="text-3xl font-semibold text-gray-950">
+              M.S. Program
+            </h2>
 
-                <div className="text-blue-700 text-sm font-medium flex flex-wrap gap-3 border-b border-gray-300 pb-2">
-                  <a
-                    href="#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:underline"
-                  >
-                    Degree Requirements
-                  </a>
-                  <span>|</span>
-                  <a
-                    href="#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:underline"
-                  >
-                    Tuition
-                  </a>
-                </div>
+            <div className="text-blue-700 text-sm font-medium flex flex-wrap gap-3 border-b border-gray-300 pb-2">
+              <a href="#ms-degree-reqs" className="hover:underline">
+                Degree Requirements
+              </a>
+              <span>|</span>
+              <a href="#resources" className="hover:underline">
+                Tuition
+              </a>
+            </div>
 
-                <div className="text-gray-800 text-base leading-relaxed flex flex-col gap-4">
-                  <p>
-                    The program is designed to provide advanced education in
-                    this rapidly evolving and challenging discipline. It serves
-                    those students who wish to increase their professional
-                    competence for business, industry, and research and
-                    development laboratories, as well as those who wish to enter
-                    careers in research and teaching.
-                  </p>
-                  <p>
-                    All students are required to take 10 graduate courses (30
-                    credits). These include three foundation courses and seven
-                    additional Computer Science graduate courses.
-                  </p>
-                  <p>
-                    Any other registered CSI graduate course in computer science
-                    shall be counted as an elective for the purposes of
-                    fulfilling the MS in Computer Science degree requirements.
-                  </p>
-                </div>
-              </section>
+            <div className="text-gray-800 text-base leading-relaxed flex flex-col gap-4">
+              <p>
+                The program is designed to provide advanced education in this
+                rapidly evolving and challenging discipline. It serves those
+                students who wish to increase their professional competence for
+                business, industry, and research and development laboratories,
+                as well as those who wish to enter careers in research and
+                teaching.
+              </p>
+              <p>
+                All students are required to take 10 graduate courses (30
+                credits). These include three foundation courses and seven
+                additional Computer Science graduate courses.
+              </p>
+              <p>
+                Any other registered CSI graduate course in computer science
+                shall be counted as an elective for the purposes of fulfilling
+                the MS in Computer Science degree requirements.
+              </p>
+            </div>
+          </section>
 
-              {/* Admissions Section */}
-              <section
-                id="ms-admission"
-                className="bg-white border border-gray-200 rounded-lg shadow-sm p-8 flex flex-col gap-6"
-              >
-                <h2 className="text-2xl md:text-3xl font-semibold text-gray-950 text-center">
-                  Admission Requirements
-                </h2>
+          {/* Admissions Section */}
+          <section
+            id="ms-admission"
+            className="bg-white border border-gray-200  -lg shadow-sm p-8 flex flex-col gap-6"
+          >
+            <h2 className="text-2xl md:text-3xl font-semibold text-gray-950 text-center">
+              Admission Requirements
+            </h2>
 
-                <div className="border border-gray-300 rounded-md overflow-hidden">
-                  <table className="w-full border-collapse">
-                    <tbody>
-                      <tr className="border-b border-gray-300 bg-gray-50">
-                        <td className="p-4 text-gray-800 text-base">
-                          1. A Bachelor of Science degree in Computer Science or
-                          related area with a{" "}
-                          <strong>B average (3.0 out of 4.0)</strong> overall
-                          and in the major.
-                        </td>
-                      </tr>
-                      <tr className="border-b border-gray-300">
-                        <td className="p-4 text-gray-800 text-base">
-                          2. Resume or CV
-                        </td>
-                      </tr>
-                      <tr className="border-b border-gray-300">
-                        <td className="p-4 text-gray-800 text-base">
-                          3. Demonstrable knowledge of:
-                        </td>
-                      </tr>
-                      <tr className="border-b border-gray-300">
-                        <td className="p-4 pl-8 text-gray-800 text-base">
-                          High-Level Programming Language(s), Data Structures,
-                          Software Design, Operating Systems
-                        </td>
-                      </tr>
-                      <tr className="border-b border-gray-300">
-                        <td className="p-4 pl-8 text-gray-800 text-base">
-                          Digital Design, Computer Architecture
-                        </td>
-                      </tr>
-                      <tr className="border-b border-gray-300">
-                        <td className="p-4 pl-8 text-gray-800 text-base">
-                          Discrete Mathematics, Calculus
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="p-4 pl-8 text-gray-800 text-base">
-                          Probability or Linear Algebra
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+            <div className="border border-gray-300  -md overflow-hidden">
+              <table className="w-full border-collapse">
+                <tbody>
+                  <tr className="border-b border-gray-300 bg-gray-50">
+                    <td className="p-4 text-gray-800 text-base">
+                      1. A Bachelor of Science degree in Computer Science or
+                      related area with a{" "}
+                      <strong>B average (3.0 out of 4.0)</strong> overall and in
+                      the major.
+                    </td>
+                  </tr>
+                  <tr className="border-b border-gray-300">
+                    <td className="p-4 text-gray-800 text-base">
+                      2. Resume or CV
+                    </td>
+                  </tr>
+                  <tr className="border-b border-gray-300">
+                    <td className="p-4 text-gray-800 text-base">
+                      3. Demonstrable knowledge of:
+                    </td>
+                  </tr>
+                  <tr className="border-b border-gray-300">
+                    <td className="p-4 pl-8 text-gray-800 text-base">
+                      High-Level Programming Language(s), Data Structures,
+                      Software Design, Operating Systems
+                    </td>
+                  </tr>
+                  <tr className="border-b border-gray-300">
+                    <td className="p-4 pl-8 text-gray-800 text-base">
+                      Digital Design, Computer Architecture
+                    </td>
+                  </tr>
+                  <tr className="border-b border-gray-300">
+                    <td className="p-4 pl-8 text-gray-800 text-base">
+                      Discrete Mathematics, Calculus
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="p-4 pl-8 text-gray-800 text-base">
+                      Probability or Linear Algebra
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-                <div className="flex flex-col gap-3 text-gray-700 text-base leading-relaxed">
-                  <p>
-                    Students who satisfy the requirements listed above will be
-                    admitted as matriculated graduate students.
-                  </p>
-                  <p>
-                    Students transferring from other related majors will be
-                    permitted to remedy undergraduate course deficiencies by
-                    taking corresponding undergraduate courses or challenge
-                    exams.
-                  </p>
-                </div>
-              </section>
+            <div className="flex flex-col gap-3 text-gray-700 text-base leading-relaxed">
+              <p>
+                Students who satisfy the requirements listed above will be
+                admitted as matriculated graduate students.
+              </p>
+              <p>
+                Students transferring from other related majors will be
+                permitted to remedy undergraduate course deficiencies by taking
+                corresponding undergraduate courses or challenge exams.
+              </p>
+            </div>
+          </section>
 
-              {/* Degree Requirements */}
-              <section
-                id="ms-degree-reqs"
-                className="bg-white border border-gray-200 rounded-lg shadow-sm p-6 flex flex-col gap-3 scroll-mt-24"
-              >
-                <h2 className="text-2xl md:text-3xl font-semibold text-gray-950">
-                  Degree Requirements
-                </h2>
+          {/* Degree Requirements */}
+          <section
+            id="ms-degree-reqs"
+            className="bg-white border border-gray-200  -lg shadow-sm p-6 flex flex-col gap-3 scroll-mt-24"
+          >
+            <h2 className="text-2xl md:text-3xl font-semibold text-gray-950">
+              Degree Requirements
+            </h2>
 
-                <p className="text-base text-gray-700 leading-relaxed font-bold">
-                  A program of 10 courses (30 credits) with at least a 3.0 (B)
-                  average.
-                </p>
+            <p className="text-base text-gray-700 leading-relaxed font-bold">
+              A program of 10 courses (30 credits) with at least a 3.0 (B)
+              average.
+            </p>
 
-                <h3 className="text-xl font-semibold text-gray-900 mt-4 mb-2">
-                  Core Courses Required for All Students:
-                </h3>
+            <h3 className="text-xl font-semibold text-gray-900 mt-4 mb-2">
+              Core Courses Required for All Students:
+            </h3>
 
-                <div className="border border-gray-300 rounded-md overflow-hidden shadow-sm">
-                  <table className="w-full border-collapse">
-                    <thead>
-                      <tr className="border-b border-gray-300 bg-gray-100">
-                        <th className="p-3 text-left font-bold text-gray-800 w-1/4">
-                          Course
-                        </th>
-                        <th className="p-3 text-left font-bold text-gray-800">
-                          Description
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr className="border-b border-gray-200 hover:bg-gray-50">
-                        <td className="p-3 text-gray-800">CSC 716</td>
-                        <td className="p-3 text-gray-800">
-                          Advanced Operating Systems
-                        </td>
-                      </tr>
-                      <tr className="border-b border-gray-200 hover:bg-gray-50">
-                        <td className="p-3 text-gray-800">CSC 727</td>
-                        <td className="p-3 text-gray-800">
-                          Algorithms and Information Structures
-                        </td>
-                      </tr>
-                      <tr className="border-b border-gray-200 hover:bg-gray-50">
-                        <td className="p-3 text-gray-800">
-                          CSC 740 <br className="lg:hidden" /> -or-{" "}
-                          <br className="lg:hidden" /> CSC 770
-                        </td>
-                        <td className="p-3 text-gray-800">
-                          Computer Systems Design <br /> -or- <br /> Parallel
-                          Computing
-                        </td>
-                      </tr>
-                      <tr className="hover:bg-gray-50">
-                        <td className="p-3 text-gray-800">
-                          CSC 759 <br className="lg:hidden" /> -or-{" "}
-                          <br className="lg:hidden" /> CSC 799
-                        </td>
-                        <td className="p-3 text-gray-800">
-                          Graduate Research Laboratory <br /> -or- <br /> Thesis
-                          Research
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+            <div className="border border-gray-300  -md overflow-hidden shadow-sm">
+              <table className="w-full border-collapse">
+                <thead>
+                  <tr className="border-b border-gray-300 bg-gray-100">
+                    <th className="p-3 text-left font-bold text-gray-800 w-1/4">
+                      Course
+                    </th>
+                    <th className="p-3 text-left font-bold text-gray-800">
+                      Description
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b border-gray-200 hover:bg-gray-50">
+                    <td className="p-3 text-gray-800">CSC 716</td>
+                    <td className="p-3 text-gray-800">
+                      Advanced Operating Systems
+                    </td>
+                  </tr>
+                  <tr className="border-b border-gray-200 hover:bg-gray-50">
+                    <td className="p-3 text-gray-800">CSC 727</td>
+                    <td className="p-3 text-gray-800">
+                      Algorithms and Information Structures
+                    </td>
+                  </tr>
+                  <tr className="border-b border-gray-200 hover:bg-gray-50">
+                    <td className="p-3 text-gray-800">
+                      CSC 740 <br className="lg:hidden" /> -or-{" "}
+                      <br className="lg:hidden" /> CSC 770
+                    </td>
+                    <td className="p-3 text-gray-800">
+                      Computer Systems Design <br /> -or- <br /> Parallel
+                      Computing
+                    </td>
+                  </tr>
+                  <tr className="hover:bg-gray-50">
+                    <td className="p-3 text-gray-800">
+                      CSC 759 <br className="lg:hidden" /> -or-{" "}
+                      <br className="lg:hidden" /> CSC 799
+                    </td>
+                    <td className="p-3 text-gray-800">
+                      Graduate Research Laboratory <br /> -or- <br /> Thesis
+                      Research
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-                <div className="mt-4 border-t pt-4 border-gray-200 flex flex-col gap-3 text-sm text-gray-600 italic">
-                  <p>
-                    Exceptional students may be permitted to satisfy six credits
-                    of the total credit requirement with a **master's thesis**.
-                  </p>
-                  <p>
-                    For **specialization** one must take two courses from one
-                    area and complete a **master's thesis or project**.
-                  </p>
-                </div>
-              </section>
+            <div className="mt-4 border-t pt-4 border-gray-200 flex flex-col gap-3 text-sm text-gray-600 italic">
+              <p>
+                Exceptional students may be permitted to satisfy six credits of
+                the total credit requirement with a **master's thesis**.
+              </p>
+              <p>
+                For **specialization** one must take two courses from one area
+                and complete a **master's thesis or project**.
+              </p>
+            </div>
+          </section>
 
-              {/* Specializations Section */}
-              <section
-                id="ms-specializations"
-                className="bg-white border border-gray-200 rounded-lg shadow-sm p-6 flex flex-col gap-4"
-              >
-                <div className="flex flex-col gap-2">
-                  <h2 className="text-2xl md:text-3xl font-semibold text-gray-950">
-                    Specializations
-                  </h2>
-                  <p className="text-base text-gray-700 leading-relaxed">
-                    Certain specialization areas are well represented by faculty
-                    research interests. Students interested in specializing are
-                    advised to select courses from the lists below and speak to
-                    their advisor.
-                  </p>
-                </div>
+          {/* Specializations Section */}
+          <section
+            id="ms-specializations"
+            className="bg-white border border-gray-200  -lg shadow-sm p-6 flex flex-col gap-4"
+          >
+            <div className="flex flex-col gap-2">
+              <h2 className="text-2xl md:text-3xl font-semibold text-gray-950">
+                Specializations
+              </h2>
+              <p className="text-base text-gray-700 leading-relaxed">
+                Certain specialization areas are well represented by faculty
+                research interests. Students interested in specializing are
+                advised to select courses from the lists below and speak to
+                their advisor.
+              </p>
+            </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-2">
-                  {specializationsData.map((spec) => (
-                    <div
-                      key={spec.area}
-                      className="border border-gray-200 rounded-lg p-5 flex flex-col gap-3 shadow-sm hover:shadow-md transition-shadow bg-gray-50/50"
-                    >
-                      <h3 className="font-bold text-lg text-blue-800 border-b border-gray-200 pb-2">
-                        {spec.area}
-                      </h3>
-                      <ul className="flex flex-col gap-1.5">
-                        {spec.courses.map((course) => (
-                          <li
-                            key={course.code}
-                            className="text-sm text-gray-700 flex items-start gap-2"
-                          >
-                            <span className="font-semibold text-gray-500 whitespace-nowrap text-xs uppercase tracking-wide bg-white px-1.5 py-0.5 rounded border border-gray-200">
-                              {course.code}
-                            </span>
-                            <span className="leading-tight">
-                              {course.title}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-              </section>
-
-              {/* Ph.D. Section (No Rounded Corners) */}
-              <section
-                id="phd-program"
-                className="bg-white border border-gray-200 shadow-sm p-6 flex flex-col gap-6 rounded-none"
-              >
-                <h2 className="text-2xl md:text-3xl font-semibold text-gray-950">
-                  Ph.D. in Computer Science
-                </h2>
-
-                <div className="text-base text-gray-700 leading-relaxed flex flex-col gap-4">
-                  <p>
-                    The College participates in the CUNY Graduate School and
-                    University Center's Ph.D. program in Computer Science.
-                  </p>
-                  <p>
-                    Students wishing to specialize in the following areas (or
-                    related fields) may do much of their coursework and research
-                    at the College of Staten Island:
-                  </p>
-                  <ul className="list-disc pl-5 grid md:grid-cols-2 gap-x-4 gap-y-1 text-sm font-medium text-gray-800">
-                    <li>Artificial Intelligence & Data Mining</li>
-                    <li>Multimedia & Image Processing</li>
-                    <li>Software Engineering</li>
-                    <li>Management Information Systems</li>
-                    <li>Networks</li>
-                    <li>Telecommunication</li>
-                  </ul>
-                  <p>
-                    Students are admitted to the program by the Graduate School
-                    and University Center and are advised to contact the CSI
-                    Computer Science department.
-                  </p>
-                </div>
-
-                <div className="bg-gray-50 border border-gray-300 p-5 rounded-none">
-                  <h3 className="font-bold text-lg text-blue-800 mb-4 text-center uppercase tracking-wide">
-                    Ph.D. Admissions & Contact
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-2">
+              {specializationsData.map((spec) => (
+                <div
+                  key={spec.area}
+                  className="border border-gray-200  -lg p-5 flex flex-col gap-3 shadow-sm hover:shadow-md transition-shadow bg-gray-50/50"
+                >
+                  <h3 className="font-bold text-lg text-blue-800 border-b border-gray-200 pb-2">
+                    {spec.area}
                   </h3>
-
-                  <div className="grid md:grid-cols-2 gap-8 text-sm text-gray-800">
-                    <div className="flex flex-col gap-1.5">
-                      <span className="font-bold border-b border-gray-300 pb-1 mb-1 block">
-                        CUNY Graduate Center Admissions
-                      </span>
-                      <p>365 Fifth Avenue</p>
-                      <p>New York, NY 10016</p>
-                      <p className="mt-1">
-                        Phone:{" "}
-                        <a
-                          href="tel:2128177470"
-                          className="text-blue-600 hover:underline"
-                        >
-                          212.817.7470
-                        </a>
-                      </p>
-                      <p>
-                        Email:{" "}
-                        <a
-                          href="mailto:admissions@gc.cuny.edu"
-                          className="text-blue-600 hover:underline"
-                        >
-                          admissions@gc.cuny.edu
-                        </a>
-                      </p>
-                      <p>
-                        Web:{" "}
-                        <a
-                          href="https://www.gc.cuny.edu"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-blue-600 hover:underline"
-                        >
-                          www.gc.cuny.edu
-                        </a>
-                      </p>
-                    </div>
-
-                    <div className="flex flex-col gap-1.5">
-                      <span className="font-bold border-b border-gray-300 pb-1 mb-1 block">
-                        Program in Computer Science
-                      </span>
-                      <p>The Graduate Center, Room 4319</p>
-                      <p>365 Fifth Avenue</p>
-                      <p>New York, NY 10016</p>
-                      <p className="mt-1">
-                        Phone:{" "}
-                        <a
-                          href="tel:2128178190"
-                          className="text-blue-600 hover:underline"
-                        >
-                          (212) 817-8190
-                        </a>
-                      </p>
-                      <p>Fax: (212) 817-1510</p>
-                      <p>
-                        Email:{" "}
-                        <a
-                          href="mailto:compsci@gc.cuny.edu"
-                          className="text-blue-600 hover:underline"
-                        >
-                          compsci@gc.cuny.edu
-                        </a>
-                      </p>
-                    </div>
-                  </div>
+                  <ul className="flex flex-col gap-1.5">
+                    {spec.courses.map((course) => (
+                      <li
+                        key={course.code}
+                        className="text-sm text-gray-700 flex items-start gap-2"
+                      >
+                        <span className="font-semibold text-gray-500 whitespace-nowrap text-xs uppercase tracking-wide bg-white px-1.5 py-0.5   border border-gray-200">
+                          {course.code}
+                        </span>
+                        <span className="leading-tight">{course.title}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </section>
-            </main>
+              ))}
+            </div>
+          </section>
 
-            {/* Right Profile Card (Sticky for Top Block) */}
-            <aside
-              id="dept-contact"
-              className="hidden xl:block xl:w-64 self-start  top-8"
-              aria-label="Department contact card"
-            >
-              <div className="w-full bg-white border border-gray-300 rounded-lg shadow-md p-4 md:p-6 flex flex-col gap-2">
-                <h3 className="text-xs md:text-sm font-bold uppercase text-blue-600 tracking-wide">
-                  Department Contact
-                </h3>
+          {/* Ph.D. Section (No   Corners) */}
+          <section
+            id="phd-program"
+            className="bg-white border border-gray-200 shadow-sm p-6 flex flex-col gap-6  -none"
+          >
+            <h2 className="text-2xl md:text-3xl font-semibold text-gray-950">
+              Ph.D. in Computer Science
+            </h2>
 
-                <img
-                  src={myguy}
-                  alt="Professor Shuqun Zhang"
-                  className="w-24 h-24 object-cover rounded-full mx-auto mt-2 mb-4 border border-gray-200"
-                />
+            <div className="text-base text-gray-700 leading-relaxed flex flex-col gap-4">
+              <p>
+                The College participates in the CUNY Graduate School and
+                University Center's Ph.D. program in Computer Science.
+              </p>
+              <p>
+                Students wishing to specialize in the following areas (or
+                related fields) may do much of their coursework and research at
+                the College of Staten Island:
+              </p>
+              <ul className="list-disc pl-5 grid md:grid-cols-2 gap-x-4 gap-y-1 text-sm font-medium text-gray-800">
+                <li>Artificial Intelligence & Data Mining</li>
+                <li>Multimedia & Image Processing</li>
+                <li>Software Engineering</li>
+                <li>Management Information Systems</li>
+                <li>Networks</li>
+                <li>Telecommunication</li>
+              </ul>
+              <p>
+                Students are admitted to the program by the Graduate School and
+                University Center and are advised to contact the CSI Computer
+                Science department.
+              </p>
+            </div>
 
-                <div className="flex flex-col gap-1">
-                  <p className="font-semibold text-base text-gray-900">
-                    Professor Shuqun Zhang
-                  </p>
-                  <p className="text-sm text-gray-700 italic">
-                    Chairperson, Computer Science
-                  </p>
-                </div>
+            <div className="bg-gray-50 border border-gray-300 p-5  -none">
+              <h3 className="font-bold text-lg text-blue-800 mb-4 text-center uppercase tracking-wide">
+                Ph.D. Admissions & Contact
+              </h3>
 
-                <div className="mt-2 flex flex-col gap-1 text-sm text-gray-800">
-                  <p>2800 Victory Blvd, 1N-215</p>
-                  <p>Staten Island, NY 10314</p>
-                </div>
-
-                <div className="mt-2 flex flex-col gap-1 text-sm text-gray-800">
-                  <p>
+              <div className="grid md:grid-cols-2 gap-8 text-sm text-gray-800">
+                <div className="flex flex-col gap-1.5">
+                  <span className="font-bold border-b border-gray-300 pb-1 mb-1 block">
+                    CUNY Graduate Center Admissions
+                  </span>
+                  <p>365 Fifth Avenue</p>
+                  <p>New York, NY 10016</p>
+                  <p className="mt-1">
                     Phone:{" "}
                     <a
-                      href="tel:7189822850"
+                      href="tel:2128177470"
                       className="text-blue-600 hover:underline"
                     >
-                      718.982.2850
+                      212.817.7470
                     </a>
                   </p>
-                  <p>Fax: 718.982.2856</p>
+                  <p>
+                    Email:{" "}
+                    <a
+                      href="mailto:admissions@gc.cuny.edu"
+                      className="text-blue-600 hover:underline"
+                    >
+                      admissions@gc.cuny.edu
+                    </a>
+                  </p>
+                  <p>
+                    Web:{" "}
+                    <a
+                      href="https://www.gc.cuny.edu"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:underline"
+                    >
+                      www.gc.cuny.edu
+                    </a>
+                  </p>
                 </div>
 
-                <p className="mt-2 text-sm text-gray-800">
-                  Email:{" "}
-                  <a
-                    href="mailto:shuqun.zhang@csi.cuny.edu"
-                    className="text-blue-600 hover:underline"
-                  >
-                    shuqun.zhang@csi.cuny.edu
-                  </a>
-                </p>
+                <div className="flex flex-col gap-1.5">
+                  <span className="font-bold border-b border-gray-300 pb-1 mb-1 block">
+                    Program in Computer Science
+                  </span>
+                  <p>The Graduate Center, Room 4319</p>
+                  <p>365 Fifth Avenue</p>
+                  <p>New York, NY 10016</p>
+                  <p className="mt-1">
+                    Phone:{" "}
+                    <a
+                      href="tel:2128178190"
+                      className="text-blue-600 hover:underline"
+                    >
+                      (212) 817-8190
+                    </a>
+                  </p>
+                  <p>Fax: (212) 817-1510</p>
+                  <p>
+                    Email:{" "}
+                    <a
+                      href="mailto:compsci@gc.cuny.edu"
+                      className="text-blue-600 hover:underline"
+                    >
+                      compsci@gc.cuny.edu
+                    </a>
+                  </p>
+                </div>
               </div>
-            </aside>
-          </div>
+            </div>
+          </section>
 
-          {/* MIDDLE BLOCK: Double Counting (Full Width) */}
+          {/* Double Counting Section */}
           <section
             id="double-counting"
-            className="w-full bg-white border border-gray-200 shadow-sm p-6 flex flex-col gap-5 rounded-none"
+            className="w-full bg-white border border-gray-200 shadow-sm p-6 flex flex-col gap-5  -none"
           >
             <h2 className="text-2xl md:text-3xl font-semibold text-gray-950">
               Computer Science Graduate Course Double-Counting Policy
@@ -698,93 +599,162 @@ const Graduate = () => {
             </div>
           </section>
 
-          {/* BOTTOM BLOCK: Footer Sections + Ghost Spacer */}
-          <div className="w-full flex flex-col xl:flex-row gap-6">
-            <main className="flex-1 flex flex-col gap-8">
-              <section
-                id="apply-ms"
-                className="bg-white border border-gray-200 rounded-lg shadow-sm p-6 flex flex-col gap-3"
-              >
-                <h2 className="text-2xl md:text-3xl font-semibold text-gray-950">
-                  Apply to M.S. or PHD
-                </h2>
-                <p className="text-base text-gray-700 leading-relaxed">
-                  Link to official graduate application and list key deadlines.
-                </p>
-              </section>
+          {/* Applications Section (Full Width, No Rounding) */}
+          <section
+            id="applications"
+            className="w-full bg-white border border-gray-200 shadow-sm p-6 flex flex-col gap-5  -none"
+          >
+            <h2 className="text-2xl md:text-3xl font-semibold text-gray-950">
+              Applications
+            </h2>
+            <div className="flex flex-col gap-3 text-base">
+              <p>
+                <span className="font-bold text-gray-800">
+                  Graduate M.S. Application:
+                </span>{" "}
+                <a
+                  href="https://www.csi.cuny.edu/admissions/graduate-admissions/graduate-applications"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-900 hover:text-blue-600 hover:underline font-medium transition-colors"
+                >
+                  Apply Online
+                </a>
+              </p>
+              <p>
+                <span className="font-bold text-gray-800">
+                  International Applicants:
+                </span>{" "}
+                <a
+                  href="https://www.csi.cuny.edu/admissions/graduate-admissions/international-applicants"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-900 hover:text-blue-600 hover:underline font-medium transition-colors"
+                >
+                  View Information
+                </a>
+              </p>
+              <p>
+                <span className="font-bold text-gray-800">
+                  Ph.D. Admissions:
+                </span>{" "}
+                <a
+                  href="https://www.gc.cuny.edu/admissions-aid/how-apply"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-900 hover:text-blue-600 hover:underline font-medium transition-colors"
+                >
+                  How to Apply via CUNY GC
+                </a>
+              </p>
+            </div>
+          </section>
 
-              {/* <section
-                id="apply-phd"
-                className="bg-white border border-gray-200 rounded-lg shadow-sm p-6 flex flex-col gap-3"
-              >
-                <h2 className="text-2xl md:text-3xl font-semibold text-gray-950">
-                  Apply to Ph.D.
-                </h2>
-                <p className="text-base text-gray-700 leading-relaxed">
-                  Filler content for Ph.D. application guidance and external
-                  links.
-                </p>
-              </section> */}
+          {/* Resources Section (Full Width, No Rounding) */}
+          <section
+            id="resources"
+            className="w-full bg-white border border-gray-200 shadow-sm p-6 flex flex-col gap-5  -none"
+          >
+            <h2 className="text-2xl md:text-3xl font-semibold text-gray-950">
+              Resources
+            </h2>
+            <div className="flex flex-col gap-3 text-base">
+              <p>
+                <span className="font-bold text-gray-800">Tuition & Fees:</span>{" "}
+                <a
+                  href="https://csi-graduate.catalog.cuny.edu/financial-aid-and-tuition/tuition-and-fees"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-900 hover:text-blue-600 hover:underline font-medium transition-colors"
+                >
+                  View Financial Aid and Tuition
+                </a>
+              </p>
+              <p>
+                <span className="font-bold text-gray-800">
+                  Graduate Catalog:
+                </span>{" "}
+                <a
+                  href="https://csi-graduate.catalog.cuny.edu/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-900 hover:text-blue-600 hover:underline font-medium transition-colors"
+                >
+                  View Full Catalog
+                </a>
+              </p>
+              <p>
+                <span className="font-bold text-gray-800">
+                  CUNY Graduate Center:
+                </span>{" "}
+                <a
+                  href="https://www.gc.cuny.edu/computer-science"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-900 hover:text-blue-600 hover:underline font-medium transition-colors"
+                >
+                  Computer Science Program
+                </a>
+              </p>
+            </div>
+          </section>
+        </main>
 
-              {/* <section
-                id="intl-applicants"
-                className="bg-white border border-gray-200 rounded-lg shadow-sm p-6 flex flex-col gap-3"
-              >
-                <h2 className="text-2xl md:text-3xl font-semibold text-gray-950">
-                  International Applicants
-                </h2>
-                <p className="text-base text-gray-700 leading-relaxed">
-                  Placeholder text covering language requirements, evaluation of
-                  foreign transcripts, and visa info.
-                </p>
-              </section> */}
+        {/* --- RIGHT SIDEBAR (Contact Card - Sticky) --- */}
+        <aside
+          id="dept-contact"
+          className="hidden xl:block w-64  top-8 self-start"
+          aria-label="Department contact card"
+        >
+          <div className="w-full bg-white border border-gray-300 shadow-md p-4 md:p-6 flex flex-col gap-2">
+            <h3 className="text-xs md:text-sm font-bold uppercase text-blue-600 tracking-wide">
+              Department Contact
+            </h3>
 
-              {/* <section
-                id="tuition"
-                className="bg-white border border-gray-200 rounded-lg shadow-sm p-6 flex flex-col gap-3"
-              >
-                <h2 className="text-2xl md:text-3xl font-semibold text-gray-950">
-                  Tuition &amp; Fees
-                </h2>
-                <p className="text-base text-gray-700 leading-relaxed">
-                  This section can eventually summarize tuition categories and
-                  link to the Bursar's official page.
-                </p>
-              </section> */}
+            <img
+              src={myguy}
+              alt="Professor Shuqun Zhang"
+              className="w-24 h-24 object-cover  -full mx-auto mt-2 mb-4 border border-gray-200"
+            />
 
-              {/* <section
-                id="grad-catalog"
-                className="bg-white border border-gray-200 rounded-lg shadow-sm p-6 flex flex-col gap-3"
-              >
-                <h2 className="text-2xl md:text-3xl font-semibold text-gray-950">
-                  Graduate Catalog
-                </h2>
-                <p className="text-base text-gray-700 leading-relaxed">
-                  Filler description for where to find official course
-                  descriptions and college-wide graduate policies.
-                </p>
-              </section> */}
+            <div className="flex flex-col gap-1">
+              <p className="font-semibold text-base text-gray-900">
+                Professor Shuqun Zhang
+              </p>
+              <p className="text-sm text-gray-700 italic">
+                Chairperson, Computer Science
+              </p>
+            </div>
 
-              {/* <section
-                id="advisement"
-                className="bg-white border border-gray-200 rounded-lg shadow-sm p-6 flex flex-col gap-3"
+            <div className="mt-2 flex flex-col gap-1 text-sm text-gray-800">
+              <p>2800 Victory Blvd, 1N-215</p>
+              <p>Staten Island, NY 10314</p>
+            </div>
+
+            <div className="mt-2 flex flex-col gap-1 text-sm text-gray-800">
+              <p>
+                Phone:{" "}
+                <a
+                  href="tel:7189822850"
+                  className="text-blue-600 hover:underline"
+                >
+                  718.982.2850
+                </a>
+              </p>
+              <p>Fax: 718.982.2856</p>
+            </div>
+
+            <p className="mt-2 text-sm text-gray-800">
+              Email:{" "}
+              <a
+                href="mailto:shuqun.zhang@csi.cuny.edu"
+                className="text-blue-600 hover:underline"
               >
-                <h2 className="text-2xl md:text-3xl font-semibold text-gray-950">
-                  Graduate Advisement
-                </h2>
-                <p className="text-base text-gray-700 leading-relaxed">
-                  Placeholder copy describing how students are assigned
-                  advisors, how to schedule appointments, and what to bring.
-                </p>
-              </section> */}
-            </main>
-            {/* Ghost Spacer for Alignment */}
-            <div
-              className="hidden xl:block xl:w-64 shrink-0"
-              aria-hidden="true"
-            ></div>
+                shuqun.zhang@csi.cuny.edu
+              </a>
+            </p>
           </div>
-        </div>
+        </aside>
       </div>
     </div>
   );
