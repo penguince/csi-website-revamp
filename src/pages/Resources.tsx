@@ -215,7 +215,7 @@ const ResourceList = ({ items }: { items: ResourceLink[] }) => (
 			<li key={idx}>
 				<a
 					href={item.href}
-					className="text-csi-link text-sm hover:underline leading-relaxed focus:outline-none focus-visible:ring-2 focus-visible:ring-csi-focus focus-visible:ring-offset-1 rounded px-0.5 transition-colors"
+					className="text-csi-link text-sm hover:underline leading-relaxed focus:outline-none focus-visible:ring-2 focus-visible:ring-csi-focus focus-visible:ring-offset-1 px-0.5 transition-colors"
 					{...(item.href.startsWith("http") && {
 						target: "_blank",
 						rel: "noopener noreferrer",
@@ -264,7 +264,7 @@ const Resources = () => {
 							<li key={idx}>
 								<a
 									href={spotlight.href}
-									className="block text-csi-link text-sm leading-relaxed hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-csi-focus focus-visible:ring-offset-1 rounded px-0.5 py-0.5"
+									className="block text-csi-link text-sm leading-relaxed hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-csi-focus focus-visible:ring-offset-1 px-0.5 py-0.5"
 									target="_blank"
 									rel="noopener noreferrer"
 								>
@@ -278,7 +278,7 @@ const Resources = () => {
 
 				{/* Right: Placeholder Image */}
 				<div
-					className="bg-gray-100 rounded-sm w-full h-64 lg:h-auto min-h-[250px] lg:min-h-[300px] flex items-center justify-center border border-gray-200 order-first lg:order-last"
+					className="bg-gray-100  w-full h-64 lg:h-auto min-h-[250px] lg:min-h-[300px] flex items-center justify-center border border-gray-200 order-first lg:order-last"
 					role="img"
 					aria-label="Student spotlight highlights"
 				>
@@ -301,7 +301,7 @@ const Resources = () => {
 					We are excited to host this unique{" "}
 					<a
 						href="https://www.csi.cuny.edu/academics-and-research/departments-programs/computer-science/research-experiences-undergraduates-reu"
-						className="text-csi-link hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-csi-focus focus-visible:ring-offset-1 rounded px-0.5"
+						className="text-csi-link hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-csi-focus focus-visible:ring-offset-1 px-0.5"
 						target="_blank"
 						rel="noopener noreferrer"
 					>

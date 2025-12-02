@@ -101,7 +101,7 @@ const Header = () => {
 								<Link
 									key={link.path}
 									to={link.path}
-									className={`px-4 py-2 text-sm font-medium transition-colors duration-200 rounded-md
+									className={`px-4 py-2 text-sm font-medium transition-colors duration-200 
                     ${
 											isActivePath(link.path)
 												? "text-csi-blue border-t-2 border-csi-blue"
@@ -117,7 +117,7 @@ const Header = () => {
 						{/* Mobile Menu Button */}
 						<button
 							onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-							className="lg:hidden p-2 rounded-md hover:bg-gray-100 transition-colors"
+							className="lg:hidden p-2  hover:bg-gray-100 transition-colors"
 							aria-expanded={isMobileMenuOpen}
 							aria-label="Toggle navigation menu"
 						>
@@ -138,7 +138,7 @@ const Header = () => {
 										<Link
 											to={link.path}
 											onClick={() => setIsMobileMenuOpen(false)}
-											className={`block px-4 py-3 rounded-md text-sm font-medium transition-colors
+											className={`block px-4 py-3  text-sm font-medium transition-colors
                         ${
 													isActivePath(link.path)
 														? "bg-csi-blue text-white"

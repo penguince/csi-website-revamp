@@ -96,7 +96,7 @@ const Home = () => {
 							</p>
 						</div>
 						<button
-							className="flex items-center justify-center py-3 px-6 md:px-8 w-full md:w-auto bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-offset-2 text-white rounded-xl font-semibold transition"
+							className="flex items-center justify-center py-3 px-6 md:px-8 w-full md:w-auto bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-offset-2 text-white  font-semibold transition"
 							aria-label="Learn More about Undergraduate Programs"
 						>
 							Learn More
@@ -129,7 +129,7 @@ const Home = () => {
 					</div>
 
 					{/* Right Column - Image */}
-					<div className="w-full lg:flex-1 h-64 md:h-80 lg:h-96 bg-gray-200 rounded-lg flex items-center justify-center">
+					<div className="w-full lg:flex-1 h-64 md:h-80 lg:h-96 bg-gray-200  flex items-center justify-center">
 						<svg
 							className="w-24 md:w-32 h-24 md:h-32 text-gray-400"
 							fill="none"
@@ -200,7 +200,7 @@ const Home = () => {
 					</div>
 
 					{/* Left Column - Image */}
-					<div className="w-full lg:flex-1 h-64 md:h-80 lg:h-96 bg-gray-200 rounded-lg flex items-center justify-center">
+					<div className="w-full lg:flex-1 h-64 md:h-80 lg:h-96 bg-gray-200  flex items-center justify-center">
 						<svg
 							className="w-24 md:w-32 h-24 md:h-32 text-gray-400"
 							fill="none"
@@ -243,7 +243,7 @@ const Home = () => {
 									<div key={index} className="flex items-center gap-2">
 										<Link
 											to={link.href}
-											className="font-normal text-sm md:text-base leading-relaxed text-blue-600 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-offset-2 rounded px-1"
+											className="font-normal text-sm md:text-base leading-relaxed text-blue-600 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-offset-2 px-1"
 										>
 											{link.name}
 										</Link>
@@ -264,7 +264,7 @@ const Home = () => {
 					{/* Cards Container */}
 					<div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
 						{/* Card 1 */}
-						<article className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition focus-within:ring-2 focus-within:ring-blue-600">
+						<article className="bg-white  shadow-lg overflow-hidden hover:shadow-xl transition focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-600">
 							<div className="w-full h-48 md:h-56 bg-gray-200 flex items-center justify-center">
 								<svg
 									className="w-20 md:w-24 h-20 md:h-24 text-gray-400"
@@ -301,7 +301,7 @@ const Home = () => {
 						</article>
 
 						{/* Card 2 */}
-						<article className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition focus-within:ring-2 focus-within:ring-blue-600">
+						<article className="bg-white  shadow-lg overflow-hidden hover:shadow-xl transition focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-600">
 							<div className="w-full h-48 md:h-56 bg-gray-200 flex items-center justify-center">
 								<svg
 									className="w-20 md:w-24 h-20 md:h-24 text-gray-400"
@@ -338,7 +338,7 @@ const Home = () => {
 						</article>
 
 						{/* Card 3 */}
-						<article className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition focus-within:ring-2 focus-within:ring-blue-600 md:col-span-2 lg:col-span-1">
+						<article className="bg-white  shadow-lg overflow-hidden hover:shadow-xl transition focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-600 md:col-span-2 lg:col-span-1">
 							<div className="w-full h-48 md:h-56 bg-gray-200 flex items-center justify-center">
 								<svg
 									className="w-20 md:w-24 h-20 md:h-24 text-gray-400"
@@ -397,7 +397,7 @@ const Home = () => {
 					{/* Content */}
 					<div className="w-full flex flex-col items-center gap-6 md:gap-8">
 						{/* Search Bar */}
-						<div className="w-full flex items-center gap-3 py-2 px-4 md:px-6 bg-white border-2 border-gray-600 rounded-lg focus-within:ring-2 focus-within:ring-blue-600">
+						<div className="w-full flex items-center gap-3 py-2 px-4 md:px-6 bg-white border-2 border-gray-600  focus-within:ring-2 focus-within:ring-blue-600">
 							<Search
 								className="w-5 h-5 text-gray-600 flex-shrink-0"
 								aria-hidden="true"
@@ -446,7 +446,7 @@ const Home = () => {
 										</div>
 										<button
 											onClick={() => toggleExpanded(item.id)}
-											className="w-6 h-6 flex-shrink-0 hover:opacity-70 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded transition"
+											className="w-6 h-6 flex-shrink-0 hover:opacity-70 focus:outline-none focus:ring-2 focus:ring-blue-600 transition"
 											aria-label={
 												expandedItems.includes(item.id)
 													? `Collapse article: ${item.title}`

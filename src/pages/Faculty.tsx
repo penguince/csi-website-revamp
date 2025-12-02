@@ -249,13 +249,14 @@ const Faculty = () => {
 							>
 								Professors
 							</h2>
-							<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+							<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8" style={{ gridTemplateRows: 'auto' }}>
 								{Professors.map((professor, index) => (
 									<div
 										key={index}
-										className="bg-white overflow-hidden flex flex-col sm:flex-row focus-within:ring-2 focus-within:ring-csi-blue"
+										className="bg-white overflow-hidden grid grid-cols-[auto_1fr] gap-0 focus-within:ring-2 focus-within:ring-inset focus-within:ring-csi-blue"
 										role="article"
 										aria-label={`${professor.name} faculty card`}
+										style={{ gridTemplateRows: 'subgrid', gridRow: 'span 1' }}
 									>
 										<div className="bg-csi-gray w-full sm:w-32 h-32 sm:h-auto shrink-0 flex items-center justify-center overflow-hidden">
 											<img
@@ -269,7 +270,7 @@ const Faculty = () => {
 												{professor.link ? (
 													<a
 														href={professor.link}
-														className="text-[#2d88de] hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#2d88de] rounded"
+														className="text-[#2d88de] hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#2d88de]"
 													>
 														{professor.name}
 													</a>
@@ -284,7 +285,7 @@ const Faculty = () => {
 												<span className="font-medium">Email:</span>{" "}
 												<a
 													href={`mailto:${professor.email}`}
-													className="text-csi-blue hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-csi-blue rounded"
+													className="text-csi-blue hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-csi-blue"
 													aria-label={`Email ${professor.name}`}
 												>
 													{professor.email}
@@ -298,7 +299,7 @@ const Faculty = () => {
 												<span className="font-medium">Phone:</span>{" "}
 												<a
 													href={`tel:${professor.phone}`}
-													className="text-csi-blue hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-csi-blue rounded"
+													className="text-csi-blue hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-csi-blue"
 													aria-label={`Call ${professor.name} at ${professor.phone}`}
 												>
 													{professor.phone}
@@ -378,13 +379,14 @@ const Faculty = () => {
 							>
 								Office Staff
 							</h2>
-							<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+							<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8" style={{ gridTemplateRows: 'auto' }}>
 								{OfficeStaff.map((professor, index) => (
 									<div
 										key={index}
-										className="bg-white overflow-hidden flex flex-col sm:flex-row focus-within:ring-2 focus-within:ring-csi-blue"
+										className="bg-white overflow-hidden grid grid-cols-[auto_1fr] gap-0 focus-within:ring-2 focus-within:ring-inset focus-within:ring-csi-blue"
 										role="article"
 										aria-label={`${professor.name} faculty card`}
+										style={{ gridTemplateRows: 'subgrid', gridRow: 'span 1' }}
 									>
 										<div className="bg-csi-gray w-full sm:w-32 h-32 sm:h-auto shrink-0 flex items-center justify-center overflow-hidden">
 											<img
@@ -398,7 +400,7 @@ const Faculty = () => {
 												{professor.link ? (
 													<a
 														href={professor.link}
-														className="text-[#2d88de] hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#2d88de] rounded"
+														className="text-[#2d88de] hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#2d88de]"
 													>
 														{professor.name}
 													</a>
@@ -413,7 +415,7 @@ const Faculty = () => {
 												<span className="font-medium">Email:</span>{" "}
 												<a
 													href={`mailto:${professor.email}`}
-													className="text-csi-blue hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-csi-blue rounded"
+													className="text-csi-blue hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-csi-blue"
 													aria-label={`Email ${professor.name}`}
 												>
 													{professor.email}
@@ -427,7 +429,7 @@ const Faculty = () => {
 												<span className="font-medium">Phone:</span>{" "}
 												<a
 													href={`tel:${professor.phone}`}
-													className="text-csi-blue hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-csi-blue rounded"
+													className="text-csi-blue hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-csi-blue"
 													aria-label={`Call ${professor.name} at ${professor.phone}`}
 												>
 													{professor.phone}
@@ -452,13 +454,14 @@ const Faculty = () => {
 							>
 								Technical Staff
 							</h2>
-							<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+							<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8" style={{ gridTemplateRows: 'auto' }}>
 								{TechnicalStaff.map((professor, index) => (
 									<div
 										key={index}
-										className="bg-white overflow-hidden flex flex-col sm:flex-row focus-within:ring-2 focus-within:ring-csi-blue"
+										className="bg-white overflow-hidden grid grid-cols-[auto_1fr] gap-0 focus-within:ring-2 focus-within:ring-inset focus-within:ring-csi-blue"
 										role="article"
 										aria-label={`${professor.name} faculty card`}
+										style={{ gridTemplateRows: 'subgrid', gridRow: 'span 1' }}
 									>
 										<div className="bg-csi-gray w-full sm:w-32 h-32 sm:h-auto shrink-0 flex items-center justify-center overflow-hidden">
 											<img
@@ -472,7 +475,7 @@ const Faculty = () => {
 												{professor.link ? (
 													<a
 														href={professor.link}
-														className="text-[#2d88de] hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#2d88de] rounded"
+														className="text-[#2d88de] hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#2d88de]"
 													>
 														{professor.name}
 													</a>
@@ -487,7 +490,7 @@ const Faculty = () => {
 												<span className="font-medium">Email:</span>{" "}
 												<a
 													href={`mailto:${professor.email}`}
-													className="text-csi-blue hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-csi-blue rounded"
+													className="text-csi-blue hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-csi-blue"
 													aria-label={`Email ${professor.name}`}
 												>
 													{professor.email}
@@ -501,7 +504,7 @@ const Faculty = () => {
 												<span className="font-medium">Phone:</span>{" "}
 												<a
 													href={`tel:${professor.phone}`}
-													className="text-csi-blue hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-csi-blue rounded"
+													className="text-csi-blue hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-csi-blue"
 													aria-label={`Call ${professor.name} at ${professor.phone}`}
 												>
 													{professor.phone}

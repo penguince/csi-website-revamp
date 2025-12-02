@@ -190,19 +190,18 @@ const Research = () => {
 							{covidProjects.map((project) => (
 								<article
 									key={project.id}
-									className="relative rounded-lg border border-gray-400 overflow-hidden shadow-md hover:shadow-lg transition focus-within:ring-2 focus-within:ring-blue-600"
-								>
+									className="relative border border-gray-200 overflow-hidden shadow-md hover:shadow-lg transition focus-within:ring-2 focus-within:ring-blue-600"
+							>
 									<div className="bg-white p-4 md:p-6 h-full flex flex-col">
 										<h3 className="font-bold text-lg md:text-xl text-gray-950 mb-3 line-clamp-2">
 											{project.title}
 										</h3>
-										<div className="bg-teal-100 rounded-lg p-4 mt-auto border-t border-gray-400 overflow-hidden">
-											<p className="text-sm md:text-base text-gray-800 leading-relaxed line-clamp-4">
-												{project.description}
+										<div className="bg-gray-50 p-4 mt-auto border-t border-gray-200 overflow-hidden">
+											<p className="text-sm md:text-base text-gray-800 leading-relaxed">{project.description}
 											</p>
 											<a
 												href={project.linkHref}
-												className="text-blue-600 font-bold text-sm underline hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded mt-3 block transition truncate"
+												className="text-blue-600 font-bold text-sm underline hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 mt-3 block transition truncate"
 											>
 												{project.linkText}
 											</a>
@@ -222,7 +221,7 @@ const Research = () => {
 								Faculty Research
 							</h2>
 
-							<div className="w-full flex items-center gap-3 py-2 px-4 md:px-6 bg-white border-2 border-gray-600 rounded-lg focus-within:ring-2 focus-within:ring-blue-600 overflow-hidden">
+							<div className="w-full flex items-center gap-3 py-2 px-4 md:px-6 bg-white border-2 border-gray-300 focus-within:ring-2 focus-within:ring-blue-600 overflow-hidden">
 								<Search
 									className="w-5 h-5 text-gray-600 flex-shrink-0"
 									aria-hidden="true"
@@ -242,11 +241,12 @@ const Research = () => {
 							</p>
 						</div>
 
-						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-x-hidden">
+						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-x-hidden" style={{ gridTemplateRows: 'auto' }}>
 							{filteredFaculty.map((item) => (
 								<article
 									key={item.id}
-									className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition focus-within:ring-2 focus-within:ring-blue-600"
+									className="bg-white border border-gray-200 shadow-lg overflow-hidden hover:shadow-xl transition focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-600 grid"
+									style={{ gridTemplateRows: 'subgrid', gridRow: 'span 2' }}
 								>
 									<div className="w-full h-48 sm:h-56 md:h-64 overflow-hidden bg-gray-200">
 										<img
@@ -276,7 +276,7 @@ const Research = () => {
 										{/* LOGIC CHANGED HERE: Changed <a> to <button> and added onClick */}
 										<button
 											onClick={() => toggleSection(item.id)}
-											className="text-blue-600 underline text-sm md:text-base hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded transition whitespace-nowrap text-left w-fit"
+											className="text-blue-600 underline text-sm md:text-base hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 transition whitespace-nowrap text-left w-fit"
 										>
 											{expandedSections.includes(item.id)
 												? "Read less <"
@@ -330,7 +330,7 @@ const Research = () => {
 									))}
 									<a
 										href="#"
-										className="text-blue-600 font-semibold text-sm md:text-base hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded mt-2 transition inline-block"
+										className="text-blue-600 font-semibold text-sm md:text-base hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 mt-2 transition inline-block"
 									>
 										See all student publications &gt;
 									</a>
@@ -338,7 +338,7 @@ const Research = () => {
 							</div>
 
 							{/* Right Column: Image */}
-							<div className="w-full lg:w-96 lg:flex-shrink-0 h-64 md:h-80 lg:h-96 bg-gray-200 rounded-lg overflow-hidden">
+							<div className="w-full lg:w-96 lg:flex-shrink-0 h-64 md:h-80 lg:h-96 bg-gray-200  overflow-hidden">
 								<img
 									src="https://placehold.co/500x400/e2e8f0/1e293b?text=Student+Research"
 									alt="Student Research"
