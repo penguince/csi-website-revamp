@@ -135,40 +135,56 @@ The following diagram illustrates the primary components and their interactions 
 
 ```mermaid
 graph TD
-    subgraph Client-Side Application
-        A[User Browser] -- Requests --> B(Vite Dev Server / Static Host)
-        B -- Serves --> C{index.html & main.tsx}
+    subgraph clientSide[Client-Side Application]
+        A[User Browser] -- Requests --> B[Vite Dev Server / Static Host]
+        B -- Serves --> C[index.html & main.tsx]
 
-        subgraph React Application Core
+        subgraph reactCore[React Application Core]
             C --> D[main.tsx - Entry Point]
-            D --> E(App.tsx - React Root Component)
-            E -- Manages Routing --> F(React Router DOM)
+            D --> E[App.tsx - React Root Component]
+            E -- Manages Routing --> F[React Router DOM]
         end
 
-        subgraph UI Components
+        subgraph uiComponents[UI Components]
             F -- Renders --> G[Layout Component]
             G -- Contains --> H[Header Component]
             G -- Contains --> I[Sidebar Component]
             G -- Contains --> J[Footer Component]
-            G -- Renders Active Page --> K[Page Components (Home, Undergraduate, etc.)]
+            G -- Renders Active Page --> K[Page Components - Home / Undergraduate]
         end
 
-        subgraph Styling & Utilities
-            K,H,I,J -- Styled By --> L(Tailwind CSS)
-            L -- Processed By --> M(PostCSS)
-            E,K,H,I,J -- Uses --> N(TypeScript)
-            E,K,H,I,J -- Icons --> O(Lucide React)
-            E,K,H,I,J -- Utilities --> P(clsx, tailwind-merge)
+        subgraph stylingUtils[Styling & Utilities]
+            K --> L[Tailwind CSS]
+            H --> L
+            I --> L
+            J --> L
+            L --> M[PostCSS]
+            E --> N[TypeScript]
+            K --> N
+            H --> N
+            I --> N
+            J --> N
+            E --> O[Lucide React Icons]
+            K --> O
+            H --> O
+            I --> O
+            J --> O
+            E --> P[clsx / tailwind-merge]
+            K --> P
+            H --> P
+            I --> P
+            J --> P
         end
     end
 
-    subgraph Development & Build Tools
-        Q[Node.js Runtime] --> R(Vite - Bundler & Dev Server)
+    subgraph devTools[Development & Build Tools]
+        Q[Node.js Runtime] --> R[Vite - Bundler & Dev Server]
         R -- Transpiles --> N
-        R -- Processes --> L, M
-        Q --> S(npm / yarn - Package Manager)
-        S -- Manages --> T(Dependencies)
-        Q --> U(ESLint - Linting)
+        R -- Processes --> L
+        R -- Processes --> M
+        Q --> S[npm / yarn - Package Manager]
+        S -- Manages --> T[Dependencies]
+        Q --> U[ESLint - Linting]
         U -- Checks --> N
     end
 
@@ -190,9 +206,9 @@ graph TD
     style P fill:#cfc,stroke:#333,stroke-width:2px
     style Q fill:#cce,stroke:#333,stroke-width:2px
     style R fill:#ddc,stroke:#333,stroke-width:2px
-    style S fill:#eeo,stroke:#333,stroke-width:2px
-    style T fill:#ffo,stroke:#333,stroke-width:2px
-    style U fill:#ffp,stroke:#333,stroke-width:2px
+    style S fill:#eee,stroke:#333,stroke-width:2px
+    style T fill:#ffe,stroke:#333,stroke-width:2px
+    style U fill:#fdd,stroke:#333,stroke-width:2px
 ```
 
 ### <a id="technology-stack"></a>Tech Stack Breakdown
