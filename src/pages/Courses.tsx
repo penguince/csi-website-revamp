@@ -547,7 +547,7 @@ const CourseCategory = ({ title, links, description }: CourseCategoryProps) => {
 						<li key={`left-${idx}`}>
 							<a
 								href={link.href}
-								className="text-sm hover:underline leading-relaxed focus:outline-none focus-visible:ring-2 focus-visible:ring-csi-focus focus-visible:ring-offset-1 px-0.5"
+								className="text-sm hover:underline leading-relaxed focus:outline-none focus-visible:ring-2 focus-visible:ring-csi-focus focus-visible:ring-offset-1 px-0.5 text-[#2d88de]"
 							>
 								{link.label}
 							</a>
@@ -562,7 +562,7 @@ const CourseCategory = ({ title, links, description }: CourseCategoryProps) => {
 						<li key={`right-${idx}`}>
 							<a
 								href={link.href}
-								className="text-sm hover:underline leading-relaxed focus:outline-none focus-visible:ring-2 focus-visible:ring-csi-focus focus-visible:ring-offset-1 px-0.5"
+								className="text-sm hover:underline leading-relaxed focus:outline-none focus-visible:ring-2 focus-visible:ring-csi-focus focus-visible:ring-offset-1 px-0.5 text-[#2d88de]"
 							>
 								{link.label}
 							</a>
@@ -609,7 +609,7 @@ const PhDCourseSection = () => {
 									<li key={`left-${categoryIdx}-${linkIdx}`}>
 										<a
 											href={link.href}
-											className="text-xs hover:underline leading-relaxed focus:outline-none focus-visible:ring-2 focus-visible:ring-csi-focus focus-visible:ring-offset-1 px-0.5"
+											className="text-xs hover:underline leading-relaxed focus:outline-none focus-visible:ring-2 focus-visible:ring-csi-focus focus-visible:ring-offset-1 px-0.5 text-[#2d88de]"
 										>
 											{link.label}
 										</a>
@@ -635,7 +635,7 @@ const PhDCourseSection = () => {
 									<li key={`right-${categoryIdx}-${linkIdx}`}>
 										<a
 											href={link.href}
-											className="text-xs hover:underline leading-relaxed focus:outline-none focus-visible:ring-2 focus-visible:ring-csi-focus focus-visible:ring-offset-1 px-0.5"
+											className="text-xs hover:underline leading-relaxed focus:outline-none focus-visible:ring-2 focus-visible:ring-csi-focus focus-visible:ring-offset-1 px-0.5 text-[#2d88de]"
 										>
 											{link.label}
 										</a>
@@ -661,7 +661,7 @@ const Courses = () => {
 			<div className="mb-8 flex flex-col sm:flex-row gap-4 sm:gap-8">
 				<a
 					href="https://globalsearch.cuny.edu/CFGlobalSearchTool/search.jsp"
-					className="text-csi-link font-semibold hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-csi-focus"
+					className="text-csi-link font-semibold hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-csi-focus text-[#2d88de]"
 					target="_blank"
 					rel="noopener noreferrer"
 				>
@@ -670,7 +670,7 @@ const Courses = () => {
 				</a>
 				<a
 					href="content/overtally.pdf"
-					className="text-csi-link font-semibold hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-csi-focus"
+					className="text-csi-link font-semibold hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-csi-focus text-[#2d88de]"
 				>
 					Waitlist and Overtally Policy
 				</a>

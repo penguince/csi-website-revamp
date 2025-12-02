@@ -20,9 +20,11 @@ body {
 	color: #333;
 }
 
-a {
+@layer base {
+	a {
 	text-decoration: none;
 	/* WCAG AA: Links must be distinguishable - using underline on hover/focus */
+	}
 }
 
 a:hover {
