@@ -31,7 +31,7 @@ const Header = () => {
 		{ name: "Graduate", path: "/graduate" },
 		{ name: "Courses", path: "/courses" },
 		{ name: "Research", path: "/research" },
-		{ name: "Faculty", path: "/faculty" },
+		{ name: "People", path: "/people" },
 		{ name: "Resources", path: "/resources" },
 	];
 
@@ -55,7 +55,7 @@ const Header = () => {
 										href={link.url}
 										target={link.external ? "_blank" : undefined}
 										rel={link.external ? "noopener noreferrer" : undefined}
-										className="text-white hover:text-gray-200 transition-colors duration-200 py-1 px-1"
+										className="text-white hover:text-gray-200 transition-all duration-300 ease-in-out py-1 px-1 hover:underline"
 									>
 										{link.name}
 										{link.external && (
@@ -95,26 +95,26 @@ const Header = () => {
 						</Link>
 
 						{/* Desktop Navigation */}
-						<nav
-							className="hidden lg:flex space-x-1"
-							aria-label="Main Navigation"
-						>
-							{mainNavLinks.map((link) => (
-								<Link
-									key={link.path}
-									to={link.path}
-									className={`px-4 py-2 text-sm font-medium transition-colors duration-200 
+				<nav
+					className="hidden lg:flex space-x-1"
+					aria-label="Main Navigation"
+				>
+					{mainNavLinks.map((link) => (
+						<Link
+							key={link.path}
+							to={link.path}
+							className={`px-4 py-2 text-sm font-medium transition-all duration-300 ease-in-out transform hover:scale-105
                     ${
 											isActivePath(link.path)
 												? "text-csi-blue border-t-2 border-csi-blue"
 												: "text-gray-700 hover:text-csi-blue hover:bg-gray-50"
 										}`}
-									aria-current={isActivePath(link.path) ? "page" : undefined}
-								>
-									{link.name}
-								</Link>
-							))}
-						</nav>
+							aria-current={isActivePath(link.path) ? "page" : undefined}
+						>
+							{link.name}
+						</Link>
+					))}
+				</nav>
 
 						{/* Mobile Menu Button */}
 						<button
