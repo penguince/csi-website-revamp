@@ -20,7 +20,7 @@ const Header = () => {
 		},
 		{
 			name: "Class Schedule",
-			url: "https://cunyportal.cuny.edu",
+			url: "https://globalsearch.cuny.edu/CFGlobalSearchTool/search.jsp",
 			external: true,
 		},
 	];

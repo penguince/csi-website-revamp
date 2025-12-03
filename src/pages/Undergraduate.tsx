@@ -222,6 +222,8 @@ const Undergraduate = () => {
 							aria-label="AAS Degree Program"
 							className="flex flex-col gap-4 pb-6 border-b border-gray-300"
 						>
+							{/* Old site anchor: #ass */}
+							<div id="ass" />
 							<h2 className="font-semibold text-2xl md:text-3xl lg:text-4xl leading-tight text-csi-dark">
 								Associate in Applied Science (AAS) in Computer Technology
 							</h2>
@@ -301,6 +303,8 @@ const Undergraduate = () => {
 							aria-label="BS in Computer Science"
 							className="flex flex-col gap-4 pb-6 border-b border-gray-300"
 						>
+							{/* Old site anchor: #bs */}
+							<div id="bs" />
 							<h2 className="font-semibold text-2xl md:text-3xl lg:text-4xl leading-tight text-csi-dark">
 								Bachelor of Science (BS) in Computer Science
 							</h2>
@@ -435,6 +439,8 @@ const Undergraduate = () => {
 							aria-label="BS in Computer Science-Mathematics"
 							className="flex flex-col gap-4 pb-6 border-b border-gray-300"
 						>
+							{/* Old site anchor: #cs-math */}
+							<div id="cs-math" />
 							<h2 className="font-semibold text-2xl md:text-3xl lg:text-4xl leading-tight text-csi-dark">
 								Bachelor of Science (BS) in Computer Science-Mathematics
 							</h2>
@@ -495,6 +501,8 @@ const Undergraduate = () => {
 							aria-label="BS in Information Systems and Informatics"
 							className="flex flex-col gap-4 pb-6 border-b border-gray-300"
 						>
+							{/* Old site anchor: #informatics */}
+							<div id="informatics" />
 							<h2 className="font-semibold text-2xl md:text-3xl lg:text-4xl leading-tight text-csi-dark">
 								Bachelor of Science (BS) in Information Systems and Informatics
 							</h2>
@@ -560,6 +568,8 @@ const Undergraduate = () => {
 							aria-label="Computer Science Minor"
 							className="flex flex-col gap-4 pb-6 border-b border-gray-300"
 						>
+							{/* Old site anchor: #cs-minor */}
+							<div id="cs-minor" />
 							<h2 className="font-semibold text-2xl md:text-3xl lg:text-4xl leading-tight text-csi-dark">
 								Computer Science Minor
 							</h2>

@@ -94,6 +94,8 @@ const Graduate = () => {
 						id="ms-program"
 						className="bg-white border border-gray-200  -lg shadow-sm p-8 flex flex-col gap-5"
 					>
+						{/* Old site anchor: #ms */}
+						<div id="ms" />
 						<h2 className="text-3xl font-semibold text-gray-950">
 							M.S. Program
 						</h2>
@@ -326,6 +328,8 @@ const Graduate = () => {
 						id="phd-program"
 						className="bg-white border border-gray-200 shadow-sm p-6 flex flex-col gap-6  -none"
 					>
+						{/* Old site anchor: #phd */}
+						<div id="phd" />
 						<h2 className="text-2xl md:text-3xl font-semibold text-gray-950">
 							Ph.D. in Computer Science
 						</h2>
