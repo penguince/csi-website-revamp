@@ -31,7 +31,7 @@ const Header = () => {
 		{ name: "Graduate", path: "/graduate" },
 		{ name: "Courses", path: "/courses" },
 		{ name: "Research", path: "/research" },
-		{ name: "Faculty", path: "/faculty" },
+		{ name: "People", path: "/people" },
 		{ name: "Resources", path: "/resources" },
 	];
 
@@ -55,7 +55,7 @@ const Header = () => {
 										href={link.url}
 										target={link.external ? "_blank" : undefined}
 										rel={link.external ? "noopener noreferrer" : undefined}
-										className="text-white hover:text-gray-200 transition-colors duration-200 py-1 px-1"
+										className="text-white hover:text-gray-200 transition-all duration-300 ease-in-out py-1 px-1 hover:underline"
 									>
 										{link.name}
 										{link.external && (
@@ -76,22 +76,14 @@ const Header = () => {
 						{/* Logo */}
 						<Link to="/" className="flex items-center space-x-3">
 							<img
-								src="/csi-logo.png"
+								src="/csi_logo_nav.png"
 								alt="CSI Department of Computer Science"
-								className="h-12 w-auto"
+								className="h-16 w-auto"
 								onError={(e) => {
 									// Fallback if image doesn't exist
 									e.currentTarget.style.display = "none";
 								}}
 							/>
-							<div className="flex flex-col">
-								<span className="text-xl font-bold text-gray-800">
-									Department of
-								</span>
-								<span className="text-xl font-bold text-csi-blue">
-									Computer Science
-								</span>
-							</div>
 						</Link>
 
 						{/* Desktop Navigation */}
@@ -103,7 +95,7 @@ const Header = () => {
 								<Link
 									key={link.path}
 									to={link.path}
-									className={`px-4 py-2 text-sm font-medium transition-colors duration-200 
+									className={`px-4 py-2 text-sm font-medium transition-all duration-300 ease-in-out transform hover:scale-105
                     ${
 											isActivePath(link.path)
 												? "text-csi-blue border-t-2 border-csi-blue"
