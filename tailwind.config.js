@@ -4,8 +4,9 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				"csi-blue": "#2d88de",
-				"csi-dark": "#53626e",
+				"csi-blue": "#1268D2",
+				"csi-dark": "#444E5A",
+				"csi-light": "#EBF2FC",
 				"csi-gray": "#f1f1f1",
 			},
 		},
