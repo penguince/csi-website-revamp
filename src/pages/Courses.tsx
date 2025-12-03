@@ -674,6 +674,15 @@ const Courses = () => {
 				>
 					Waitlist and Overtally Policy
 				</a>
+				<a
+					href="https://flowchart-csi.vercel.app/"
+					className="text-csi-link font-semibold hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-csi-focus text-[#2d88de]"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					Flowchart
+					<span className="sr-only"> (opens in new tab)</span>
+				</a>
 			</div>
 
 			<CourseCategory
