@@ -247,182 +247,187 @@ const Research = () => {
 				<main className="w-full lg:flex-1 flex flex-col gap-8 md:gap-12 lg:order-2 overflow-x-hidden">
 					{/* 1. COVID-19 Highlight Section */}
 					<Slide>
-					<section aria-label="Recent COVID-19 Research">
-						<h2 className="text-gray-950 font-semibold text-2xl md:text-3xl lg:text-4xl mb-6 md:mb-8 leading-tight tracking-tight text-balance">
-							Recent Research on COVID-19
-						</h2>
-						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-x-hidden">
-							{covidProjects.map((project) => (
-								<article
-									key={project.id}
-									className="relative border border-gray-200 overflow-hidden shadow-md hover:shadow-lg transition focus-within:ring-2 focus-within:ring-blue-600"
-								>
-									<div className="bg-white p-4 md:p-6 h-full flex flex-col">
-										<h3 className="font-bold text-lg md:text-xl text-gray-950 mb-3 line-clamp-2">
-											{project.title}
-										</h3>
-										<div className="bg-gray-50 p-4 mt-auto border-t border-gray-200 overflow-hidden">
-											<p className="text-sm md:text-base text-gray-800 leading-relaxed">
-												{project.description}
-											</p>
-											<a
-												href={project.linkHref}
-												className="text-blue-600 font-bold text-sm underline hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 mt-3 block transition truncate"
-											>
-												{project.linkText}
-											</a>
+						<section aria-label="Recent COVID-19 Research">
+							<h2 className="text-gray-950 font-semibold text-2xl md:text-3xl lg:text-4xl mb-6 md:mb-8 leading-tight tracking-tight text-balance">
+								Recent Research on COVID-19
+							</h2>
+							<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-x-hidden">
+								{covidProjects.map((project) => (
+									<article
+										key={project.id}
+										className="relative border border-gray-200 overflow-hidden shadow-md hover:shadow-lg transition focus-within:ring-2 focus-within:ring-blue-600"
+									>
+										<div className="bg-white p-4 md:p-6 h-full flex flex-col">
+											<h3 className="font-bold text-lg md:text-xl text-gray-950 mb-3 line-clamp-2">
+												{project.title}
+											</h3>
+											<div className="bg-gray-50 p-4 mt-auto border-t border-gray-200 overflow-hidden">
+												<p className="text-sm md:text-base text-gray-800 leading-relaxed">
+													{project.description}
+												</p>
+												<a
+													href={project.linkHref}
+													className="text-blue-600 font-bold text-sm underline hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 mt-3 block transition truncate"
+												>
+													{project.linkText}
+												</a>
+											</div>
 										</div>
-									</div>
-								</article>
-							))}
-						</div>
-					</section>
+									</article>
+								))}
+							</div>
+						</section>
 					</Slide>
 
 					<hr className="border-t-2 border-gray-300" />
 
 					{/* 2. Faculty Research Section */}
 					<Slide delay={0.1}>
-					<section aria-label="Faculty Research" className="overflow-x-hidden">
-						<div className="flex flex-col gap-4 md:gap-6 mb-6 overflow-x-hidden">
-							<h2 className="text-gray-950 font-semibold text-2xl md:text-3xl lg:text-4xl leading-tight tracking-tight text-balance">
-								Faculty Research
-							</h2>
-
-							<div className="w-full flex items-center gap-3 py-2 px-4 md:px-6 bg-white border-2 border-gray-300 focus-within:ring-2 focus-within:ring-blue-600 overflow-hidden">
-								<Search
-									className="w-5 h-5 text-gray-600 flex-shrink-0"
-									aria-hidden="true"
-								/>
-								<input
-									type="text"
-									placeholder="Search faculty research"
-									value={searchQuery}
-									onChange={(e) => setSearchQuery(e.target.value)}
-									className="flex-grow font-normal text-base text-gray-950 outline-none bg-transparent min-w-0"
-									aria-label="Search faculty research by name, title, or description"
-								/>
-							</div>
-							<p className="text-sm text-gray-600" aria-live="polite">
-								{filteredFaculty.length} research area
-								{filteredFaculty.length !== 1 ? "s" : ""} found
-							</p>
-						</div>
-
-						<div
-							className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-x-hidden"
-							style={{ gridTemplateRows: "auto" }}
+						<section
+							aria-label="Faculty Research"
+							className="overflow-x-hidden"
 						>
-							{filteredFaculty.map((item) => (
-								<article
-									key={item.id}
-									className="bg-white border border-gray-200 shadow-lg overflow-hidden hover:shadow-xl transition focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-600 grid"
-									style={{ gridTemplateRows: "subgrid", gridRow: "span 2" }}
-								>
-									<div className="w-full h-48 sm:h-56 md:h-64 overflow-hidden bg-gray-200">
-										<img
-											src={item.image || "/placeholder.svg"}
-											alt={`${item.title} research`}
-											className="w-full h-full object-cover"
-										/>
-									</div>
-									<div className="p-4 md:p-6 flex flex-col gap-4 h-full min-w-0">
-										<div>
-											<h3 className="text-gray-950 font-semibold text-lg md:text-xl lg:text-2xl leading-tight tracking-tight break-words">
-												{item.title}
-											</h3>
-											<p className="text-gray-800 font-bold italic text-base md:text-lg mt-1 truncate">
-												{item.professor}
-											</p>
-										</div>
-										{/* LOGIC CHANGED HERE: Conditionally apply line-clamp based on expandedSections state */}
-										<p
-											className={`text-gray-800 text-sm md:text-base leading-relaxed flex-grow ${
-												expandedSections.includes(item.id) ? "" : "line-clamp-3"
-											}`}
-										>
-											{item.description}
-										</p>
+							<div className="flex flex-col gap-4 md:gap-6 mb-6 overflow-x-hidden">
+								<h2 className="text-gray-950 font-semibold text-2xl md:text-3xl lg:text-4xl leading-tight tracking-tight text-balance">
+									Faculty Research
+								</h2>
 
-										{/* LOGIC CHANGED HERE: Changed <a> to <button> and added onClick */}
-										<button
-											onClick={() => toggleSection(item.id)}
-											className="text-blue-600 underline text-sm md:text-base hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 transition whitespace-nowrap text-left w-fit"
-										>
-											{expandedSections.includes(item.id)
-												? "Read less <"
-												: "Read more >"}
-										</button>
-									</div>
-								</article>
-							))}
-						</div>
-						{filteredFaculty.length === 0 && (
-							<div className="text-center py-8">
-								<p className="text-gray-800 text-base">
-									No research items match your search.
+								<div className="w-full flex items-center gap-3 py-2 px-4 md:px-6 bg-white border-2 border-gray-300 focus-within:ring-2 focus-within:ring-blue-600 overflow-hidden">
+									<Search
+										className="w-5 h-5 text-gray-600 flex-shrink-0"
+										aria-hidden="true"
+									/>
+									<input
+										type="text"
+										placeholder="Search faculty research"
+										value={searchQuery}
+										onChange={(e) => setSearchQuery(e.target.value)}
+										className="flex-grow font-normal text-base text-gray-950 outline-none bg-transparent min-w-0"
+										aria-label="Search faculty research by name, title, or description"
+									/>
+								</div>
+								<p className="text-sm text-gray-600" aria-live="polite">
+									{filteredFaculty.length} research area
+									{filteredFaculty.length !== 1 ? "s" : ""} found
 								</p>
 							</div>
-						)}
-					</section>
+
+							<div
+								className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-x-hidden"
+								style={{ gridTemplateRows: "auto" }}
+							>
+								{filteredFaculty.map((item) => (
+									<article
+										key={item.id}
+										className="bg-white border border-gray-200 shadow-lg overflow-hidden hover:shadow-xl transition focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-600 grid"
+										style={{ gridTemplateRows: "subgrid", gridRow: "span 2" }}
+									>
+										<div className="w-full h-48 sm:h-56 md:h-64 overflow-hidden bg-gray-200">
+											<img
+												src={item.image || "/placeholder.svg"}
+												alt={`${item.title} research`}
+												className="w-full h-full object-cover"
+											/>
+										</div>
+										<div className="p-4 md:p-6 flex flex-col gap-4 h-full min-w-0">
+											<div>
+												<h3 className="text-gray-950 font-semibold text-lg md:text-xl lg:text-2xl leading-tight tracking-tight break-words">
+													{item.title}
+												</h3>
+												<p className="text-gray-800 font-bold italic text-base md:text-lg mt-1 truncate">
+													{item.professor}
+												</p>
+											</div>
+											{/* LOGIC CHANGED HERE: Conditionally apply line-clamp based on expandedSections state */}
+											<p
+												className={`text-gray-800 text-sm md:text-base leading-relaxed flex-grow ${
+													expandedSections.includes(item.id)
+														? ""
+														: "line-clamp-3"
+												}`}
+											>
+												{item.description}
+											</p>
+
+											{/* LOGIC CHANGED HERE: Changed <a> to <button> and added onClick */}
+											<button
+												onClick={() => toggleSection(item.id)}
+												className="text-blue-600 underline text-sm md:text-base hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 transition whitespace-nowrap text-left w-fit"
+											>
+												{expandedSections.includes(item.id)
+													? "Read less <"
+													: "Read more >"}
+											</button>
+										</div>
+									</article>
+								))}
+							</div>
+							{filteredFaculty.length === 0 && (
+								<div className="text-center py-8">
+									<p className="text-gray-800 text-base">
+										No research items match your search.
+									</p>
+								</div>
+							)}
+						</section>
 					</Slide>
 
 					<hr className="border-t-2 border-gray-300" />
 
 					{/* 3. Student Research Section */}
 					<Slide delay={0.15}>
-					<section
-						aria-label="Student Research"
-						className="py-6 md:py-8 overflow-x-hidden"
-					>
-						<div className="flex flex-col gap-4 md:gap-6 mb-6 overflow-x-hidden">
-							<h2 className="text-gray-950 font-semibold text-2xl md:text-3xl lg:text-4xl leading-tight tracking-tight text-balance">
-								Student Research
-							</h2>
-						</div>
-
-						<div
-							className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-x-hidden"
-							style={{ gridTemplateRows: "auto" }}
+						<section
+							aria-label="Student Research"
+							className="py-6 md:py-8 overflow-x-hidden"
 						>
-							{studentResearchData.map((item) => (
-								<article
-									key={item.id}
-									className="bg-white border border-gray-200 shadow-lg overflow-hidden hover:shadow-xl transition focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-600 grid"
-									style={{ gridTemplateRows: "subgrid", gridRow: "span 2" }}
-								>
-									<div className="w-full h-48 sm:h-56 md:h-64 overflow-hidden bg-gray-200">
-										<img
-											src={item.image || "/placeholder.svg"}
-											alt={`${item.title} research`}
-											className="w-full h-full object-cover"
-										/>
-									</div>
-									<div className="p-4 md:p-6 flex flex-col gap-4 h-full min-w-0">
-										<div>
-											<h3 className="text-gray-950 font-semibold text-lg md:text-xl lg:text-2xl leading-tight tracking-tight break-words">
-												{item.title}
-											</h3>
-											<p className="text-gray-800 font-bold italic text-base md:text-lg mt-1 truncate">
-												{item.student}
-											</p>
+							<div className="flex flex-col gap-4 md:gap-6 mb-6 overflow-x-hidden">
+								<h2 className="text-gray-950 font-semibold text-2xl md:text-3xl lg:text-4xl leading-tight tracking-tight text-balance">
+									Student Research
+								</h2>
+							</div>
+
+							<div
+								className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-x-hidden"
+								style={{ gridTemplateRows: "auto" }}
+							>
+								{studentResearchData.map((item) => (
+									<article
+										key={item.id}
+										className="bg-white border border-gray-200 shadow-lg overflow-hidden hover:shadow-xl transition focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-600 grid"
+										style={{ gridTemplateRows: "subgrid", gridRow: "span 2" }}
+									>
+										<div className="w-full h-48 sm:h-56 md:h-64 overflow-hidden bg-gray-200">
+											<img
+												src={item.image || "/placeholder.svg"}
+												alt={`${item.title} research`}
+												className="w-full h-full object-cover"
+											/>
 										</div>
-										<p className="text-gray-800 text-sm md:text-base leading-relaxed flex-grow">
-											{item.description}
-										</p>
-										<a
-											href={item.link}
-											target="_blank"
-											rel="noopener noreferrer"
-											className="text-blue-600 underline text-sm md:text-base hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 transition whitespace-nowrap text-left w-fit"
-										>
-											View Poster &gt;
-										</a>
-									</div>
-								</article>
-							))}
-						</div>
-					</section>
+										<div className="p-4 md:p-6 flex flex-col gap-4 h-full min-w-0">
+											<div>
+												<h3 className="text-gray-950 font-semibold text-lg md:text-xl lg:text-2xl leading-tight tracking-tight break-words">
+													{item.title}
+												</h3>
+												<p className="text-gray-800 font-bold italic text-base md:text-lg mt-1 truncate">
+													{item.student}
+												</p>
+											</div>
+											<p className="text-gray-800 text-sm md:text-base leading-relaxed flex-grow">
+												{item.description}
+											</p>
+											<a
+												href={item.link}
+												target="_blank"
+												rel="noopener noreferrer"
+												className="text-blue-600 underline text-sm md:text-base hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 transition whitespace-nowrap text-left w-fit"
+											>
+												View Poster &gt;
+											</a>
+										</div>
+									</article>
+								))}
+							</div>
+						</section>
 					</Slide>
 				</main>
 			</div>

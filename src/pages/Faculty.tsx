@@ -270,296 +270,302 @@ const Faculty = () => {
 				<main className="w-full lg:flex-1 flex flex-col gap-6 md:gap-8 lg:order-2">
 					{/* Computer Science professors section */}
 					<Slide>
-					<section aria-labelledby="professors-heading">
-						<h2
-							id="professors-heading"
-							className="text-2xl font-bold text-[#2f4f4f] mb-4 text-center md:text-left"
-						>
-							Professors
-						</h2>
-						<div
-							className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8"
-							style={{ gridTemplateRows: "auto" }}
-						>
-							{Professors.map((professor, index) => (
-								<div
-									key={index}
-									className="bg-white overflow-hidden grid grid-cols-[auto_1fr] gap-0 focus-within:ring-2 focus-within:ring-inset focus-within:ring-csi-blue"
-									role="article"
-									aria-label={`${professor.name} faculty card`}
-									style={{ gridTemplateRows: "subgrid", gridRow: "span 1" }}
-								>
-									<div className="bg-csi-gray w-full sm:w-32 h-32 sm:h-auto shrink-0 flex items-center justify-center overflow-hidden">
-										<img
-											src={professor.image || "/avatar.png"}
-											alt={professor.name}
-											className="w-full h-full object-cover"
-										/>
-									</div>
-									<div className="p-4 flex flex-col justify-center space-y-0.5">
-										<h3 className="text-lg font-bold mb-2">
-											{professor.link ? (
+						<section aria-labelledby="professors-heading">
+							<h2
+								id="professors-heading"
+								className="text-2xl font-bold text-[#2f4f4f] mb-4 text-center md:text-left"
+							>
+								Professors
+							</h2>
+							<div
+								className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8"
+								style={{ gridTemplateRows: "auto" }}
+							>
+								{Professors.map((professor, index) => (
+									<div
+										key={index}
+										className="bg-white overflow-hidden grid grid-cols-[auto_1fr] gap-0 focus-within:ring-2 focus-within:ring-inset focus-within:ring-csi-blue"
+										role="article"
+										aria-label={`${professor.name} faculty card`}
+										style={{ gridTemplateRows: "subgrid", gridRow: "span 1" }}
+									>
+										<div className="bg-csi-gray w-full sm:w-32 h-32 sm:h-auto shrink-0 flex items-center justify-center overflow-hidden">
+											<img
+												src={professor.image || "/avatar.png"}
+												alt={professor.name}
+												className="w-full h-full object-cover"
+											/>
+										</div>
+										<div className="p-4 flex flex-col justify-center space-y-0.5">
+											<h3 className="text-lg font-bold mb-2">
+												{professor.link ? (
+													<a
+														href={professor.link}
+														className="text-[#2d88de] hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#2d88de]"
+													>
+														{professor.name}
+													</a>
+												) : (
+													<span className="text-[#2d88de] hover:underline cursor-pointer">
+														{professor.name}
+													</span>
+												)}
+											</h3>
+											<p className="text-xs text-[#53626e]">
+												{professor.title}
+											</p>
+											<p className="text-xs text-[#53626e]">
+												<span className="font-medium">Email:</span>{" "}
 												<a
-													href={professor.link}
-													className="text-[#2d88de] hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#2d88de]"
+													href={`mailto:${professor.email}`}
+													className="text-csi-blue hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-csi-blue"
+													aria-label={`Email ${professor.name}`}
 												>
-													{professor.name}
+													{professor.email}
 												</a>
-											) : (
-												<span className="text-[#2d88de] hover:underline cursor-pointer">
-													{professor.name}
-												</span>
-											)}
-										</h3>
-										<p className="text-xs text-[#53626e]">{professor.title}</p>
-										<p className="text-xs text-[#53626e]">
-											<span className="font-medium">Email:</span>{" "}
-											<a
-												href={`mailto:${professor.email}`}
-												className="text-csi-blue hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-csi-blue"
-												aria-label={`Email ${professor.name}`}
-											>
-												{professor.email}
-											</a>
-										</p>
-										<p className="text-xs text-[#53626e]">
-											<span className="font-medium">Office:</span>{" "}
-											{professor.office}
-										</p>
-										<p className="text-xs text-[#53626e]">
-											<span className="font-medium">Phone:</span>{" "}
-											<a
-												href={`tel:${professor.phone}`}
-												className="text-csi-blue hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-csi-blue"
-												aria-label={`Call ${professor.name} at ${professor.phone}`}
-											>
-												{professor.phone}
-											</a>
-										</p>
+											</p>
+											<p className="text-xs text-[#53626e]">
+												<span className="font-medium">Office:</span>{" "}
+												{professor.office}
+											</p>
+											<p className="text-xs text-[#53626e]">
+												<span className="font-medium">Phone:</span>{" "}
+												<a
+													href={`tel:${professor.phone}`}
+													className="text-csi-blue hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-csi-blue"
+													aria-label={`Call ${professor.name} at ${professor.phone}`}
+												>
+													{professor.phone}
+												</a>
+											</p>
+										</div>
 									</div>
-								</div>
-							))}
-						</div>
-					</section>
+								))}
+							</div>
+						</section>
 					</Slide>
 
 					<hr className="border-t border-[#53626e] my-8" />
 
 					{/* Emeritus Section */}
 					<Slide delay={0.1}>
-					<section id="emeritus" aria-labelledby="emeritus-heading">
-						<h2
-							id="emeritus-heading"
-							className="text-2xl font-bold text-[#2f4f4f] mb-4 text-center md:text-left"
-						>
-							Emeritus
-						</h2>
-						<div className="bg-white p-6 md:p-8">
-							<ul
-								className="grid grid-cols-1 md:grid-cols-4 gap-y-4 md:gap-x-8 md:gap-y-6 w-full"
-								role="list"
+						<section id="emeritus" aria-labelledby="emeritus-heading">
+							<h2
+								id="emeritus-heading"
+								className="text-2xl font-bold text-[#2f4f4f] mb-4 text-center md:text-left"
 							>
-								{Emeritus.map((spec, index) => (
-									<li
-										key={index}
-										className="flex items-center justify-center md:justify-start py-1"
-									>
-										<span className="text-[#53626e] text-lg md:text-base font-medium">
-											{spec}
-										</span>
-									</li>
-								))}
-							</ul>
-						</div>
-					</section>
+								Emeritus
+							</h2>
+							<div className="bg-white p-6 md:p-8">
+								<ul
+									className="grid grid-cols-1 md:grid-cols-4 gap-y-4 md:gap-x-8 md:gap-y-6 w-full"
+									role="list"
+								>
+									{Emeritus.map((spec, index) => (
+										<li
+											key={index}
+											className="flex items-center justify-center md:justify-start py-1"
+										>
+											<span className="text-[#53626e] text-lg md:text-base font-medium">
+												{spec}
+											</span>
+										</li>
+									))}
+								</ul>
+							</div>
+						</section>
 					</Slide>
 
 					<hr className="border-t border-[#53626e] my-8" />
 
 					{/* Adjuncts Section */}
 					<Slide delay={0.15}>
-					<section id="adjuncts" aria-labelledby="adjuncts-heading">
-						<h2
-							id="adjuncts-heading"
-							className="text-2xl font-bold text-[#2f4f4f] mb-4 text-center md:text-left"
-						>
-							Adjuncts
-						</h2>
-						<div className="bg-white p-6 md:p-8">
-							<ul
-								className="grid grid-cols-1 md:grid-cols-4 gap-y-4 md:gap-x-8 md:gap-y-6 w-full"
-								role="list"
+						<section id="adjuncts" aria-labelledby="adjuncts-heading">
+							<h2
+								id="adjuncts-heading"
+								className="text-2xl font-bold text-[#2f4f4f] mb-4 text-center md:text-left"
 							>
-								{Adjuncts.map((spec, index) => (
-									<li
-										key={index}
-										className="flex items-center justify-center md:justify-start py-1"
-									>
-										<span className="text-[#53626e] text-lg md:text-base font-medium">
-											{spec}
-										</span>
-									</li>
-								))}
-							</ul>
-						</div>
-					</section>
+								Adjuncts
+							</h2>
+							<div className="bg-white p-6 md:p-8">
+								<ul
+									className="grid grid-cols-1 md:grid-cols-4 gap-y-4 md:gap-x-8 md:gap-y-6 w-full"
+									role="list"
+								>
+									{Adjuncts.map((spec, index) => (
+										<li
+											key={index}
+											className="flex items-center justify-center md:justify-start py-1"
+										>
+											<span className="text-[#53626e] text-lg md:text-base font-medium">
+												{spec}
+											</span>
+										</li>
+									))}
+								</ul>
+							</div>
+						</section>
 					</Slide>
 
 					<hr className="border-t border-[#53626e] my-8" />
 
 					{/* Office Staff Section */}
 					<Slide delay={0.2}>
-					<section id="office-staff" aria-labelledby="office-staff-heading">
-						<h2
-							id="office-staff-heading"
-							className="text-2xl font-bold text-[#2f4f4f] mb-4 text-center md:text-left"
-						>
-							Office Staff
-						</h2>
-						<div
-							className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8"
-							style={{ gridTemplateRows: "auto" }}
-						>
-							{OfficeStaff.map((professor, index) => (
-								<div
-									key={index}
-									className="bg-white overflow-hidden grid grid-cols-[auto_1fr] gap-0 focus-within:ring-2 focus-within:ring-inset focus-within:ring-csi-blue"
-									role="article"
-									aria-label={`${professor.name} faculty card`}
-									style={{ gridTemplateRows: "subgrid", gridRow: "span 1" }}
-								>
-									<div className="bg-csi-gray w-full sm:w-32 h-32 sm:h-auto shrink-0 flex items-center justify-center overflow-hidden">
-										<img
-											src={professor.image || "/avatar.png"}
-											alt={professor.name}
-											className="w-full h-full object-cover"
-										/>
-									</div>
-									<div className="p-4 flex flex-col justify-center space-y-0.5">
-										<h3 className="text-lg font-bold mb-2">
-											{professor.link ? (
+						<section id="office-staff" aria-labelledby="office-staff-heading">
+							<h2
+								id="office-staff-heading"
+								className="text-2xl font-bold text-[#2f4f4f] mb-4 text-center md:text-left"
+							>
+								Office Staff
+							</h2>
+							<div
+								className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8"
+								style={{ gridTemplateRows: "auto" }}
+							>
+								{OfficeStaff.map((professor, index) => (
+									<div
+										key={index}
+										className="bg-white overflow-hidden grid grid-cols-[auto_1fr] gap-0 focus-within:ring-2 focus-within:ring-inset focus-within:ring-csi-blue"
+										role="article"
+										aria-label={`${professor.name} faculty card`}
+										style={{ gridTemplateRows: "subgrid", gridRow: "span 1" }}
+									>
+										<div className="bg-csi-gray w-full sm:w-32 h-32 sm:h-auto shrink-0 flex items-center justify-center overflow-hidden">
+											<img
+												src={professor.image || "/avatar.png"}
+												alt={professor.name}
+												className="w-full h-full object-cover"
+											/>
+										</div>
+										<div className="p-4 flex flex-col justify-center space-y-0.5">
+											<h3 className="text-lg font-bold mb-2">
+												{professor.link ? (
+													<a
+														href={professor.link}
+														className="text-[#2d88de] hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#2d88de]"
+													>
+														{professor.name}
+													</a>
+												) : (
+													<span className="text-[#2d88de] hover:underline cursor-pointer">
+														{professor.name}
+													</span>
+												)}
+											</h3>
+											<p className="text-xs text-[#53626e]">
+												{professor.title}
+											</p>
+											<p className="text-xs text-[#53626e]">
+												<span className="font-medium">Email:</span>{" "}
 												<a
-													href={professor.link}
-													className="text-[#2d88de] hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#2d88de]"
+													href={`mailto:${professor.email}`}
+													className="text-csi-blue hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-csi-blue"
+													aria-label={`Email ${professor.name}`}
 												>
-													{professor.name}
+													{professor.email}
 												</a>
-											) : (
-												<span className="text-[#2d88de] hover:underline cursor-pointer">
-													{professor.name}
-												</span>
-											)}
-										</h3>
-										<p className="text-xs text-[#53626e]">{professor.title}</p>
-										<p className="text-xs text-[#53626e]">
-											<span className="font-medium">Email:</span>{" "}
-											<a
-												href={`mailto:${professor.email}`}
-												className="text-csi-blue hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-csi-blue"
-												aria-label={`Email ${professor.name}`}
-											>
-												{professor.email}
-											</a>
-										</p>
-										<p className="text-xs text-[#53626e]">
-											<span className="font-medium">Office:</span>{" "}
-											{professor.office}
-										</p>
-										<p className="text-xs text-[#53626e]">
-											<span className="font-medium">Phone:</span>{" "}
-											<a
-												href={`tel:${professor.phone}`}
-												className="text-csi-blue hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-csi-blue"
-												aria-label={`Call ${professor.name} at ${professor.phone}`}
-											>
-												{professor.phone}
-											</a>
-										</p>
+											</p>
+											<p className="text-xs text-[#53626e]">
+												<span className="font-medium">Office:</span>{" "}
+												{professor.office}
+											</p>
+											<p className="text-xs text-[#53626e]">
+												<span className="font-medium">Phone:</span>{" "}
+												<a
+													href={`tel:${professor.phone}`}
+													className="text-csi-blue hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-csi-blue"
+													aria-label={`Call ${professor.name} at ${professor.phone}`}
+												>
+													{professor.phone}
+												</a>
+											</p>
+										</div>
 									</div>
-								</div>
-							))}
-						</div>
-					</section>
+								))}
+							</div>
+						</section>
 					</Slide>
 
 					<hr className="border-t border-[#53626e] my-8" />
 
 					{/* Technical Staff Section */}
 					<Slide delay={0.25}>
-					<section
-						id="technical-staff"
-						aria-labelledby="technical-staff-heading"
-					>
-						<h2
-							id="technical-staff-heading"
-							className="text-2xl font-bold text-[#2f4f4f] mb-4 text-center md:text-left"
+						<section
+							id="technical-staff"
+							aria-labelledby="technical-staff-heading"
 						>
-							Technical Staff
-						</h2>
-						<div
-							className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8"
-							style={{ gridTemplateRows: "auto" }}
-						>
-							{TechnicalStaff.map((professor, index) => (
-								<div
-									key={index}
-									className="bg-white overflow-hidden grid grid-cols-[auto_1fr] gap-0 focus-within:ring-2 focus-within:ring-inset focus-within:ring-csi-blue"
-									role="article"
-									aria-label={`${professor.name} faculty card`}
-									style={{ gridTemplateRows: "subgrid", gridRow: "span 1" }}
-								>
-									<div className="bg-csi-gray w-full sm:w-32 h-32 sm:h-auto shrink-0 flex items-center justify-center overflow-hidden">
-										<img
-											src={professor.image || "/avatar.png"}
-											alt={professor.name}
-											className="w-full h-full object-cover"
-										/>
-									</div>
-									<div className="p-4 flex flex-col justify-center space-y-0.5">
-										<h3 className="text-lg font-bold mb-2">
-											{professor.link ? (
+							<h2
+								id="technical-staff-heading"
+								className="text-2xl font-bold text-[#2f4f4f] mb-4 text-center md:text-left"
+							>
+								Technical Staff
+							</h2>
+							<div
+								className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8"
+								style={{ gridTemplateRows: "auto" }}
+							>
+								{TechnicalStaff.map((professor, index) => (
+									<div
+										key={index}
+										className="bg-white overflow-hidden grid grid-cols-[auto_1fr] gap-0 focus-within:ring-2 focus-within:ring-inset focus-within:ring-csi-blue"
+										role="article"
+										aria-label={`${professor.name} faculty card`}
+										style={{ gridTemplateRows: "subgrid", gridRow: "span 1" }}
+									>
+										<div className="bg-csi-gray w-full sm:w-32 h-32 sm:h-auto shrink-0 flex items-center justify-center overflow-hidden">
+											<img
+												src={professor.image || "/avatar.png"}
+												alt={professor.name}
+												className="w-full h-full object-cover"
+											/>
+										</div>
+										<div className="p-4 flex flex-col justify-center space-y-0.5">
+											<h3 className="text-lg font-bold mb-2">
+												{professor.link ? (
+													<a
+														href={professor.link}
+														className="text-[#2d88de] hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#2d88de]"
+													>
+														{professor.name}
+													</a>
+												) : (
+													<span className="text-[#2d88de] hover:underline cursor-pointer">
+														{professor.name}
+													</span>
+												)}
+											</h3>
+											<p className="text-xs text-[#53626e]">
+												{professor.title}
+											</p>
+											<p className="text-xs text-[#53626e]">
+												<span className="font-medium">Email:</span>{" "}
 												<a
-													href={professor.link}
-													className="text-[#2d88de] hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#2d88de]"
+													href={`mailto:${professor.email}`}
+													className="text-csi-blue hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-csi-blue"
+													aria-label={`Email ${professor.name}`}
 												>
-													{professor.name}
+													{professor.email}
 												</a>
-											) : (
-												<span className="text-[#2d88de] hover:underline cursor-pointer">
-													{professor.name}
-												</span>
-											)}
-										</h3>
-										<p className="text-xs text-[#53626e]">{professor.title}</p>
-										<p className="text-xs text-[#53626e]">
-											<span className="font-medium">Email:</span>{" "}
-											<a
-												href={`mailto:${professor.email}`}
-												className="text-csi-blue hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-csi-blue"
-												aria-label={`Email ${professor.name}`}
-											>
-												{professor.email}
-											</a>
-										</p>
-										<p className="text-xs text-[#53626e]">
-											<span className="font-medium">Office:</span>{" "}
-											{professor.office}
-										</p>
-										<p className="text-xs text-[#53626e]">
-											<span className="font-medium">Phone:</span>{" "}
-											<a
-												href={`tel:${professor.phone}`}
-												className="text-csi-blue hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-csi-blue"
-												aria-label={`Call ${professor.name} at ${professor.phone}`}
-											>
-												{professor.phone}
-											</a>
-										</p>
+											</p>
+											<p className="text-xs text-[#53626e]">
+												<span className="font-medium">Office:</span>{" "}
+												{professor.office}
+											</p>
+											<p className="text-xs text-[#53626e]">
+												<span className="font-medium">Phone:</span>{" "}
+												<a
+													href={`tel:${professor.phone}`}
+													className="text-csi-blue hover:underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-csi-blue"
+													aria-label={`Call ${professor.name} at ${professor.phone}`}
+												>
+													{professor.phone}
+												</a>
+											</p>
+										</div>
 									</div>
-								</div>
-							))}
-						</div>
-					</section>
+								))}
+							</div>
+						</section>
 					</Slide>
 				</main>
 			</div>
