@@ -210,7 +210,7 @@ const generateId = (text: string): string => {
 
 // Reusable List Component for Accessibility & Consistency
 const ResourceList = ({ items }: { items: ResourceLink[] }) => (
-	<ul className="space-y-2 list-disc pl-5 text-[#2d88de]" role="list">
+	<ul className="space-y-2 list-disc pl-5 marker:text-gray-600" role="list">
 		{items.map((item, idx) => (
 			<li key={idx}>
 				<a
@@ -259,14 +259,15 @@ const Resources = () => {
 					>
 						Student Spotlights 🌟
 					</h2>
-					<ol className="space-y-1" role="list">
+					<ol className="list-decimal pl-5 space-y-1 marker:text-gray-600">
 						{studentSpotlights.map((spotlight, idx) => (
-							<li key={idx}>
+							<li key={idx} className="pl-1">
 								<a
 									href={spotlight.href}
-									className="block text-[#2d88de] text-sm leading-relaxed hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2d88de] focus-visible:ring-offset-1 px-0.5 py-0.5"
+									className="block text-[#2d88de] text-sm leading-relaxed hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2d88de] focus-visible:ring-offset-1 px-0.5 py-0.5 line-clamp-2"
 									target="_blank"
 									rel="noopener noreferrer"
+									title={spotlight.label}
 								>
 									{spotlight.label}
 									<span className="sr-only"> (opens in new tab)</span>
