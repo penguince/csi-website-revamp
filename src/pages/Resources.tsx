@@ -259,7 +259,7 @@ const Resources = () => {
 					>
 						Student Spotlights 🌟
 					</h2>
-					<ul className="space-y-1" role="list">
+					<ol className="space-y-1" role="list">
 						{studentSpotlights.map((spotlight, idx) => (
 							<li key={idx}>
 								<a
@@ -273,7 +273,7 @@ const Resources = () => {
 								</a>
 							</li>
 						))}
-					</ul>
+					</ol>
 				</section>
 
 				{/* Right: Placeholder Image */}
