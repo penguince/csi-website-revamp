@@ -1,6 +1,7 @@
 "use client";
 
 import Sidebar from "../components/Sidebar";
+import Slide from "../components/Slide";
 
 const Undergraduate = () => {
 	return (
@@ -59,6 +60,7 @@ const Undergraduate = () => {
 				{/* Right Content - Main Content Area */}
 				<main className="w-full lg:flex-1 flex flex-col gap-6 md:gap-8 lg:order-2">
 					{/* Advisement Section */}
+					<Slide>
 					<section
 						aria-label="Advisement"
 						className="flex flex-col gap-4 pb-6 border-b border-gray-300"
@@ -122,8 +124,10 @@ const Undergraduate = () => {
 							</div>
 						</div>
 					</section>
+					</Slide>
 
 					{/* Transfer Students Section */}
+					<Slide delay={0.05}>
 					<section
 						aria-label="Transfer Students"
 						className="flex flex-col gap-4 pb-6 border-b border-gray-300"
@@ -167,8 +171,10 @@ const Undergraduate = () => {
 							</div>
 						</div>
 					</section>
+					</Slide>
 
 					{/* Tutoring Section */}
+					<Slide delay={0.1}>
 					<section
 						aria-label="Tutoring"
 						className="flex flex-col gap-4 pb-6 border-b border-gray-300"
@@ -207,8 +213,10 @@ const Undergraduate = () => {
 							</div>
 						</div>
 					</section>
+					</Slide>
 
 					{/* AAS Section */}
+					<Slide delay={0.15}>
 					<section
 						id="aas"
 						aria-label="AAS Degree Program"
@@ -284,8 +292,10 @@ const Undergraduate = () => {
 							</div>
 						</div>
 					</section>
+					</Slide>
 
 					{/* BS in Computer Science Section */}
+					<Slide delay={0.2}>
 					<section
 						id="bs-cs"
 						aria-label="BS in Computer Science"
@@ -406,8 +416,10 @@ const Undergraduate = () => {
 							</div>
 						</div>
 					</section>
+					</Slide>
 
 					{/* BS in Computer Science-Mathematics Section */}
+					<Slide delay={0.05}>
 					<section
 						id="bs-csmath"
 						aria-label="BS in Computer Science-Mathematics"
@@ -456,8 +468,10 @@ const Undergraduate = () => {
 							</div>
 						</div>
 					</section>
+					</Slide>
 
 					{/* BS in Information Systems and Informatics Section */}
+					<Slide delay={0.05}>
 					<section
 						id="bs-isi"
 						aria-label="BS in Information Systems and Informatics"
@@ -506,8 +520,10 @@ const Undergraduate = () => {
 							</div>
 						</div>
 					</section>
+					</Slide>
 
 					{/* Minors Section */}
+					<Slide delay={0.05}>
 					<section
 						id="minor"
 						aria-label="Computer Science Minor"
@@ -540,7 +556,9 @@ const Undergraduate = () => {
 							</div>
 						</div>
 					</section>
+					</Slide>
 
+					<Slide delay={0.05}>
 					<section
 						id="cybersec"
 						aria-label="Cyber Security Minor"
@@ -573,7 +591,9 @@ const Undergraduate = () => {
 							</div>
 						</div>
 					</section>
+					</Slide>
 
+					<Slide delay={0.05}>
 					<section
 						id="datascience"
 						aria-label="Data Science Minor"
@@ -606,7 +626,9 @@ const Undergraduate = () => {
 							</div>
 						</div>
 					</section>
+					</Slide>
 
+					<Slide delay={0.05}>
 					<section
 						id="complang"
 						aria-label="Computational Linguistics Minor"
@@ -639,8 +661,10 @@ const Undergraduate = () => {
 							</div>
 						</div>
 					</section>
+					</Slide>
 
 					{/* BS/MS Accelerated Section */}
+					<Slide delay={0.05}>
 					<section
 						id="double-counting"
 						aria-label="BS/MS Accelerated"
@@ -695,8 +719,10 @@ const Undergraduate = () => {
 							</div>
 						</div>
 					</section>
+					</Slide>
 
 					{/* ABET Accreditation Section */}
+					<Slide delay={0.05}>
 					<section
 						id="objectives"
 						aria-label="ABET Accreditation"
@@ -794,6 +820,7 @@ const Undergraduate = () => {
 							</p>
 						</div>
 					</section>
+					</Slide>
 				</main>
 			</div>
 		</div>

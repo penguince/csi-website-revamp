@@ -1,6 +1,7 @@
 "use client";
 
 import Sidebar from "../components/Sidebar";
+import Slide from "../components/Slide";
 
 interface FacultyCard {
 	name: string;
@@ -268,6 +269,7 @@ const Faculty = () => {
 				{/* Right Content - Main Content Area */}
 				<main className="w-full lg:flex-1 flex flex-col gap-6 md:gap-8 lg:order-2">
 					{/* Computer Science professors section */}
+					<Slide>
 					<section aria-labelledby="professors-heading">
 						<h2
 							id="professors-heading"
@@ -339,10 +341,12 @@ const Faculty = () => {
 							))}
 						</div>
 					</section>
+					</Slide>
 
 					<hr className="border-t border-[#53626e] my-8" />
 
 					{/* Emeritus Section */}
+					<Slide delay={0.1}>
 					<section id="emeritus" aria-labelledby="emeritus-heading">
 						<h2
 							id="emeritus-heading"
@@ -368,10 +372,12 @@ const Faculty = () => {
 							</ul>
 						</div>
 					</section>
+					</Slide>
 
 					<hr className="border-t border-[#53626e] my-8" />
 
 					{/* Adjuncts Section */}
+					<Slide delay={0.15}>
 					<section id="adjuncts" aria-labelledby="adjuncts-heading">
 						<h2
 							id="adjuncts-heading"
@@ -397,10 +403,12 @@ const Faculty = () => {
 							</ul>
 						</div>
 					</section>
+					</Slide>
 
 					<hr className="border-t border-[#53626e] my-8" />
 
 					{/* Office Staff Section */}
+					<Slide delay={0.2}>
 					<section id="office-staff" aria-labelledby="office-staff-heading">
 						<h2
 							id="office-staff-heading"
@@ -472,10 +480,12 @@ const Faculty = () => {
 							))}
 						</div>
 					</section>
+					</Slide>
 
 					<hr className="border-t border-[#53626e] my-8" />
 
 					{/* Technical Staff Section */}
+					<Slide delay={0.25}>
 					<section
 						id="technical-staff"
 						aria-labelledby="technical-staff-heading"
@@ -550,6 +560,7 @@ const Faculty = () => {
 							))}
 						</div>
 					</section>
+					</Slide>
 				</main>
 			</div>
 		</div>

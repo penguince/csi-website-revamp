@@ -3,6 +3,7 @@
 import { Search } from "lucide-react";
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import Slide from "../components/Slide";
 
 const newsItemsData = [
 	{
@@ -106,6 +107,7 @@ const Home = () => {
 			</section>
 
 			{/* About Us Section */}
+			<Slide>
 			<section
 				className="w-full bg-white flex justify-center items-center py-12 md:py-20 px-4 md:px-8 lg:px-[100px]"
 				aria-label="About Us"
@@ -152,8 +154,10 @@ const Home = () => {
 					</div>
 				</div>
 			</section>
+			</Slide>
 
 			{/* Contact Information Section */}
+			<Slide delay={0.1}>
 			<section
 				className="w-full bg-white flex justify-center items-center py-12 md:py-20 px-4 md:px-8 lg:px-[100px]"
 				aria-label="Contact Information"
@@ -223,8 +227,10 @@ const Home = () => {
 					</div>
 				</div>
 			</section>
+			</Slide>
 
 			{/* Computer Science Degrees Section */}
+			<Slide delay={0.15}>
 			<section
 				className="w-full bg-white flex justify-center items-center py-12 md:py-20 px-4 md:px-8 lg:px-10"
 				aria-label="Computer Science Degree Programs"
@@ -376,8 +382,10 @@ const Home = () => {
 					</div>
 				</div>
 			</section>
+			</Slide>
 
 			{/* News Section */}
+			<Slide delay={0.2}>
 			<section
 				className="w-full bg-white py-12 md:py-20 px-4 md:px-8 lg:px-10"
 				aria-label="Latest News"
@@ -486,6 +494,7 @@ const Home = () => {
 					</div>
 				</div>
 			</section>
+			</Slide>
 		</div>
 	);
 };

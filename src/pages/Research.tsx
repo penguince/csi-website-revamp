@@ -3,6 +3,7 @@
 import { Search } from "lucide-react";
 import { useMemo, useState } from "react";
 import Sidebar from "../components/Sidebar";
+import Slide from "../components/Slide";
 
 const facultyData = [
 	{
@@ -245,6 +246,7 @@ const Research = () => {
 				{/* --- MAIN CONTENT AREA --- */}
 				<main className="w-full lg:flex-1 flex flex-col gap-8 md:gap-12 lg:order-2 overflow-x-hidden">
 					{/* 1. COVID-19 Highlight Section */}
+					<Slide>
 					<section aria-label="Recent COVID-19 Research">
 						<h2 className="text-gray-950 font-semibold text-2xl md:text-3xl lg:text-4xl mb-6 md:mb-8 leading-tight tracking-tight text-balance">
 							Recent Research on COVID-19
@@ -275,10 +277,12 @@ const Research = () => {
 							))}
 						</div>
 					</section>
+					</Slide>
 
 					<hr className="border-t-2 border-gray-300" />
 
 					{/* 2. Faculty Research Section */}
+					<Slide delay={0.1}>
 					<section aria-label="Faculty Research" className="overflow-x-hidden">
 						<div className="flex flex-col gap-4 md:gap-6 mb-6 overflow-x-hidden">
 							<h2 className="text-gray-950 font-semibold text-2xl md:text-3xl lg:text-4xl leading-tight tracking-tight text-balance">
@@ -361,10 +365,12 @@ const Research = () => {
 							</div>
 						)}
 					</section>
+					</Slide>
 
 					<hr className="border-t-2 border-gray-300" />
 
 					{/* 3. Student Research Section */}
+					<Slide delay={0.15}>
 					<section
 						aria-label="Student Research"
 						className="py-6 md:py-8 overflow-x-hidden"
@@ -417,6 +423,7 @@ const Research = () => {
 							))}
 						</div>
 					</section>
+					</Slide>
 				</main>
 			</div>
 		</div>
