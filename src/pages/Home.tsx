@@ -3,7 +3,28 @@
 import { Search } from "lucide-react";
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import Carousel from "../components/Carousel";
 import Slide from "../components/Slide";
+
+// Carousel slides data
+const carouselSlides = [
+	{
+		src: "/GameJam2024.jpg",
+		alt: "CSI Computer Science Game Jam 2024 - Students collaborating on game development projects",
+	},
+	{
+		src: "/csi3.jpg",
+		alt: "CSI Computer Science department campus view",
+	},
+	{
+		src: "/csi4.jpg",
+		alt: "CSI Computer Science students working in the lab",
+	},
+	{
+		src: "/csi5.jpg",
+		alt: "CSI Computer Science department facilities",
+	},
+];
 
 const newsItemsData = [
 	{
@@ -80,33 +101,45 @@ const Home = () => {
 
 	return (
 		<div className="w-full bg-white">
-			{/* Hero Section */}
-			<Slide>
-				<section
-					className="w-full min-h-screen md:min-h-[651px] bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center px-4 py-12 md:py-0"
-					aria-label="Undergraduate Programs Hero Section"
+			{/* Hero Section with Carousel */}
+			<section
+				className="relative w-full h-screen md:h-[651px] overflow-hidden"
+				style={{ minHeight: "651px" }}
+				aria-label="Undergraduate Programs Hero Section"
+			>
+				{/* Background Carousel with built-in overlay and controls */}
+				<Carousel
+					slides={carouselSlides}
+					autoPlayInterval={6000}
+					className="absolute inset-0"
+				/>
+				
+				{/* Content overlay */}
+				<div 
+					className="absolute inset-0 flex items-center justify-center px-4 py-12 md:py-0 pointer-events-none"
+					style={{ zIndex: 3 }}
 				>
 					<div className="w-full flex flex-col items-center justify-center">
 						<div className="max-w-2xl mx-auto flex flex-col items-center gap-8 md:gap-10 text-center">
 							<div className="w-full flex flex-col gap-4">
-								<h1 className="font-semibold text-3xl md:text-5xl lg:text-6xl leading-tight tracking-tight text-gray-950 text-balance">
+								<h1 className="font-semibold text-3xl md:text-5xl lg:text-6xl leading-tight tracking-tight text-white text-balance drop-shadow-lg">
 									Undergraduate Programs
 								</h1>
-								<p className="font-normal text-base md:text-lg leading-relaxed text-gray-800 text-balance">
+								<p className="font-normal text-base md:text-lg leading-relaxed text-white/90 text-balance drop-shadow-md">
 									Follow us on an inward-bound journey into the world of
 									computer science and raise them until to explore the art.
 								</p>
 							</div>
 							<button
-								className="flex items-center justify-center py-3 px-6 md:px-8 w-full md:w-auto bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-offset-2 text-white  font-semibold transition"
+								className="pointer-events-auto flex items-center justify-center py-3 px-6 md:px-8 w-full md:w-auto bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black/50 text-white font-semibold transition cursor-pointer"
 								aria-label="Learn More about Undergraduate Programs"
 							>
 								Learn More
 							</button>
 						</div>
 					</div>
-				</section>
-			</Slide>
+				</div>
+			</section>
 
 			{/* About Us Section */}
 			<Slide>
@@ -134,26 +167,12 @@ const Home = () => {
 						</div>
 
 						{/* Right Column - Image */}
-						<div className="w-full lg:flex-1 h-64 md:h-80 lg:h-96 bg-gray-200  flex items-center justify-center">
-							<svg
-								className="w-24 md:w-32 h-24 md:h-32 text-gray-400"
-								fill="none"
-								stroke="currentColor"
-								viewBox="0 0 24 24"
-								aria-label="Placeholder image"
-							>
-								<rect
-									x="3"
-									y="3"
-									width="18"
-									height="18"
-									rx="2"
-									ry="2"
-									strokeWidth="2"
-								/>
-								<circle cx="8.5" cy="8.5" r="1.5" strokeWidth="2" />
-								<path d="M21 15l-5-5L5 21" strokeWidth="2" />
-							</svg>
+						<div className="w-full lg:flex-1 h-64 md:h-80 lg:h-96 overflow-hidden">
+							<img
+								src="/csi3.jpg"
+								alt="CSI Computer Science Department"
+								className="w-full h-full object-cover"
+							/>
 						</div>
 					</div>
 				</section>
@@ -207,26 +226,12 @@ const Home = () => {
 						</div>
 
 						{/* Left Column - Image */}
-						<div className="w-full lg:flex-1 h-64 md:h-80 lg:h-96 bg-gray-200  flex items-center justify-center">
-							<svg
-								className="w-24 md:w-32 h-24 md:h-32 text-gray-400"
-								fill="none"
-								stroke="currentColor"
-								viewBox="0 0 24 24"
-								aria-label="Placeholder image"
-							>
-								<rect
-									x="3"
-									y="3"
-									width="18"
-									height="18"
-									rx="2"
-									ry="2"
-									strokeWidth="2"
-								/>
-								<circle cx="8.5" cy="8.5" r="1.5" strokeWidth="2" />
-								<path d="M21 15l-5-5L5 21" strokeWidth="2" />
-							</svg>
+						<div className="w-full lg:flex-1 h-64 md:h-80 lg:h-96 overflow-hidden">
+							<img
+								src="/shuqun.jpg"
+								alt="Professor Shuqun Zhang - Department Chairperson"
+								className="w-full h-full object-cover"
+							/>
 						</div>
 					</div>
 				</section>

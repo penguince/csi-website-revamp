@@ -1,5 +1,4 @@
 "use client";
-import myguy from "../../public/shuqun.jpg";
 import Sidebar from "../components/Sidebar";
 
 /* UPDATES:
@@ -607,7 +606,7 @@ const Graduate = () => {
 						</h3>
 
 						<img
-							src={myguy}
+							src="/shuqun.jpg"
 							alt="Professor Shuqun Zhang"
 							className="w-24 h-24 object-cover  -full mx-auto mt-2 mb-4 border border-gray-200"
 						/>
