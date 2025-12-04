@@ -20,7 +20,6 @@ const Carousel = ({
 	className = "",
 }: CarouselProps) => {
 	const [currentIndex, setCurrentIndex] = useState(0);
-	const [isPaused, setIsPaused] = useState(false);
 	const autoPlayRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
 	const goToNext = useCallback(() => {
@@ -35,9 +34,9 @@ const Carousel = ({
 		setCurrentIndex(index);
 	}, []);
 
-	// Auto-play functionality
+	// Auto-play functionality - always runs
 	useEffect(() => {
-		if (!isPaused && autoPlayInterval > 0) {
+		if (autoPlayInterval > 0) {
 			autoPlayRef.current = setInterval(goToNext, autoPlayInterval);
 		}
 		return () => {
@@ -45,7 +44,7 @@ const Carousel = ({
 				clearInterval(autoPlayRef.current);
 			}
 		};
-	}, [isPaused, autoPlayInterval, goToNext]);
+	}, [autoPlayInterval, goToNext]);
 
 	// Keyboard navigation
 	const handleKeyDown = useCallback(
@@ -68,8 +67,6 @@ const Carousel = ({
 			role="region"
 			aria-roledescription="carousel"
 			aria-label="Image carousel"
-			onMouseEnter={() => setIsPaused(true)}
-			onMouseLeave={() => setIsPaused(false)}
 			onKeyDown={handleKeyDown}
 			tabIndex={0}
 		>
