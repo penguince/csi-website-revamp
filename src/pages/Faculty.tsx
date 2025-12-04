@@ -1,5 +1,6 @@
 "use client";
 
+import { Picture } from "@/components/Picture";
 import Sidebar from "../components/Sidebar";
 import Slide from "../components/Slide";
 
@@ -290,7 +291,7 @@ const Faculty = () => {
 										style={{ gridTemplateRows: "subgrid", gridRow: "span 1" }}
 									>
 										<div className="bg-csi-gray w-full sm:w-32 h-32 sm:h-auto shrink-0 flex items-center justify-center overflow-hidden">
-											<img
+											<Picture
 												src={professor.image || "/avatar.png"}
 												alt={professor.name}
 												className="w-full h-full object-cover"
@@ -431,7 +432,7 @@ const Faculty = () => {
 										style={{ gridTemplateRows: "subgrid", gridRow: "span 1" }}
 									>
 										<div className="bg-csi-gray w-full sm:w-32 h-32 sm:h-auto shrink-0 flex items-center justify-center overflow-hidden">
-											<img
+											<Picture
 												src={professor.image || "/avatar.png"}
 												alt={professor.name}
 												className="w-full h-full object-cover"
@@ -513,7 +514,7 @@ const Faculty = () => {
 										style={{ gridTemplateRows: "subgrid", gridRow: "span 1" }}
 									>
 										<div className="bg-csi-gray w-full sm:w-32 h-32 sm:h-auto shrink-0 flex items-center justify-center overflow-hidden">
-											<img
+											<Picture
 												src={professor.image || "/avatar.png"}
 												alt={professor.name}
 												className="w-full h-full object-cover"

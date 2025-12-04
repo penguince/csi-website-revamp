@@ -1,6 +1,7 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { Picture } from "./Picture";
 
 const Header = () => {
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -75,7 +76,7 @@ const Header = () => {
 					<div className="flex justify-between items-center py-4">
 						{/* Logo */}
 						<Link to="/" className="flex items-center space-x-3">
-							<img
+							<Picture
 								src="/csi_logo_nav.png"
 								alt="CSI Department of Computer Science"
 								className="h-16 w-auto"

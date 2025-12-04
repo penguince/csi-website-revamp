@@ -1,4 +1,5 @@
 "use client";
+import { Picture } from "@/components/Picture";
 import Sidebar from "../components/Sidebar";
 
 /* UPDATES:
@@ -605,7 +606,7 @@ const Graduate = () => {
 							Department Contact
 						</h3>
 
-						<img
+						<Picture
 							src="/shuqun.jpg"
 							alt="Professor Shuqun Zhang"
 							className="w-24 h-24 object-cover  -full mx-auto mt-2 mb-4 border border-gray-200"

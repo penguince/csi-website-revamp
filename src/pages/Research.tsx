@@ -4,6 +4,7 @@ import { Search } from "lucide-react";
 import { useMemo, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import Slide from "../components/Slide";
+import { Picture } from "@/components/Picture";
 
 const facultyData = [
 	{
@@ -323,7 +324,7 @@ const Research = () => {
 										style={{ gridTemplateRows: "subgrid", gridRow: "span 2" }}
 									>
 										<div className="w-full h-48 sm:h-56 md:h-64 overflow-hidden bg-gray-200">
-											<img
+											<Picture
 												src={item.image || "/placeholder.svg"}
 												alt={`${item.title} research`}
 												className="w-full h-full object-cover"
@@ -397,7 +398,7 @@ const Research = () => {
 										style={{ gridTemplateRows: "subgrid", gridRow: "span 2" }}
 									>
 										<div className="w-full h-48 sm:h-56 md:h-64 overflow-hidden bg-gray-200">
-											<img
+											<Picture
 												src={item.image || "/placeholder.svg"}
 												alt={`${item.title} research`}
 												className="w-full h-full object-cover"

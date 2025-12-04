@@ -1,4 +1,4 @@
-import { Image as ImageIcon } from "lucide-react";
+import { Picture } from "../components/Picture";
 
 // --- Types ---
 interface ResourceLink {
@@ -277,17 +277,16 @@ const Resources = () => {
 					</ol>
 				</section>
 
-				{/* Right: Placeholder Image */}
-				<div
-					className="bg-gray-100  w-full h-64 lg:h-auto min-h-[250px] lg:min-h-[300px] flex items-center justify-center border border-gray-200 order-first lg:order-last"
-					role="img"
-					aria-label="Student spotlight highlights"
-				>
-					<ImageIcon
-						className="text-gray-300 w-20 h-20 md:w-24 md:h-24"
-						aria-hidden="true"
-					/>
-				</div>
+				{/* Right: Student Spotlights Image */}
+			<div className="w-full h-fit overflow-hidden rounded-lg border border-gray-200 order-first lg:order-last">
+				<Picture
+					src="/GameJam2024.jpg"
+					alt="Student spotlight highlights - CSI Computer Science students"
+					variant={`cover`}
+					loading="lazy"
+					className="bg-gray-100 w-full h-full object-cover"
+				/>
+			</div>
 			</div>
 
 			{/* REU Section */}

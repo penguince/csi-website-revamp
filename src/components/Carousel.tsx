@@ -1,7 +1,8 @@
 "use client";
 
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Pause, Play } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { Picture } from "./Picture";
 
 interface CarouselSlide {
 	src: string;
@@ -20,6 +21,7 @@ const Carousel = ({
 	className = "",
 }: CarouselProps) => {
 	const [currentIndex, setCurrentIndex] = useState(0);
+	const [isPlaying, setIsPlaying] = useState(true);
 	const autoPlayRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
 	const goToNext = useCallback(() => {
@@ -34,9 +36,13 @@ const Carousel = ({
 		setCurrentIndex(index);
 	}, []);
 
-	// Auto-play functionality - always runs
+	const togglePlayPause = useCallback(() => {
+		setIsPlaying((prev) => !prev);
+	}, []);
+
+	// Auto-play functionality - controlled by isPlaying state
 	useEffect(() => {
-		if (autoPlayInterval > 0) {
+		if (autoPlayInterval > 0 && isPlaying) {
 			autoPlayRef.current = setInterval(goToNext, autoPlayInterval);
 		}
 		return () => {
@@ -44,7 +50,7 @@ const Carousel = ({
 				clearInterval(autoPlayRef.current);
 			}
 		};
-	}, [autoPlayInterval, goToNext]);
+	}, [autoPlayInterval, goToNext, isPlaying]);
 
 	// Keyboard navigation
 	const handleKeyDown = useCallback(
@@ -55,14 +61,17 @@ const Carousel = ({
 			} else if (e.key === "ArrowRight") {
 				e.preventDefault();
 				goToNext();
+			} else if (e.key === " " || e.key === "Spacebar") {
+				e.preventDefault();
+				togglePlayPause();
 			}
 		},
-		[goToNext, goToPrevious]
+		[goToNext, goToPrevious, togglePlayPause]
 	);
 
 	return (
 		<div
-			className={`relative w-full h-full ${className}`}
+			className={`relative w-full h-full group ${className}`}
 			style={{ minHeight: "100%" }}
 			role="region"
 			aria-roledescription="carousel"
@@ -77,11 +86,11 @@ const Carousel = ({
 
 			{/* All slides - current one visible, others hidden */}
 			{slides.map((slide, index) => (
-				<img
+				<Picture
 					key={index}
 					src={slide.src}
 					alt={slide.alt}
-					className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-in-out ${
+					className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
 						index === currentIndex ? "opacity-100" : "opacity-0"
 					}`}
 					style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
@@ -96,45 +105,38 @@ const Carousel = ({
 				style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: 1 }}
 			/>
 
-			{/* Navigation - Previous */}
-			<button
-				onClick={goToPrevious}
-				className="absolute left-4 p-3 bg-black/50 hover:bg-black/70 text-white rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-white cursor-pointer"
-				style={{ position: "absolute", top: "50%", transform: "translateY(-50%)", zIndex: 2 }}
-				aria-label="Previous slide"
-				type="button"
-			>
-				<ChevronLeft className="w-6 h-6" />
-			</button>
-
-			{/* Navigation - Next */}
-			<button
-				onClick={goToNext}
-				className="absolute right-4 p-3 bg-black/50 hover:bg-black/70 text-white rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-white cursor-pointer"
-				style={{ position: "absolute", top: "50%", transform: "translateY(-50%)", zIndex: 2 }}
-				aria-label="Next slide"
-				type="button"
-			>
-				<ChevronRight className="w-6 h-6" />
-			</button>
-
-			{/* Dot indicators */}
+			{/* Bottom controls: Dots + Play/Pause */}
 			<div 
-				className="absolute left-1/2 flex gap-3"
+				className="absolute left-1/2 flex gap-3 items-center"
 				style={{ position: "absolute", bottom: "24px", transform: "translateX(-50%)", zIndex: 2 }}
 			>
+				{/* Dot indicators */}
 				{slides.map((_, index) => (
 					<button
 						key={index}
 						onClick={() => goToSlide(index)}
 						aria-label={`Go to slide ${index + 1}`}
+						aria-current={index === currentIndex}
 						className={`w-3 h-3 rounded-full transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-white ${
 							index === currentIndex
-								? "bg-white"
+								? "bg-white scale-110"
 								: "bg-white/50 hover:bg-white/75"
 						}`}
 					/>
 				))}
+				
+				{/* Pause/Play button */}
+				<button
+					onClick={togglePlayPause}
+					aria-label={isPlaying ? "Pause slideshow" : "Play slideshow"}
+					className="ml-2 p-1.5 bg-white/20 hover:bg-white/30 text-white rounded-full transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-white"
+				>
+					{isPlaying ? (
+						<Pause className="w-3 h-3" />
+					) : (
+						<Play className="w-3 h-3" />
+					)}
+				</button>
 			</div>
 		</div>
 	);

@@ -10,6 +10,7 @@ import {
 	Youtube,
 } from "lucide-react";
 import CunyLogo from "./CunyLogo";
+import { Picture } from "./Picture";
 
 const Footer = () => {
 	const socialLinks = [
@@ -44,7 +45,7 @@ const Footer = () => {
 					{/* Left: Logo */}
 					<div className="flex flex-col gap-4">
 						<div className="w-64 md:w-[345px] h-auto">
-							<img
+							<Picture
 								src="/csi_logo_foot.png"
 								alt="College of Staten Island - Department of Computer Science"
 								className="w-full h-auto object-contain"

@@ -3,7 +3,9 @@
 import { Search } from "lucide-react";
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import { Accordion, AccordionItem } from "../components/Accordion";
 import Carousel from "../components/Carousel";
+import { Picture } from "../components/Picture";
 import Slide from "../components/Slide";
 
 // Carousel slides data
@@ -82,7 +84,6 @@ const Home = () => {
 	];
 
 	const [searchQuery, setSearchQuery] = useState("");
-	const [expandedItems, setExpandedItems] = useState<number[]>([1]);
 
 	const filteredNews = useMemo(() => {
 		return newsItemsData.filter(
@@ -92,12 +93,6 @@ const Home = () => {
 					item.description.toLowerCase().includes(searchQuery.toLowerCase())),
 		);
 	}, [searchQuery]);
-
-	const toggleExpanded = (id: number) => {
-		setExpandedItems((prev) =>
-			prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id],
-		);
-	};
 
 	return (
 		<div className="w-full bg-white">
@@ -167,13 +162,14 @@ const Home = () => {
 						</div>
 
 						{/* Right Column - Image */}
-						<div className="w-full lg:flex-1 h-64 md:h-80 lg:h-96 overflow-hidden">
-							<img
-								src="/csi3.jpg"
-								alt="CSI Computer Science Department"
-								className="w-full h-full object-cover"
-							/>
-						</div>
+					<div className="w-full lg:flex-1 h-64 md:h-80 lg:h-96 overflow-hidden rounded-lg">
+						<Picture
+							src="/csi3.jpg"
+							alt="CSI Computer Science Department"
+							variant="cover"
+							loading="lazy"
+						/>
+					</div>
 					</div>
 				</section>
 			</Slide>
@@ -227,10 +223,11 @@ const Home = () => {
 
 						{/* Left Column - Image */}
 						<div className="w-full lg:flex-1 h-64 md:h-80 lg:h-96 overflow-hidden">
-							<img
+							<Picture
 								src="/shuqun.jpg"
 								alt="Professor Shuqun Zhang - Department Chairperson"
-								className="w-full h-full object-cover"
+								variant="cover"
+								loading="lazy"
 							/>
 						</div>
 					</div>
@@ -276,121 +273,79 @@ const Home = () => {
 						</div>
 
 						{/* Cards Container */}
-						<div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-							{/* Card 1 */}
-							<article className="bg-white  shadow-lg overflow-hidden hover:shadow-xl transition focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-600">
-								<div className="w-full h-48 md:h-56 bg-gray-200 flex items-center justify-center">
-									<svg
-										className="w-20 md:w-24 h-20 md:h-24 text-gray-400"
-										fill="none"
-										stroke="currentColor"
-										viewBox="0 0 24 24"
-										aria-label="Placeholder image"
-									>
-										<rect
-											x="3"
-											y="3"
-											width="18"
-											height="18"
-											rx="2"
-											ry="2"
-											strokeWidth="2"
-										/>
-										<circle cx="8.5" cy="8.5" r="1.5" strokeWidth="2" />
-										<path d="M21 15l-5-5L5 21" strokeWidth="2" />
-									</svg>
-								</div>
-								<div className="p-4 md:p-6 flex flex-col gap-2">
-									<h3 className="font-semibold text-xl md:text-2xl leading-tight text-gray-950">
-										BS Specializations
-									</h3>
-									<p className="font-normal text-base text-gray-800">
-										Game Development
-										<br />
-										Bioinformatics and Security
-										<br />
-										High-Performance Computing Data Science
-									</p>
-								</div>
-							</article>
-
-							{/* Card 2 */}
-							<article className="bg-white  shadow-lg overflow-hidden hover:shadow-xl transition focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-600">
-								<div className="w-full h-48 md:h-56 bg-gray-200 flex items-center justify-center">
-									<svg
-										className="w-20 md:w-24 h-20 md:h-24 text-gray-400"
-										fill="none"
-										stroke="currentColor"
-										viewBox="0 0 24 24"
-										aria-label="Placeholder image"
-									>
-										<rect
-											x="3"
-											y="3"
-											width="18"
-											height="18"
-											rx="2"
-											ry="2"
-											strokeWidth="2"
-										/>
-										<circle cx="8.5" cy="8.5" r="1.5" strokeWidth="2" />
-										<path d="M21 15l-5-5L5 21" strokeWidth="2" />
-									</svg>
-								</div>
-								<div className="p-4 md:p-6 flex flex-col gap-2">
-									<h3 className="font-semibold text-xl md:text-2xl leading-tight text-gray-950">
-										BS Specializations
-									</h3>
-									<p className="font-normal text-base text-gray-800">
-										Game Development
-										<br />
-										Bioinformatics and Security
-										<br />
-										High-Performance Computing Data Science
-									</p>
-								</div>
-							</article>
-
-							{/* Card 3 */}
-							<article className="bg-white  shadow-lg overflow-hidden hover:shadow-xl transition focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-600 md:col-span-2 lg:col-span-1">
-								<div className="w-full h-48 md:h-56 bg-gray-200 flex items-center justify-center">
-									<svg
-										className="w-20 md:w-24 h-20 md:h-24 text-gray-400"
-										fill="none"
-										stroke="currentColor"
-										viewBox="0 0 24 24"
-										aria-label="Placeholder image"
-									>
-										<rect
-											x="3"
-											y="3"
-											width="18"
-											height="18"
-											rx="2"
-											ry="2"
-											strokeWidth="2"
-										/>
-										<circle cx="8.5" cy="8.5" r="1.5" strokeWidth="2" />
-										<path d="M21 15l-5-5L5 21" strokeWidth="2" />
-									</svg>
-								</div>
-								<div className="p-4 md:p-6 flex flex-col gap-2">
-									<h3 className="font-semibold text-xl md:text-2xl leading-tight text-gray-950">
-										BS Specializations
-									</h3>
-									<p className="font-normal text-base text-gray-800">
-										Game Development
-										<br />
-										Bioinformatics and Security
-										<br />
-										High-Performance Computing Data Science
-									</p>
-								</div>
-							</article>
-						</div>
+			<div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+				{/* Card 1 */}
+				<article className="bg-white shadow-lg overflow-hidden hover:shadow-xl transition focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-600">
+					<Picture
+						src="/GameJam2024.jpg"
+						alt="BS Specializations - Game Development"
+						variant="card"
+						loading="lazy"
+						className="bg-gray-200"
+					/>
+					<div className="p-4 md:p-6 flex flex-col gap-2">
+						<h3 className="font-semibold text-xl md:text-2xl leading-tight text-gray-950">
+							BS Specializations
+						</h3>
+						<p className="font-normal text-base text-gray-800">
+							Game Development
+							<br />
+							Bioinformatics and Security
+							<br />
+							High-Performance Computing Data Science
+						</p>
 					</div>
-				</section>
-			</Slide>
+				</article>
+
+				{/* Card 2 */}
+				<article className="bg-white shadow-lg overflow-hidden hover:shadow-xl transition focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-600">
+					<Picture
+						src="/csi4.jpg"
+						alt="BS Specializations - Bioinformatics and Security"
+						variant="card"
+						loading="lazy"
+						className="bg-gray-200"
+					/>
+					<div className="p-4 md:p-6 flex flex-col gap-2">
+						<h3 className="font-semibold text-xl md:text-2xl leading-tight text-gray-950">
+							BS Specializations
+						</h3>
+						<p className="font-normal text-base text-gray-800">
+							Game Development
+							<br />
+							Bioinformatics and Security
+							<br />
+							High-Performance Computing Data Science
+						</p>
+					</div>
+				</article>
+
+				{/* Card 3 */}
+				<article className="bg-white shadow-lg overflow-hidden hover:shadow-xl transition focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-600 md:col-span-2 lg:col-span-1">
+					<Picture
+						src="/csi5.jpg"
+						alt="BS Specializations - High-Performance Computing"
+						variant="card"
+						loading="lazy"
+						className="bg-gray-200"
+					/>
+					<div className="p-4 md:p-6 flex flex-col gap-2">
+						<h3 className="font-semibold text-xl md:text-2xl leading-tight text-gray-950">
+							BS Specializations
+						</h3>
+						<p className="font-normal text-base text-gray-800">
+							Game Development
+							<br />
+							Bioinformatics and Security
+							<br />
+							High-Performance Computing Data Science
+						</p>
+					</div>
+				</article>
+			</div>
+		</div>
+	</section>
+</Slide>
 
 			{/* News Section */}
 			<Slide delay={0.2}>
@@ -429,79 +384,44 @@ const Home = () => {
 							</div>
 
 							{/* Accordion */}
-							<div
-								className="w-full flex flex-col"
-								role="region"
-								aria-label="News articles"
-							>
-								{filteredNews.map((item) => (
-									<article
-										key={item.id}
-										className="w-full flex flex-col border-b border-gray-600"
-									>
-										<div className="flex items-start gap-3 py-4">
-											<div className="flex-grow flex flex-col gap-2">
-												<h3 className="font-semibold text-lg md:text-xl leading-tight text-blue-700 text-balance">
-													{item.title}
-												</h3>
-												{expandedItems.includes(item.id) &&
-													item.description && (
-														<>
-															<p className="font-normal text-base leading-relaxed text-gray-800">
-																{item.description}
-															</p>
-															<p className="font-bold text-base md:text-lg leading-relaxed text-gray-700">
-																{item.date}
-															</p>
-														</>
-													)}
-												{!expandedItems.includes(item.id) && (
-													<p className="font-normal text-sm text-gray-700">
+							{filteredNews.length > 0 ? (
+								<Accordion 
+									variant="default" 
+									defaultExpandedItems={["1"]}
+									className="w-full"
+								>
+									{filteredNews.map((item) => (
+										<AccordionItem
+											key={item.id}
+											value={item.id.toString()}
+											trigger={
+												<div className="flex flex-col gap-1 flex-1">
+													<h3 className="font-semibold text-lg md:text-xl leading-tight text-blue-700 text-balance text-left">
+														{item.title}
+													</h3>
+													<p className="font-normal text-sm text-gray-700 text-left">
 														{item.date}
 													</p>
-												)}
-											</div>
-											<button
-												onClick={() => toggleExpanded(item.id)}
-												className="w-6 h-6 flex-shrink-0 hover:opacity-70 focus:outline-none focus:ring-2 focus:ring-blue-600 transition"
-												aria-label={
-													expandedItems.includes(item.id)
-														? `Collapse article: ${item.title}`
-														: `Expand article: ${item.title}`
-												}
-												aria-expanded={expandedItems.includes(item.id)}
-											>
-												<svg
-													className="w-6 h-6 text-gray-900"
-													fill="none"
-													stroke="currentColor"
-													viewBox="0 0 24 24"
-													strokeWidth="1.5"
-												>
-													<path
-														strokeLinecap="round"
-														strokeLinejoin="round"
-														d={
-															expandedItems.includes(item.id)
-																? "M4.5 15.75l7.5-7.5 7.5 7.5"
-																: "M19.5 8.25l-7.5 7.5-7.5-7.5"
-														}
-													/>
-												</svg>
-											</button>
-										</div>
-									</article>
-								))}
-								{filteredNews.length === 0 && (
-									<div className="w-full py-8 text-center">
-										<p className="font-normal text-base text-gray-800">
-											No news items match your search.
-										</p>
-									</div>
+												</div>
+											}
+										>
+											{item.description && (
+												<p className="font-normal text-base leading-relaxed text-gray-800">
+													{item.description}
+												</p>
+											)}
+										</AccordionItem>
+									))}
+								</Accordion>
+							) : (
+								<div className="w-full py-8 text-center">
+									<p className="font-normal text-base text-gray-800">
+										No news items match your search.
+									</p>
+								</div>
 								)}
 							</div>
 						</div>
-					</div>
 				</section>
 			</Slide>
 		</div>
